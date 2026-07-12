@@ -12,23 +12,21 @@
             --bg:#fafaf8;--text:#1a1a1a;--text-light:#6b6b6b;--accent:#b8945c;
             --accent-dark:#9a7a44;--accent-light:#d4b76e;--white:#fff;
             --border:#e8e4df;--card-bg:#fff;--tag-bg:#f4f0ea;
-            --discount:#c0392b;--success:#27ae60;--surface-dark:#1a1a1a;
+            --discount:#c0392b;--success:#27ae60;
         }
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
-        body{font-family:'InterVar','Inter','Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+        body{font-family:'InterVar','Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
         p,h1,h2,h3,h4,h5{user-select:text}a,button,.product-card,.cat-card{user-select:none}
-        img{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
-        a,button,div[onclick],.img-wrap{-webkit-tap-highlight-color:transparent;outline:none!important}
-        a:focus,button:focus{outline:none!important}
+        img{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+        a,button,[onclick]{outline:none!important}
 
-        /* ── Nav ── */
-        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,250,248,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);will-change:box-shadow}
-        .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:70px}
-        .nav-logo img{height:36px;width:auto}.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
-        .nav-links a{text-decoration:none;color:var(--text);font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;transition:color .2s}
-        .nav-links a:hover{color:var(--accent)}.nav-cta{background:var(--text)!important;color:var(--white)!important;padding:8px 20px!important;font-size:11px!important}.nav-cta:hover{background:var(--accent)!important}
-        .cart-icon-btn{background:none;border:none;color:var(--text);cursor:pointer;position:relative;font-size:18px;padding:6px;display:flex;align-items:center}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,250,248,0.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+        .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px}
+        .nav-logo img{height:36px;width:auto}.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+        .nav-links a{text-decoration:none;color:var(--text);font-size:11px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;transition:color .2s}
+        .nav-links a:hover{color:var(--accent)}.nav-cta{background:var(--text)!important;color:var(--white)!important;padding:8px 18px!important}.nav-cta:hover{background:var(--accent)!important}
+        .cart-icon-btn{background:none;border:none;color:var(--text);cursor:pointer;position:relative;font-size:18px;padding:6px}
         .cart-count{background:var(--discount);color:#fff;font-size:9px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:absolute;top:-2px;right:-8px}
         .mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px}
         .mobile-toggle span{display:block;width:22px;height:1.5px;background:var(--text);margin:5px 0}
@@ -37,38 +35,36 @@
         .mobile-menu a{text-decoration:none;color:var(--text);font-size:18px;font-weight:500;letter-spacing:1px;text-transform:uppercase}
         .mobile-close{position:absolute;top:22px;right:30px;background:none;border:none;font-size:28px;cursor:pointer;color:var(--text)}
 
-        /* ── Hero ── */
         .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 32px 80px;position:relative;background:linear-gradient(180deg,#fafaf8 0%,#f2efe9 100%)}
         .hero-content{max-width:680px}.hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
-        .hero-logo{margin-bottom:26px}.hero-logo img{height:72px;width:auto}
-        .hero h1{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:clamp(32px,5vw,54px);font-weight:600;line-height:1.15;color:var(--text);margin-bottom:16px}
+        .hero-logo{margin-bottom:26px}.hero-logo img{height:72px;width:auto;cursor:pointer}
+        .hero h1{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:clamp(32px,5vw,54px);font-weight:600;line-height:1.15;margin-bottom:16px}
         .hero h1 em{font-style:italic;color:var(--accent)}
-        .hero p{font-size:15px;color:var(--text-light);max-width:460px;margin:0 auto 34px;line-height:1.7;font-weight:400}
+        .hero p{font-size:15px;color:var(--text-light);max-width:460px;margin:0 auto 34px;line-height:1.7}
         .hero-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
         .btn{display:inline-flex;align-items:center;gap:7px;padding:13px 32px;font-size:12px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:all .25s;cursor:pointer;border:none;font-family:inherit}
         .btn-primary{background:var(--text);color:var(--white)}.btn-primary:hover{background:var(--accent)}
         .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--text)}.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
         .btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{background:var(--accent-dark)}
         .btn-sm{padding:9px 20px;font-size:10px;letter-spacing:1px}.btn-full{width:100%;justify-content:center;padding:14px}
-
-        /* ── Shiny Buy Now ── */
         .btn-buy{position:relative;overflow:hidden;background:var(--accent);color:#fff;font-weight:700;letter-spacing:1.5px;box-shadow:0 4px 16px rgba(184,148,92,0.35)}
         .btn-buy::before{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent);transform:skewX(-25deg);animation:btnShine 2.5s infinite}
         .btn-buy:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(184,148,92,0.5);background:var(--accent-light)}
         @keyframes btnShine{0%{left:-75%}100%{left:125%}}
+        .btn-danger{background:var(--discount)!important;color:#fff!important}.btn-danger:hover{opacity:.85}
+        .btn-success{background:var(--success)!important;color:#fff!important}
 
         .hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);animation:bounce 2s infinite}
         .hero-scroll svg{width:20px;height:20px;stroke:var(--text-light)}
         @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
-        /* ── Section ── */
         .section{padding:90px 32px;max-width:1280px;margin:0 auto}
         .section-header{text-align:center;margin-bottom:56px}
         .section-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
         .section-title{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:clamp(26px,3.8vw,40px);font-weight:600;margin-bottom:10px}
         .section-subtitle{color:var(--text-light);font-size:14px;max-width:460px;margin:0 auto}
 
-        /* ── Cat Split ── */
         .cat-split{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:70px}
         .cat-card{position:relative;height:460px;overflow:hidden;cursor:pointer;display:flex;align-items:flex-end;padding:42px;text-decoration:none;border-radius:6px}
         .cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.15) 55%,rgba(0,0,0,0.02) 100%);z-index:1;transition:opacity .5s}
@@ -80,17 +76,15 @@
         .cat-arrow{display:inline-flex;margin-top:14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent-light);font-weight:600;opacity:0;transform:translateX(-8px);transition:all .4s}
         .cat-card:hover .cat-arrow{opacity:1;transform:translateX(0)}
 
-        /* ── Filter ── */
         .filter-tabs{display:flex;justify-content:center;gap:6px;margin-bottom:44px;flex-wrap:wrap}
         .filter-tab{background:var(--white);color:var(--text-light);border:1px solid var(--border);padding:10px 24px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .25s;border-radius:3px;font-family:inherit}
         .filter-tab:hover{border-color:var(--accent);color:var(--accent)}.filter-tab.active{background:var(--text);color:#fff;border-color:var(--text);font-weight:600}
 
-        /* ── Product Grid ── */
         .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px}
-        .product-card{background:var(--card-bg);border-radius:6px;overflow:hidden;border:1px solid var(--border);transition:transform .3s,box-shadow .3s,border-color .3s;cursor:pointer;position:relative;will-change:transform}
+        .product-card{background:var(--card-bg);border-radius:6px;overflow:hidden;border:1px solid var(--border);transition:transform .3s,box-shadow .3s,border-color .3s;cursor:pointer;position:relative}
         .product-card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(0,0,0,0.06);border-color:#d5cec4}
-        .product-card .img-wrap{position:relative;overflow:hidden;aspect-ratio:3/4;background:#f5f3ef;-webkit-tap-highlight-color:transparent}
-        .product-card .img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s;pointer-events:none;-webkit-tap-highlight-color:transparent}
+        .product-card .img-wrap{position:relative;overflow:hidden;aspect-ratio:3/4;background:#f5f3ef}
+        .product-card .img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s;pointer-events:none}
         .product-card:hover .img-wrap img{transform:scale(1.04)}
         .product-card .discount-badge{position:absolute;top:10px;left:10px;background:var(--discount);color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:3px;z-index:2;pointer-events:none}
         .product-card .gender-badge{position:absolute;top:10px;right:10px;background:rgba(255,255,255,0.92);color:var(--accent);font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:4px 9px;border-radius:3px;z-index:2;pointer-events:none}
@@ -99,15 +93,14 @@
         .hover-add,.hover-buy{padding:8px 16px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:none;cursor:pointer;border-radius:3px;white-space:nowrap;font-family:inherit;transition:all .2s}
         .hover-add{background:#fff;color:var(--text);box-shadow:0 2px 10px rgba(0,0,0,0.08)}.hover-add:hover{background:var(--text);color:#fff}
         .hover-buy{background:var(--accent);color:#fff;box-shadow:0 2px 10px rgba(184,148,92,0.3)}.hover-buy:hover{background:var(--accent-dark)}
-        .product-info{padding:16px;pointer-events:none}.product-info .category{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:4px}
+        .product-info{padding:16px}.product-info .category{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:4px}
         .product-info h4{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:16px;font-weight:600;margin-bottom:6px}
         .product-info .price-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
         .product-info .old{text-decoration:line-through;color:#aaa;font-size:12px}.product-info .new{font-size:18px;font-weight:700}
         .product-info .saved{font-size:10px;color:var(--discount);font-weight:600;background:rgba(192,57,43,0.07);padding:2px 7px;border-radius:2px}
-        .color-dots{display:flex;gap:4px;margin-top:6px}.color-dot{width:13px;height:13px;border-radius:50%;border:2px solid transparent;transition:all .2s}
+        .color-dots{display:flex;gap:4px;margin-top:6px}.color-dot{width:13px;height:13px;border-radius:50%;border:2px solid transparent}
 
-        /* ── Featured ── */
-        .featured-banner{margin-bottom:70px;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;background:var(--white);border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+        .featured-banner{margin-bottom:70px;display:grid;grid-template-columns:1fr 1fr;align-items:center;background:var(--white);border-radius:8px;overflow:hidden;border:1px solid var(--border)}
         .featured-banner img{width:100%;height:480px;object-fit:cover;pointer-events:none}
         .featured-text{padding:44px 40px}.featured-text .badge{display:inline-block;background:var(--discount);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:3px;margin-bottom:14px}
         .featured-text h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:30px;font-weight:600;margin-bottom:10px}
@@ -116,14 +109,21 @@
         .price-old{text-decoration:line-through;color:#999;font-size:17px}.price-new{font-size:34px;font-weight:700;font-family:'Playfair','Playfair Display','Georgia',serif}
         .price-off{font-size:12px;color:var(--discount);font-weight:600}.featured-btns{display:flex;gap:10px;flex-wrap:wrap}
 
-        /* ── Product Detail Modal ── */
+        /* Modal */
         .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;pointer-events:none;transition:opacity .25s}
         .modal-overlay.active{opacity:1;pointer-events:all}
         .modal{background:var(--white);border-radius:8px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;position:relative;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 20px 60px rgba(0,0,0,0.18);transform:translateY(12px);transition:transform .3s}
         .modal-overlay.active .modal{transform:translateY(0)}
         .modal-close{position:absolute;top:12px;right:12px;background:var(--text);color:#fff;border:none;width:30px;height:30px;border-radius:50%;font-size:14px;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;transition:background .2s}
-        .modal-close:hover{background:var(--discount)}.modal-img{aspect-ratio:3/4;background:#f5f3ef;display:flex;align-items:center;justify-content:center}
-        .modal-img img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+        .modal-close:hover{background:var(--discount)}
+        .modal-img-wrap{aspect-ratio:3/4;background:#f5f3ef;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+        .modal-img-wrap img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+        /* Color thumbnails inside modal */
+        .modal-color-thumbs{display:flex;gap:6px;padding:10px;position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);border-radius:20px;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+        .modal-color-thumbs .mct{width:36px;height:36px;border-radius:50%;border:2px solid transparent;cursor:pointer;overflow:hidden;transition:all .2s;flex-shrink:0}
+        .modal-color-thumbs .mct img{width:100%;height:100%;object-fit:cover}
+        .modal-color-thumbs .mct:hover{border-color:var(--accent);transform:scale(1.1)}
+        .modal-color-thumbs .mct.active{border-color:var(--accent);box-shadow:0 0 8px rgba(184,148,92,0.4)}
         .modal-info{padding:32px 28px;display:flex;flex-direction:column}
         .modal-gender{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
         .modal-info h2{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:28px;font-weight:600;margin-bottom:3px}
@@ -147,53 +147,42 @@
         .qty-selector input{width:42px;text-align:center;background:transparent;border:none;border-left:1px solid var(--border);border-right:1px solid var(--border);color:var(--text);font-size:13px;font-weight:600;outline:none;font-family:inherit}
         .modal-btns{display:flex;flex-direction:column;gap:9px;margin-top:auto;padding-top:14px}
 
-        /* ── CHECKOUT FORM ── */
+        /* Checkout */
         .checkout-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2100;display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;pointer-events:none;transition:opacity .25s}
         .checkout-overlay.active{opacity:1;pointer-events:all}
-        .checkout-modal{background:var(--white);border-radius:10px;max-width:500px;width:100%;max-height:92vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.18);transform:translateY(10px);transition:transform .3s;padding:0}
+        .checkout-modal{background:var(--white);border-radius:10px;max-width:520px;width:100%;max-height:92vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.18);transform:translateY(10px);transition:transform .3s}
         .checkout-overlay.active .checkout-modal{transform:translateY(0)}
-        .checkout-close{position:absolute;top:12px;right:12px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-light);width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all .2s;z-index:3}
+        .checkout-close{position:absolute;top:12px;right:12px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-light);width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;z-index:3;transition:all .2s}
         .checkout-close:hover{background:#f0f0f0;color:var(--discount)}
-
-        /* Checkout Header */
-        .checkout-header{background:var(--text);color:#fff;padding:28px 28px 24px;text-align:center;border-radius:10px 10px 0 0}
-        .checkout-header .ch-icon{font-size:32px;margin-bottom:8px}
+        .checkout-header{background:var(--text);color:#fff;padding:28px;text-align:center;border-radius:10px 10px 0 0}
         .checkout-header h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:22px;margin-bottom:4px}
         .checkout-header p{font-size:12px;color:#ccc}
-
-        /* Order Summary Block */
-        .checkout-summary{margin:16px 24px;padding:14px 16px;background:var(--tag-bg);border-radius:6px;border:1px solid var(--border);font-size:12px;line-height:1.8}
-        .checkout-summary strong{color:var(--accent)}
-        .checkout-summary .cs-total{font-size:15px;font-weight:700;color:var(--text);display:block;margin-top:4px;padding-top:6px;border-top:1px solid var(--border)}
-
-        /* Form */
-        .checkout-form{padding:8px 24px 24px}
+        .checkout-summary{margin:16px 24px;padding:14px 16px;background:var(--tag-bg);border-radius:6px;border:1px solid var(--border);font-size:13px;line-height:1.8}
+        .checkout-summary .cs-total{font-size:16px;font-weight:700;display:block;margin-top:6px;padding-top:8px;border-top:1px solid var(--border)}
+        .checkout-form{padding:8px 24px}
         .form-group{margin-bottom:14px}
         .form-group label{display:block;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:6px}
         .form-group label .required{color:var(--discount)}
-        .form-group input,.form-group textarea{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:4px;font-size:13px;font-family:inherit;color:var(--text);background:var(--bg);transition:border-color .2s;outline:none}
+        .form-group input,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:4px;font-size:13px;font-family:inherit;color:var(--text);background:var(--bg);transition:border-color .2s;outline:none}
         .form-group input:focus,.form-group textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(184,148,92,0.08)}
-        .form-group textarea{resize:vertical;min-height:70px}
+        .form-group textarea{resize:vertical;min-height:65px}
         .form-group input::placeholder,.form-group textarea::placeholder{color:#c0c0c0}
         .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
-        /* Submit */
-        .checkout-submit{padding:0 24px 24px}
+        .checkout-submit{padding:6px 24px 24px}
         .checkout-submit .btn{width:100%;justify-content:center;font-size:13px;padding:15px}
         .checkout-error{color:var(--discount);font-size:11px;text-align:center;margin-bottom:8px;display:none}
+        .checkout-note{text-align:center;font-size:10px;color:var(--text-light);margin-top:10px;line-height:1.6}
 
-        /* Success Modal */
         .success-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2150;display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;pointer-events:none;transition:opacity .25s}
         .success-overlay.active{opacity:1;pointer-events:all}
         .success-modal{background:var(--white);border-radius:10px;max-width:420px;width:100%;padding:36px 28px;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.18);transform:translateY(10px);transition:transform .3s}
         .success-overlay.active .success-modal{transform:translateY(0)}
         .success-modal .s-icon{font-size:56px;margin-bottom:12px;animation:popIn .4s ease}
-        .success-modal h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:24px;margin-bottom:8px;color:var(--success)}
-        .success-modal p{font-size:13px;color:var(--text-light);line-height:1.7;margin-bottom:6px}
-        .success-modal .s-highlight{background:var(--tag-bg);padding:10px 14px;border-radius:6px;font-size:12px;color:var(--text);margin:12px 0;display:inline-block}
+        .success-modal h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:22px;margin-bottom:8px;color:var(--success)}
+        .success-modal p{font-size:13px;color:var(--text-light);line-height:1.7;margin-bottom:4px}
+        .success-modal .s-highlight{background:var(--tag-bg);padding:10px 14px;border-radius:6px;font-size:12px;color:var(--text);margin:10px 0;display:inline-block}
         @keyframes popIn{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
 
-        /* ── Cart Sidebar ── */
         .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:2200;opacity:0;pointer-events:none;transition:opacity .25s}
         .cart-overlay.active{opacity:1;pointer-events:all}
         .cart-sidebar{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100vw;background:var(--white);border-left:1px solid var(--border);z-index:2201;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(0.22,0.61,0.36,1);box-shadow:-4px 0 30px rgba(0,0,0,0.06)}
@@ -216,18 +205,15 @@
         .cart-total .total-price{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:20px}
         .cart-footer .btn{width:100%;justify-content:center;margin-bottom:6px}
 
-        /* ── CTA ── */
         .collection-banner{margin-top:70px;padding:70px 40px;background:var(--text);color:#fff;text-align:center;border-radius:8px;position:relative;overflow:hidden}
         .collection-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(184,148,92,0.12) 0%,transparent 70%)}
         .collection-banner>*{position:relative;z-index:1}.collection-banner h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:32px;font-weight:600;margin-bottom:10px}
         .collection-banner p{color:#aaa;font-size:14px;margin-bottom:24px}.btn-light{background:var(--white);color:var(--text)}.btn-light:hover{background:var(--accent);color:#fff}
 
-        /* ── Why Us ── */
         .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;text-align:center}
         .feature-icon{width:52px;height:52px;margin:0 auto 18px;background:var(--tag-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
         .feature h4{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:17px;margin-bottom:6px}.feature p{color:var(--text-light);font-size:13px}
 
-        /* ── Footer ── */
         .footer{background:var(--text);color:#ccc;padding:56px 32px 28px}
         .footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:42px}
         .footer-brand img{height:34px;margin-bottom:14px;filter:brightness(0) invert(1)}
@@ -237,17 +223,68 @@
         .footer ul li a{color:#999;text-decoration:none;font-size:13px;transition:color .2s}.footer ul li a:hover{color:var(--accent)}
         .footer-bottom{max-width:1280px;margin:40px auto 0;padding-top:20px;border-top:1px solid #333;display:flex;justify-content:space-between;font-size:12px;color:#666}
 
-        /* ── Toast ── */
-        .toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:#fff;padding:12px 22px;border-radius:6px;font-size:12px;font-weight:500;z-index:2400;transform:translateY(120px);opacity:0;transition:all .3s;box-shadow:0 6px 20px rgba(0,0,0,0.18)}
-        .toast.show{transform:translateY(0);opacity:1}
+        /* Admin */
+        .admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:3000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+        .admin-overlay.active{opacity:1;pointer-events:all}
+        .admin-panel{background:var(--white);border-radius:10px;width:100%;max-width:1100px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.25);position:relative}
+        .admin-panel .ap-close{position:sticky;top:12px;right:12px;float:right;background:var(--text);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}
+        .admin-panel .ap-close:hover{background:var(--discount)}
+        .ap-header{background:var(--text);color:#fff;padding:24px 28px;position:sticky;top:0;z-index:1}
+        .ap-header h2{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:22px;margin-bottom:4px}
+        .ap-header p{font-size:12px;color:#999}
+        .ap-body{padding:24px 28px}
+        .ap-section{margin-bottom:28px}
+        .ap-section h4{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+        .ap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+        .ap-card{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:14px;display:flex;gap:12px;align-items:flex-start}
+        .ap-card img{width:60px;height:75px;object-fit:cover;border-radius:3px;background:#f5f3ef}
+        .ap-card .ap-info{flex:1;min-width:0}
+        .ap-card .ap-info strong{font-size:13px;display:block;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .ap-card .ap-info .ap-meta{font-size:10px;color:var(--text-light)}
+        .ap-card .ap-actions{display:flex;gap:6px;flex-shrink:0}
+        .ap-card .ap-actions button{padding:5px 10px;font-size:10px;font-weight:600;letter-spacing:.5px;border:none;border-radius:3px;cursor:pointer;font-family:inherit;text-transform:uppercase}
+        .ap-edit{background:var(--accent);color:#fff}.ap-edit:hover{opacity:.8}
+        .ap-del{background:var(--discount);color:#fff}.ap-del:hover{opacity:.8}
 
-        /* ── Animations ── */
+        .ap-form{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:20px}
+        .ap-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .ap-form .form-group{margin-bottom:12px}
+        .ap-form .form-group label{display:block;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:5px}
+        .ap-form .form-group input,.ap-form .form-group textarea,.ap-form .form-group select{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:3px;font-size:12px;font-family:inherit;outline:none;background:var(--white)}
+        .ap-form .form-group input:focus,.ap-form .form-group textarea:focus,.ap-form .form-group select:focus{border-color:var(--accent)}
+        .ap-form .form-group textarea{resize:vertical;min-height:50px}
+        .ap-form .color-images-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+        .ap-form .color-img-entry{display:flex;align-items:center;gap:4px;background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 8px;font-size:10px}
+        .ap-form .color-img-entry input{width:120px;padding:4px 6px;font-size:10px;border:1px solid var(--border);border-radius:2px}
+        .ap-form .color-img-entry .ci-preview{width:24px;height:24px;border-radius:2px;object-fit:cover;background:#f0f0f0}
+        .ap-form-btns{display:flex;gap:8px;margin-top:8px}
+        .ap-form-btns button{padding:9px 18px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;border:none;border-radius:3px;cursor:pointer;font-family:inherit}
+
+        /* Sync indicator */
+        .sync-status{display:inline-flex;align-items:center;gap:6px;font-size:10px;padding:6px 12px;border-radius:20px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+        .sync-status.online{background:rgba(39,174,96,0.1);color:var(--success)}
+        .sync-status.offline{background:rgba(192,57,43,0.1);color:var(--discount)}
+        .sync-status .dot{width:7px;height:7px;border-radius:50%}
+        .sync-status.online .dot{background:var(--success)}.sync-status.offline .dot{background:var(--discount)}
+
+        .pw-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:3100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+        .pw-overlay.active{opacity:1;pointer-events:all}
+        .pw-modal{background:var(--white);border-radius:10px;max-width:380px;width:100%;padding:32px 28px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.25)}
+        .pw-modal h4{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:18px;margin-bottom:6px}
+        .pw-modal p{font-size:12px;color:var(--text-light);margin-bottom:16px}
+        .pw-modal input{width:100%;padding:12px;border:1px solid var(--border);border-radius:4px;font-size:14px;text-align:center;outline:none;font-family:inherit;letter-spacing:4px}
+        .pw-modal input:focus{border-color:var(--accent)}
+        .pw-modal .pw-error{color:var(--discount);font-size:11px;margin-top:8px;display:none}
+        .pw-modal .btn{margin-top:14px;width:100%;justify-content:center}
+
+        .toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:#fff;padding:12px 22px;border-radius:6px;font-size:12px;font-weight:500;z-index:4000;transform:translateY(120px);opacity:0;transition:all .3s;box-shadow:0 6px 20px rgba(0,0,0,0.18)}
+        .toast.show{transform:translateY(0);opacity:1}
         .fade-in{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}.fade-in.visible{opacity:1;transform:translateY(0)}
 
         @media(max-width:900px){
             .nav-links{display:none}.mobile-toggle{display:block}.cat-split{grid-template-columns:1fr}.cat-card{height:320px}
             .featured-banner{grid-template-columns:1fr}.featured-banner img{height:320px}
-            .modal{grid-template-columns:1fr;max-height:95vh}.modal-img{aspect-ratio:1/1;max-height:360px}
+            .modal{grid-template-columns:1fr;max-height:95vh}.modal-img-wrap{max-height:360px}
             .features-grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr 1fr}
         }
         @media(max-width:600px){
@@ -255,432 +292,513 @@
             .product-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
             .footer-inner{grid-template-columns:1fr}.featured-text{padding:24px 20px}
             .modal-overlay,.checkout-overlay,.success-overlay{padding:10px}.modal-info{padding:22px 16px}
-            .checkout-modal{padding:0}.checkout-header{padding:22px 20px 20px}.checkout-form,.checkout-submit,.checkout-summary{margin-left:16px;margin-right:16px;padding-left:0;padding-right:0}
-            .cart-sidebar{width:100%}.cat-title{font-size:28px}
+            .checkout-modal{border-radius:0}.checkout-header{border-radius:0}
+            .cart-sidebar{width:100%}.cat-title{font-size:28px}.ap-grid{grid-template-columns:1fr}
         }
     </style>
 </head>
 <body>
-
-<!-- Nav -->
 <nav class="nav" id="nav">
     <div class="nav-inner">
-        <a href="#" class="nav-logo"><img src="images/eluxo-logo.png" alt="Eluxo" width="142" height="38"></a>
+        <a href="#" class="nav-logo"><img src="images/eluxo-logo.png" alt="Eluxo" width="142" height="38" id="adminLogo"></a>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li><li><a href="#men-cat">Men</a></li><li><a href="#women-cat">Women</a></li>
             <li><a href="#collection">All Watches</a></li><li><a href="#featured">Featured</a></li>
             <li><a href="#collection" class="nav-cta">Shop Now</a></li>
         </ul>
         <div style="display:flex;align-items:center;gap:12px">
-            <button class="cart-icon-btn" onclick="openCart()" aria-label="Cart">🛒<span class="cart-count" id="cartCount">0</span></button>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <button class="cart-icon-btn" onclick="openCart()">🛒<span class="cart-count" id="cartCount">0</span></button>
+            <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
         </div>
     </div>
 </nav>
-
 <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" id="mobileClose">&times;</button>
     <a href="#home">Home</a><a href="#men-cat">Men's</a><a href="#women-cat">Women's</a>
     <a href="#collection">All Watches</a><a href="#featured">Featured</a>
-    <a href="#" onclick="openCart()" style="margin-top:6px">Cart (<span id="mobileCartCount">0</span>)</a>
+    <a href="#" onclick="openCart()">Cart (<span id="mobileCartCount">0</span>)</a>
 </div>
 
-<!-- Hero -->
 <section class="hero" id="home">
     <div class="hero-content">
         <p class="hero-eyebrow">Est. 2026 · Faridpur, Dhaka</p>
         <div class="hero-logo"><img src="images/eluxo-logo.png" alt="Eluxo" width="280" height="72"></div>
         <h1>Crafted for the<br><em>Discerning Wrist</em></h1>
-        <p>Premium timepieces that blend timeless elegance with modern precision. Each watch is a statement of refined taste.</p>
-        <div class="hero-buttons">
-            <a href="#men-cat" class="btn btn-primary">Shop Men →</a>
-            <a href="#women-cat" class="btn btn-outline">Shop Women →</a>
-        </div>
+        <p>Premium timepieces that blend timeless elegance with modern precision.</p>
+        <div class="hero-buttons"><a href="#men-cat" class="btn btn-primary">Shop Men →</a><a href="#women-cat" class="btn btn-outline">Shop Women →</a></div>
     </div>
     <div class="hero-scroll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
 </section>
 
-<!-- Category Split -->
-<section class="section" style="padding-top:0">
-    <div class="cat-split">
-        <a href="#men-cat" class="cat-card fade-in" id="men-cat">
-            <img src="images/watch-04.jpeg" alt="Men's Collection" loading="lazy">
-            <div class="cat-label"><p class="cat-tag">New Season</p><h3 class="cat-title">Men's Collection</h3><p class="cat-subtitle">Bold, refined, and built for the modern gentleman</p><span class="cat-arrow">Explore →</span></div>
-        </a>
-        <a href="#women-cat" class="cat-card fade-in" id="women-cat">
-            <img src="images/watch-06.jpeg" alt="Women's Collection" loading="lazy">
-            <div class="cat-label"><p class="cat-tag">New Season</p><h3 class="cat-title">Women's Collection</h3><p class="cat-subtitle">Graceful designs that celebrate elegance and individuality</p><span class="cat-arrow">Explore →</span></div>
-        </a>
-    </div>
-</section>
+<section class="section" style="padding-top:0"><div class="cat-split">
+    <a href="#men-cat" class="cat-card fade-in" id="men-cat">
+        <img src="images/watch-04.jpeg" alt="Men's Collection" loading="lazy"><div class="cat-label"><p class="cat-tag">New Season</p><h3 class="cat-title">Men's Collection</h3><p class="cat-subtitle">Bold, refined, and built for the modern gentleman</p><span class="cat-arrow">Explore →</span></div></a>
+    <a href="#women-cat" class="cat-card fade-in" id="women-cat">
+        <img src="images/watch-06.jpeg" alt="Women's Collection" loading="lazy"><div class="cat-label"><p class="cat-tag">New Season</p><h3 class="cat-title">Women's Collection</h3><p class="cat-subtitle">Graceful designs that celebrate elegance and individuality</p><span class="cat-arrow">Explore →</span></div></a>
+</div></section>
 
-<!-- Featured -->
-<section class="section" id="featured" style="padding-top:0">
-    <div class="featured-banner fade-in">
-        <img src="images/watch-royal-chronograph.jpg" alt="Royal Chronograph" loading="lazy">
-        <div class="featured-text">
-            <span class="badge">Limited Offer</span><h3>Royal Chronograph</h3>
-            <p>Our flagship timepiece. Japanese automatic movement, sapphire crystal glass, and genuine Italian leather strap.</p>
-            <div class="price-stack"><span class="price-old">৳12,500</span><span class="price-new">৳8,999</span><span class="price-off">Save 28%</span></div>
-            <div class="featured-btns">
-                <button class="btn btn-primary" onclick="addToCart('royal-chrono','Black Leather',8999)">Add to Cart</button>
-                <button class="btn btn-buy" onclick="openCheckout('royal-chrono','Black Leather',8999,1)">⚡ Buy Now</button>
-            </div>
-        </div>
-    </div>
-</section>
+<section class="section" id="featured" style="padding-top:0"><div class="featured-banner fade-in">
+    <img src="images/watch-royal-chronograph.jpg" alt="Royal Chronograph" loading="lazy">
+    <div class="featured-text"><span class="badge">Limited Offer</span><h3>Royal Chronograph</h3><p>Our flagship timepiece. Japanese automatic movement, sapphire crystal glass, genuine Italian leather strap.</p>
+    <div class="price-stack"><span class="price-old">৳12,500</span><span class="price-new">৳8,999</span><span class="price-off">Save 28%</span></div>
+    <div class="featured-btns"><button class="btn btn-primary" onclick="addToCart('royal-chrono','Black Leather',8999)">Add to Cart</button><button class="btn btn-buy" onclick="openCheckout('royal-chrono','Black Leather',8999,1)">⚡ Buy Now</button></div>
+</div></div></section>
 
-<!-- All Products -->
 <section class="section" id="collection">
     <div class="section-header fade-in"><p class="section-eyebrow">Our Collection</p><h2 class="section-title">Timeless Pieces</h2><p class="section-subtitle">Every Eluxo watch is meticulously designed. Filter by category to find your perfect match.</p></div>
-    <div class="filter-tabs fade-in">
-        <button class="filter-tab active" onclick="filterProducts('all')">All Watches</button>
-        <button class="filter-tab" onclick="filterProducts('men')">Men's</button>
-        <button class="filter-tab" onclick="filterProducts('women')">Women's</button>
-    </div>
+    <div class="filter-tabs fade-in"><button class="filter-tab active" onclick="filterProducts('all')">All Watches</button><button class="filter-tab" onclick="filterProducts('men')">Men's</button><button class="filter-tab" onclick="filterProducts('women')">Women's</button></div>
     <div class="product-grid" id="productGrid"></div>
     <div class="collection-banner fade-in"><h3>Can't Decide?</h3><p>Every Eluxo comes with a 30-day money-back guarantee and 2-year warranty.</p><a href="https://api.whatsapp.com/send?phone=8801XXXXXXXXX&text=I%20am%20interested%20in%20Eluxo%20watches" target="_blank" rel="noopener" class="btn btn-light">Chat on WhatsApp</a></div>
 </section>
 
-<!-- Why Us -->
-<section class="section" id="about">
-    <div class="section-header fade-in"><p class="section-eyebrow">Why Eluxo</p><h2 class="section-title">The Eluxo Difference</h2></div>
-    <div class="features-grid">
-        <div class="feature fade-in"><div class="feature-icon">✦</div><h4>Premium Craftsmanship</h4><p>Every watch is hand-assembled with precision movements and the finest materials.</p></div>
-        <div class="feature fade-in"><div class="feature-icon">↺</div><h4>30-Day Returns</h4><p>Not satisfied? Return within 30 days for a full refund. No questions asked.</p></div>
-        <div class="feature fade-in"><div class="feature-icon">🛡</div><h4>2-Year Warranty</h4><p>All Eluxo watches come with a comprehensive 2-year warranty against defects.</p></div>
-    </div>
-</section>
+<section class="section" id="about"><div class="section-header fade-in"><p class="section-eyebrow">Why Eluxo</p><h2 class="section-title">The Eluxo Difference</h2></div>
+<div class="features-grid">
+    <div class="feature fade-in"><div class="feature-icon">✦</div><h4>Premium Craftsmanship</h4><p>Every watch is hand-assembled with precision movements and the finest materials.</p></div>
+    <div class="feature fade-in"><div class="feature-icon">↺</div><h4>30-Day Returns</h4><p>Not satisfied? Return within 30 days for a full refund. No questions asked.</p></div>
+    <div class="feature fade-in"><div class="feature-icon">🛡</div><h4>2-Year Warranty</h4><p>All Eluxo watches come with a comprehensive 2-year warranty against defects.</p></div>
+</div></section>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-brand"><img src="images/eluxo-logo.png" alt="Eluxo" width="120" height="34"><p>Premium timepieces crafted for those who appreciate the finer things. Based in Faridpur, Dhaka Division, Bangladesh.</p></div>
-        <div><h5>Shop</h5><ul><li><a href="#men-cat">Men's</a></li><li><a href="#women-cat">Women's</a></li><li><a href="#">New Arrivals</a></li><li><a href="#">Best Sellers</a></li></ul></div>
-        <div><h5>Support</h5><ul><li><a href="#">Contact</a></li><li><a href="#">Shipping Info</a></li><li><a href="#">Returns</a></li><li><a href="#">Warranty</a></li></ul></div>
-        <div><h5>Connect</h5><ul><li><a href="#">WhatsApp</a></li><li><a href="#">Facebook</a></li><li><a href="#">Instagram</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><span>&copy; 2026 Eluxo. All rights reserved.</span><span>Faridpur, Dhaka, Bangladesh</span></div>
-</footer>
+<footer class="footer"><div class="footer-inner">
+    <div class="footer-brand"><img src="images/eluxo-logo.png" alt="Eluxo" width="120" height="34" style="filter:brightness(0) invert(1)"><p>Premium timepieces crafted for those who appreciate the finer things. Based in Faridpur, Dhaka Division, Bangladesh.</p></div>
+    <div><h5>Shop</h5><ul><li><a href="#men-cat">Men's</a></li><li><a href="#women-cat">Women's</a></li><li><a href="#">New Arrivals</a></li><li><a href="#">Best Sellers</a></li></ul></div>
+    <div><h5>Support</h5><ul><li><a href="#">Contact</a></li><li><a href="#">Shipping Info</a></li><li><a href="#">Returns</a></li><li><a href="#">Warranty</a></li></ul></div>
+    <div><h5>Connect</h5><ul><li><a href="#">WhatsApp</a></li><li><a href="#">Facebook</a></li><li><a href="#">Instagram</a></li></ul></div>
+</div><div class="footer-bottom"><span>&copy; 2026 Eluxo. All rights reserved.</span><span>Faridpur, Dhaka, Bangladesh</span></div></footer>
 
 <!-- Product Detail Modal -->
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal" id="modal">
-        <button class="modal-close" onclick="closeModal()">✕</button>
-        <div class="modal-img"><img id="modalImg" src="" alt=""></div>
-        <div class="modal-info">
-            <p class="modal-gender" id="modalGender"></p><h2 id="modalName"></h2><p class="modal-cat" id="modalCat"></p>
-            <p class="modal-desc" id="modalDesc"></p>
-            <div class="modal-price"><span class="old" id="modalOld"></span><span class="new" id="modalNew"></span><span class="off" id="modalOff"></span></div>
-            <div class="modal-stats"><div class="modal-stat stock"><span class="val" id="modalStock"></span><span class="lbl">In Stock</span></div><div class="modal-stat sold"><span class="val" id="modalSold"></span><span class="lbl">Sold</span></div></div>
-            <div class="modal-colors" id="modalColorsWrap"><p class="color-label">Available Colors</p><div class="color-options" id="modalColors"></div></div>
-            <div class="qty-row"><span class="qty-label">Qty</span><div class="qty-selector"><button onclick="changeModalQty(-1)">−</button><input type="number" id="modalQty" value="1" min="1" max="10" onchange="validateModalQty()"><button onclick="changeModalQty(1)">+</button></div></div>
-            <div class="modal-btns">
-                <button class="btn btn-primary btn-full" id="modalAddBtn" onclick="modalAddToCart()">Add to Cart — ৳<span id="modalBtnPrice">0</span></button>
-                <button class="btn btn-buy btn-full" onclick="modalGoCheckout()">⚡ Buy Now</button>
-            </div>
+<div class="modal-overlay" id="modalOverlay"><div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="">
+        <div class="modal-color-thumbs" id="modalColorThumbs" style="display:none"></div>
+    </div>
+    <div class="modal-info">
+        <p class="modal-gender" id="modalGender"></p><h2 id="modalName"></h2><p class="modal-cat" id="modalCat"></p>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-price"><span class="old" id="modalOld"></span><span class="new" id="modalNew"></span><span class="off" id="modalOff"></span></div>
+        <div class="modal-stats"><div class="modal-stat stock"><span class="val" id="modalStock"></span><span class="lbl">In Stock</span></div><div class="modal-stat sold"><span class="val" id="modalSold"></span><span class="lbl">Sold</span></div></div>
+        <div class="modal-colors"><p class="color-label">Select Color</p><div class="color-options" id="modalColors"></div></div>
+        <div class="qty-row"><span class="qty-label">Qty</span><div class="qty-selector"><button onclick="changeModalQty(-1)">−</button><input type="number" id="modalQty" value="1" min="1" max="10" onchange="validateModalQty()"><button onclick="changeModalQty(1)">+</button></div></div>
+        <div class="modal-btns">
+            <button class="btn btn-primary btn-full" id="modalAddBtn" onclick="modalAddToCart()">Add to Cart — ৳<span id="modalBtnPrice">0</span></button>
+            <button class="btn btn-buy btn-full" onclick="modalGoCheckout()">⚡ Buy Now</button>
         </div>
     </div>
-</div>
+</div></div>
 
-<!-- ├── CHECKOUT FORM ── -->
-<div class="checkout-overlay" id="checkoutOverlay">
-    <div class="checkout-modal">
-        <button class="checkout-close" onclick="closeCheckout()">✕</button>
-        <div class="checkout-header">
-            <div class="ch-icon">📦</div>
-            <h3>Complete Your Order</h3>
-            <p>Fill in your details &mdash; we'll call to confirm</p>
-        </div>
-        <div class="checkout-summary" id="checkoutSummary"></div>
-        <div class="checkout-form">
-            <div class="form-group"><label>Full Name <span class="required">*</span></label><input type="text" id="coName" placeholder="Enter your full name" required></div>
-            <div class="form-row">
-                <div class="form-group"><label>Phone Number <span class="required">*</span></label><input type="tel" id="coPhone" placeholder="01XXXXXXXXX" required></div>
-                <div class="form-group"><label>Alternative Phone</label><input type="tel" id="coPhone2" placeholder="Optional"></div>
-            </div>
-            <div class="form-group"><label>Delivery Address <span class="required">*</span></label><textarea id="coAddress" placeholder="House, Road, Area, City" required></textarea></div>
-            <div class="form-group"><label>Any Note?</label><input type="text" id="coNote" placeholder="e.g. gift wrap, special request"></div>
-        </div>
-        <div class="checkout-submit">
-            <div class="checkout-error" id="checkoutError">Please fill in all required fields.</div>
-            <button class="btn btn-buy" onclick="submitOrder()">📱 Place Order &mdash; ৳<span id="coTotal">0</span></button>
-            <p style="text-align:center;font-size:10px;color:var(--text-light);margin-top:10px">Your info is safe. We'll call you to confirm within 30 minutes.</p>
-        </div>
+<!-- Checkout -->
+<div class="checkout-overlay" id="checkoutOverlay"><div class="checkout-modal">
+    <button class="checkout-close" onclick="closeCheckout()">✕</button>
+    <div class="checkout-header"><h3>Complete Your Order</h3><p>Fill in your details — we'll call to confirm</p></div>
+    <div class="checkout-summary" id="checkoutSummary"></div>
+    <div class="checkout-form">
+        <div class="form-row"><div class="form-group"><label>Full Name <span class="required">*</span></label><input type="text" id="coName" placeholder="আপনার পুরো নাম" required></div><div class="form-group"><label>Phone <span class="required">*</span></label><input type="tel" id="coPhone" placeholder="01XXXXXXXXX" required></div></div>
+        <div class="form-group"><label>Delivery Address <span class="required">*</span></label><textarea id="coAddress" placeholder="বাড়ি, রোড, এলাকা, শহর" required></textarea></div>
+        <div class="form-group"><label>Any Special Note?</label><input type="text" id="coNote" placeholder="e.g. gift wrap, urgent delivery"></div>
     </div>
-</div>
+    <div class="checkout-submit"><div class="checkout-error" id="checkoutError">Please fill all required fields.</div><button class="btn btn-buy" onclick="submitOrder()">📱 Place Order — ৳<span id="coTotal">0</span></button><p class="checkout-note">আপনার তথ্য নিরাপদ। আমরা ৩০ মিনিটের মধ্যে ফোন করব।</p></div>
+</div></div>
 
-<!-- ├── SUCCESS MODAL ── -->
-<div class="success-overlay" id="successOverlay">
-    <div class="success-modal">
-        <div class="s-icon">✅</div>
-        <h3>Order Placed!</h3>
-        <p>আপনার অর্ডারটি সফলভাবে পাঠানো হয়েছে।</p>
-        <p style="font-size:12px">আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।</p>
-        <div class="s-highlight" id="successMsg"></div>
-        <button class="btn btn-primary btn-full" onclick="closeSuccess()" style="margin-top:14px">Continue Shopping</button>
-    </div>
-</div>
+<!-- Success -->
+<div class="success-overlay" id="successOverlay"><div class="success-modal"><div class="s-icon">✅</div><h3>অর্ডার সফল হয়েছে!</h3><p>আপনার অর্ডারটি সফলভাবে পাঠানো হয়েছে।</p><p style="font-size:12px">আমরা খুব শীঘ্রই ফোন করে কনফার্ম করব।</p><div class="s-highlight" id="successMsg"></div><button class="btn btn-primary btn-full" onclick="closeSuccess()" style="margin-top:14px">Continue Shopping</button></div></div>
 
-<!-- Cart Sidebar -->
+<!-- Cart -->
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-<div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header"><h3>Your Cart (<span id="cartItemCount">0</span>)</h3><button class="cart-close" onclick="closeCart()">✕</button></div>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="cart-footer" id="cartFooter">
-        <div class="cart-total"><span>Total</span><span class="total-price">৳<span id="cartTotal">0</span></span></div>
-        <button class="btn btn-buy" onclick="cartGoCheckout()">⚡ Proceed to Checkout</button>
-        <button class="btn btn-outline btn-full" onclick="closeCart()">Continue Shopping</button>
-    </div>
-</div>
+<div class="cart-sidebar" id="cartSidebar"><div class="cart-header"><h3>Your Cart (<span id="cartItemCount">0</span>)</h3><button class="cart-close" onclick="closeCart()">✕</button></div><div class="cart-items" id="cartItems"></div><div class="cart-footer"><div class="cart-total"><span>Total</span><span class="total-price">৳<span id="cartTotal">0</span></span></div><button class="btn btn-buy" onclick="cartGoCheckout()">⚡ Proceed to Checkout</button><button class="btn btn-outline btn-full" onclick="closeCart()">Continue Shopping</button></div></div>
 
-<!-- Toast -->
+<!-- Password -->
+<div class="pw-overlay" id="pwOverlay"><div class="pw-modal"><h4>🔒 Admin Access</h4><p>Enter password to manage your store</p><input type="password" id="pwInput" placeholder="••••••" onkeydown="if(event.key==='Enter')checkPassword()"><p class="pw-error" id="pwError">Incorrect password!</p><button class="btn btn-primary" onclick="checkPassword()">Unlock</button><button class="btn btn-outline btn-full" onclick="closePassword()" style="margin-top:6px">Cancel</button></div></div>
+
+<!-- Admin Panel -->
+<div class="admin-overlay" id="adminOverlay"><div class="admin-panel">
+    <button class="ap-close" onclick="closeAdmin()">✕</button>
+    <div class="ap-header"><h2>⚙️ Admin Panel</h2><p id="apSubtitle">Manage watches — changes are live for everyone</p><span class="sync-status" id="syncStatus"><span class="dot"></span><span id="syncLabel">Local Mode</span></span></div>
+    <div class="ap-body">
+        <!-- GitHub Config -->
+        <div class="ap-section" id="ghConfigSection"><h4>🔗 GitHub Live Sync (Optional)</h4><p style="font-size:12px;color:var(--text-light);margin-bottom:12px">Connect GitHub to make edits live for all visitors. <a href="https://github.com/settings/tokens" target="_blank" style="color:var(--accent)">Get a token →</a> (check "repo" scope)</p>
+            <div class="ap-form"><div class="form-row"><div class="form-group"><label>GitHub Username</label><input type="text" id="ghUser" placeholder="your-username"></div><div class="form-group"><label>Repository Name</label><input type="text" id="ghRepo" placeholder="your-repo"></div></div><div class="form-group"><label>Personal Access Token</label><input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx"></div><div class="ap-form-btns"><button class="btn btn-success btn-sm" onclick="saveGitHubConfig()">💾 Save & Enable Live Sync</button><button class="btn btn-sm btn-outline" onclick="testGitHub()">🔍 Test Connection</button><span id="ghTestResult" style="font-size:11px;margin-left:8px"></span></div></div>
+        </div>
+        <!-- Add Watch -->
+        <div class="ap-section"><h4>➕ Add / Edit Watch</h4>
+            <div class="ap-form" id="addForm">
+                <div class="form-row"><div class="form-group"><label>Watch Name *</label><input type="text" id="apName" placeholder="e.g. Classic Minimal"></div><div class="form-group"><label>Category</label><input type="text" id="apCat" placeholder="e.g. Classic, Premium"></div></div>
+                <div class="form-row"><div class="form-group"><label>Gender *</label><select id="apGender"><option value="men">Men's</option><option value="women">Women's</option></select></div><div class="form-group"><label>Discount (%) *</label><input type="number" id="apDiscount" value="28" min="0" max="99"></div></div>
+                <div class="form-row"><div class="form-group"><label>Original Price (৳) *</label><input type="number" id="apOrigPrice" placeholder="8500"></div><div class="form-group"><label>Sell Price (৳) *</label><input type="number" id="apPrice" placeholder="5999"></div></div>
+                <div class="form-row"><div class="form-group"><label>Stock *</label><input type="number" id="apStock" value="10" min="0"></div><div class="form-group"><label>Sold</label><input type="number" id="apSold" value="0" min="0"></div></div>
+                <div class="form-group"><label>Main Image * (paste URL or upload)</label><div style="display:flex;gap:8px"><input type="text" id="apImage" placeholder="images/my-watch.jpeg"><input type="file" id="apImageFile" accept="image/*" onchange="handleImageUpload(this,'apImage')" style="display:none"><button type="button" class="btn btn-sm btn-outline" onclick="document.getElementById('apImageFile').click()">📷 Upload</button></div></div>
+                <div class="form-group"><label>Color Variants (one per line: Name : hexcode : imageURL)</label><textarea id="apColors" rows="3" placeholder="Silver Steel : #c0c0c0 : images/watch-silver.jpeg&#10;Matte Black : #2a2a2a : images/watch-black.jpeg&#10;Navy Blue : #1a3a5c"></textarea><small style="color:var(--text-light)">Each color can have its own image. Leave imageURL blank to use main image.</small></div>
+                <div class="form-group"><label>Description</label><textarea id="apDesc" rows="2" placeholder="Brief description..."></textarea></div>
+                <div class="ap-form-btns"><button class="btn btn-primary" onclick="addOrUpdateWatch()">💾 Save Watch</button><button class="btn btn-sm btn-outline" onclick="clearAddForm()">Clear</button></div>
+                <p id="apAddMsg" style="font-size:11px;margin-top:8px;display:none"></p>
+            </div>
+        </div>
+        <!-- Product List -->
+        <div class="ap-section"><h4>📋 All Watches <span id="apCount" style="font-weight:400;color:var(--text-light)"></span></h4><div class="ap-grid" id="adminProductList"></div></div>
+        <!-- Import/Export -->
+        <div class="ap-section"><h4>📥 Backup</h4><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-sm btn-outline" onclick="exportData()">📤 Export JSON</button><button class="btn btn-sm btn-outline" onclick="document.getElementById('importFile').click()">📥 Import JSON</button><input type="file" id="importFile" accept=".json" onchange="importData(this)" style="display:none"><button class="btn btn-sm btn-danger" onclick="if(confirm('Delete ALL? This cannot be undone!')){resetAll();}">🗑 Reset All</button></div></div>
+    </div>
+</div></div>
+
 <div class="toast" id="toast"></div>
 
 <script>
-// ══════════════════════════════════════
-// CONFIG
-// ══════════════════════════════════════
-const BUSINESS_PHONE = '8801980514652';  // ← YOUR WHATSAPP NUMBER
-const FB_PAGE_ID    = 'YOUR_FB_PAGE';    // ← YOUR FB PAGE
+// ═══════════════ CONFIG ═══════════════
+const BUSINESS_PHONE = '8801980514652';
+const ADMIN_PASSWORD = 'eluxo2026';
 
-// ══════════════════════════════════════
-// PRODUCT DATA
-// ══════════════════════════════════════
-const products = [
-    {id:"classic-minimal",name:"Classic Minimal",gender:"men",originalPrice:8500,price:5999,discount:29,image:"images/watch-01.jpeg",category:"Classic",stock:23,sold:147,colors:[{name:"Silver Steel",hex:"#c0c0c0"},{name:"Matte Black",hex:"#2a2a2a"},{name:"Navy Blue",hex:"#1a3a5c"}],desc:"A timeless minimalist design with a stainless steel case, clean dial, and genuine leather strap. Perfect for everyday elegance."},
-    {id:"urban-steel",name:"Urban Steel",gender:"men",originalPrice:7800,price:5499,discount:30,image:"images/watch-03.jpeg",category:"Urban",stock:17,sold:89,colors:[{name:"Brushed Steel",hex:"#b8b8b8"},{name:"Gunmetal",hex:"#3a3a3a"}],desc:"Modern urban design with a brushed steel finish. Features a date window and water resistance up to 50 meters."},
-    {id:"golden-era",name:"Golden Era",gender:"men",originalPrice:10500,price:7499,discount:29,image:"images/watch-04.jpeg",category:"Premium",stock:9,sold:203,colors:[{name:"Gold",hex:"#d4af37"},{name:"Rose Gold",hex:"#b76e79"},{name:"Silver",hex:"#c0c0c0"}],desc:"A luxurious gold-accented masterpiece. Features a precision Japanese movement and sapphire-coated crystal."},
-    {id:"midnight-black",name:"Midnight Black",gender:"men",originalPrice:8900,price:6299,discount:29,image:"images/watch-05.jpeg",category:"Modern",stock:14,sold:112,colors:[{name:"Jet Black",hex:"#1a1a1a"},{name:"Carbon Gray",hex:"#4a4a4a"}],desc:"Sleek all-black design for the modern man. Minimalist dial with luminous hands and a comfortable silicone strap."},
-    {id:"vintage-leather",name:"Vintage Leather",gender:"men",originalPrice:7200,price:4999,discount:31,image:"images/watch-07.jpeg",category:"Vintage",stock:19,sold:178,colors:[{name:"Brown Leather",hex:"#8b4513"},{name:"Tan Leather",hex:"#d2a679"},{name:"Black Leather",hex:"#2a2a2a"}],desc:"Inspired by classic aviator watches. Distressed genuine leather strap and a bold, easy-to-read dial."},
-    {id:"executive-pro",name:"Executive Pro",gender:"men",originalPrice:12000,price:8599,discount:28,image:"images/watch-09.jpeg",category:"Premium",stock:6,sold:156,colors:[{name:"Silver/Blue",hex:"#4a7ab5"},{name:"Black/Gold",hex:"#1a1a1a"}],desc:"The ultimate executive timepiece. Dual-tone stainless steel with chronograph and date complication."},
-    {id:"chrono-sport",name:"Chrono Sport",gender:"men",originalPrice:8200,price:5799,discount:29,image:"images/watch-10.jpeg",category:"Sport",stock:22,sold:95,colors:[{name:"Racing Green",hex:"#1a4a2a"},{name:"Sport Red",hex:"#c0392b"},{name:"Stealth Black",hex:"#1a1a1a"}],desc:"Built for performance. Tachymeter bezel, stopwatch function, and durable stainless steel construction."},
-    {id:"brown-aviator",name:"Brown Aviator",gender:"men",originalPrice:7600,price:5299,discount:30,image:"images/watch-12.jpeg",category:"Aviator",stock:15,sold:67,colors:[{name:"Brown",hex:"#8b6914"},{name:"Olive Green",hex:"#556b2f"}],desc:"A rugged aviator-inspired watch with large numerals and a leather strap."},
-    {id:"titan-edge",name:"Titan Edge",gender:"men",originalPrice:10200,price:7299,discount:28,image:"images/watch-14.jpeg",category:"Modern",stock:8,sold:134,colors:[{name:"Titanium Gray",hex:"#7a7a7a"},{name:"Dark Silver",hex:"#5a5a5a"}],desc:"Ultra-light titanium construction with a sleek modern dial for style and comfort."},
-    {id:"obsidian-black",name:"Obsidian Black",gender:"men",originalPrice:8700,price:6099,discount:30,image:"images/watch-17.jpeg",category:"Modern",stock:21,sold:88,colors:[{name:"Obsidian",hex:"#0a0a0a"},{name:"Graphite",hex:"#3a3a3a"}],desc:"Deep obsidian black dial with contrasting silver markers. A bold statement piece."},
-    {id:"navy-commander",name:"Navy Commander",gender:"men",originalPrice:8600,price:5999,discount:30,image:"images/watch-20.jpeg",category:"Aviator",stock:11,sold:72,colors:[{name:"Navy Blue",hex:"#1a3a5c"},{name:"Black",hex:"#1a1a1a"}],desc:"Command attention with this navy-themed aviator watch. Robust build, precise quartz."},
-    {id:"crimson-bold",name:"Crimson Bold",gender:"men",originalPrice:8300,price:5899,discount:29,image:"images/watch-21.jpeg",category:"Sport",stock:16,sold:54,colors:[{name:"Crimson Red",hex:"#8b0000"},{name:"Burgundy",hex:"#4a0010"}],desc:"Make a bold statement with this crimson-accented sports watch for the adventurous."},
-    {id:"matte-phantom",name:"Matte Phantom",gender:"men",originalPrice:9400,price:6699,discount:29,image:"images/watch-23.jpeg",category:"Modern",stock:13,sold:101,colors:[{name:"Matte Black",hex:"#1a1a1a"},{name:"Matte Gray",hex:"#4a4a4a"}],desc:"A phantom-like matte finish exuding mystery and sophistication. Minimal design, maximum impact."},
-    {id:"silver-heritage",name:"Silver Heritage",gender:"women",originalPrice:9200,price:6799,discount:26,image:"images/watch-02.jpeg",category:"Heritage",stock:12,sold:91,colors:[{name:"Silver",hex:"#c0c0c0"},{name:"Gold",hex:"#d4af37"},{name:"Rose Gold",hex:"#b76e79"}],desc:"Inspired by vintage elegance. Delicate silver-tone bracelet with mother-of-pearl dial."},
-    {id:"rose-gold-luxe",name:"Rose Gold Luxe",gender:"women",originalPrice:11500,price:8299,discount:28,image:"images/watch-06.jpeg",category:"Premium",stock:5,sold:189,colors:[{name:"Rose Gold",hex:"#b76e79"},{name:"Champagne Gold",hex:"#f0c05a"}],desc:"The epitome of feminine luxury. Stunning rose gold finish with textured dial and crystal bezel."},
-    {id:"sapphire-edge",name:"Sapphire Edge",gender:"women",originalPrice:9800,price:6999,discount:29,image:"images/watch-08.jpeg",category:"Modern",stock:10,sold:76,colors:[{name:"Sapphire Blue",hex:"#0f52ba"},{name:"Lavender",hex:"#967bb6"},{name:"Blush Pink",hex:"#de5d83"}],desc:"A striking sapphire-inspired design. Modern elegance with a comfortable mesh bracelet."},
-    {id:"diamond-cut",name:"Diamond Cut",gender:"women",originalPrice:13500,price:9799,discount:27,image:"images/watch-11.jpeg",category:"Premium",stock:3,sold:215,colors:[{name:"White Gold",hex:"#e8e8e8"},{name:"Yellow Gold",hex:"#d4af37"}],desc:"Our most luxurious women's timepiece. Diamond-cut indices, crystal bezel, premium bracelet."},
-    {id:"mesh-royale",name:"Mesh Royale",gender:"women",originalPrice:8800,price:6199,discount:30,image:"images/watch-13.jpeg",category:"Classic",stock:18,sold:63,colors:[{name:"Silver Mesh",hex:"#c0c0c0"},{name:"Gold Mesh",hex:"#d4af37"}],desc:"Classic elegance with a modern twist. Fine mesh bracelet drapes beautifully on the wrist."},
-    {id:"gold-classic",name:"Gold Classic",gender:"women",originalPrice:9500,price:6899,discount:27,image:"images/watch-15.jpeg",category:"Classic",stock:7,sold:142,colors:[{name:"Yellow Gold",hex:"#d4af37"},{name:"White Gold",hex:"#e8e8e8"}],desc:"A timeless gold classic. Slim profile with a minimalist dial — perfect for any outfit."},
-    {id:"silver-moon",name:"Silver Moon",gender:"women",originalPrice:7900,price:5599,discount:29,image:"images/watch-16.jpeg",category:"Elegant",stock:20,sold:85,colors:[{name:"Moon Silver",hex:"#d4d4d4"},{name:"Starlight",hex:"#e8e0c8"}],desc:"Inspired by moonlight. Delicate and dreamy with a shimmering dial."},
-    {id:"amber-glow",name:"Amber Glow",gender:"women",originalPrice:9100,price:6499,discount:29,image:"images/watch-18.jpeg",category:"Premium",stock:9,sold:118,colors:[{name:"Amber",hex:"#ffbf00"},{name:"Honey Gold",hex:"#e8a840"}],desc:"Warm amber tones radiate sophistication. Transitions seamlessly from day to evening."},
-    {id:"steel-reserve",name:"Steel Reserve",gender:"women",originalPrice:7400,price:5199,discount:30,image:"images/watch-19.jpeg",category:"Urban",stock:25,sold:47,colors:[{name:"Steel",hex:"#b8b8b8"},{name:"Two-Tone",hex:"#c8a45c"}],desc:"Understated urban chic. Clean lines and brushed steel — an everyday essential."},
-    {id:"pearl-white",name:"Pearl White",gender:"women",originalPrice:9900,price:7199,discount:27,image:"images/watch-22.jpeg",category:"Elegant",stock:8,sold:129,colors:[{name:"Pearl White",hex:"#f5f0e8"},{name:"Soft Pink",hex:"#f4c2c2"}],desc:"Pure elegance in pearl white. Ceramic bracelet and whisper-thin profile."}
+// GitHub config (stored in localStorage)
+let GH_USER = localStorage.getItem('eluxo_gh_user') || '';
+let GH_REPO = localStorage.getItem('eluxo_gh_repo') || '';
+let GH_TOKEN = localStorage.getItem('eluxo_gh_token') || '';
+
+// ═══════════════ DATA ═══════════════
+const DEFAULT_PRODUCTS = [
+    {id:"classic-minimal",name:"Classic Minimal",gender:"men",originalPrice:8500,price:5999,discount:29,image:"images/watch-01.jpeg",category:"Classic",stock:23,sold:147,colors:[{name:"Silver Steel",hex:"#c0c0c0",img:""},{name:"Matte Black",hex:"#2a2a2a",img:""},{name:"Navy Blue",hex:"#1a3a5c",img:""}],desc:"A timeless minimalist design with a stainless steel case, clean dial, and genuine leather strap."},
+    {id:"urban-steel",name:"Urban Steel",gender:"men",originalPrice:7800,price:5499,discount:30,image:"images/watch-03.jpeg",category:"Urban",stock:17,sold:89,colors:[{name:"Brushed Steel",hex:"#b8b8b8",img:""},{name:"Gunmetal",hex:"#3a3a3a",img:""}],desc:"Modern urban design with a brushed steel finish. Date window and water resistance up to 50 meters."},
+    {id:"golden-era",name:"Golden Era",gender:"men",originalPrice:10500,price:7499,discount:29,image:"images/watch-04.jpeg",category:"Premium",stock:9,sold:203,colors:[{name:"Gold",hex:"#d4af37",img:""},{name:"Rose Gold",hex:"#b76e79",img:""},{name:"Silver",hex:"#c0c0c0",img:""}],desc:"A luxurious gold-accented masterpiece with precision Japanese movement and sapphire-coated crystal."},
+    {id:"midnight-black",name:"Midnight Black",gender:"men",originalPrice:8900,price:6299,discount:29,image:"images/watch-05.jpeg",category:"Modern",stock:14,sold:112,colors:[{name:"Jet Black",hex:"#1a1a1a",img:""},{name:"Carbon Gray",hex:"#4a4a4a",img:""}],desc:"Sleek all-black design for the modern man."},
+    {id:"vintage-leather",name:"Vintage Leather",gender:"men",originalPrice:7200,price:4999,discount:31,image:"images/watch-07.jpeg",category:"Vintage",stock:19,sold:178,colors:[{name:"Brown Leather",hex:"#8b4513",img:""},{name:"Tan Leather",hex:"#d2a679",img:""},{name:"Black Leather",hex:"#2a2a2a",img:""}],desc:"Inspired by classic aviator watches. Distressed genuine leather strap."},
+    {id:"executive-pro",name:"Executive Pro",gender:"men",originalPrice:12000,price:8599,discount:28,image:"images/watch-09.jpeg",category:"Premium",stock:6,sold:156,colors:[{name:"Silver/Blue",hex:"#4a7ab5",img:""},{name:"Black/Gold",hex:"#1a1a1a",img:""}],desc:"The ultimate executive timepiece. Dual-tone stainless steel with chronograph and date."},
+    {id:"chrono-sport",name:"Chrono Sport",gender:"men",originalPrice:8200,price:5799,discount:29,image:"images/watch-10.jpeg",category:"Sport",stock:22,sold:95,colors:[{name:"Racing Green",hex:"#1a4a2a",img:""},{name:"Sport Red",hex:"#c0392b",img:""},{name:"Stealth Black",hex:"#1a1a1a",img:""}],desc:"Built for performance. Tachymeter bezel, stopwatch function."},
+    {id:"brown-aviator",name:"Brown Aviator",gender:"men",originalPrice:7600,price:5299,discount:30,image:"images/watch-12.jpeg",category:"Aviator",stock:15,sold:67,colors:[{name:"Brown",hex:"#8b6914",img:""},{name:"Olive Green",hex:"#556b2f",img:""}],desc:"A rugged aviator-inspired watch with large numerals and leather strap."},
+    {id:"titan-edge",name:"Titan Edge",gender:"men",originalPrice:10200,price:7299,discount:28,image:"images/watch-14.jpeg",category:"Modern",stock:8,sold:134,colors:[{name:"Titanium Gray",hex:"#7a7a7a",img:""},{name:"Dark Silver",hex:"#5a5a5a",img:""}],desc:"Ultra-light titanium construction with a sleek modern dial."},
+    {id:"obsidian-black",name:"Obsidian Black",gender:"men",originalPrice:8700,price:6099,discount:30,image:"images/watch-17.jpeg",category:"Modern",stock:21,sold:88,colors:[{name:"Obsidian",hex:"#0a0a0a",img:""},{name:"Graphite",hex:"#3a3a3a",img:""}],desc:"Deep obsidian black dial with contrasting silver markers."},
+    {id:"navy-commander",name:"Navy Commander",gender:"men",originalPrice:8600,price:5999,discount:30,image:"images/watch-20.jpeg",category:"Aviator",stock:11,sold:72,colors:[{name:"Navy Blue",hex:"#1a3a5c",img:""},{name:"Black",hex:"#1a1a1a",img:""}],desc:"Command attention with this navy-themed aviator watch."},
+    {id:"crimson-bold",name:"Crimson Bold",gender:"men",originalPrice:8300,price:5899,discount:29,image:"images/watch-21.jpeg",category:"Sport",stock:16,sold:54,colors:[{name:"Crimson Red",hex:"#8b0000",img:""},{name:"Burgundy",hex:"#4a0010",img:""}],desc:"Make a bold statement with this crimson-accented sports watch."},
+    {id:"matte-phantom",name:"Matte Phantom",gender:"men",originalPrice:9400,price:6699,discount:29,image:"images/watch-23.jpeg",category:"Modern",stock:13,sold:101,colors:[{name:"Matte Black",hex:"#1a1a1a",img:""},{name:"Matte Gray",hex:"#4a4a4a",img:""}],desc:"A phantom-like matte finish exuding mystery and sophistication."},
+    {id:"silver-heritage",name:"Silver Heritage",gender:"women",originalPrice:9200,price:6799,discount:26,image:"images/watch-02.jpeg",category:"Heritage",stock:12,sold:91,colors:[{name:"Silver",hex:"#c0c0c0",img:""},{name:"Gold",hex:"#d4af37",img:""},{name:"Rose Gold",hex:"#b76e79",img:""}],desc:"Inspired by vintage elegance. Delicate silver-tone bracelet with mother-of-pearl dial."},
+    {id:"rose-gold-luxe",name:"Rose Gold Luxe",gender:"women",originalPrice:11500,price:8299,discount:28,image:"images/watch-06.jpeg",category:"Premium",stock:5,sold:189,colors:[{name:"Rose Gold",hex:"#b76e79",img:""},{name:"Champagne Gold",hex:"#f0c05a",img:""}],desc:"The epitome of feminine luxury. Stunning rose gold finish with textured dial and crystal bezel."},
+    {id:"sapphire-edge",name:"Sapphire Edge",gender:"women",originalPrice:9800,price:6999,discount:29,image:"images/watch-08.jpeg",category:"Modern",stock:10,sold:76,colors:[{name:"Sapphire Blue",hex:"#0f52ba",img:""},{name:"Lavender",hex:"#967bb6",img:""},{name:"Blush Pink",hex:"#de5d83",img:""}],desc:"A striking sapphire-inspired design. Modern elegance with mesh bracelet."},
+    {id:"diamond-cut",name:"Diamond Cut",gender:"women",originalPrice:13500,price:9799,discount:27,image:"images/watch-11.jpeg",category:"Premium",stock:3,sold:215,colors:[{name:"White Gold",hex:"#e8e8e8",img:""},{name:"Yellow Gold",hex:"#d4af37",img:""}],desc:"Our most luxurious women's timepiece. Diamond-cut indices, crystal bezel."},
+    {id:"mesh-royale",name:"Mesh Royale",gender:"women",originalPrice:8800,price:6199,discount:30,image:"images/watch-13.jpeg",category:"Classic",stock:18,sold:63,colors:[{name:"Silver Mesh",hex:"#c0c0c0",img:""},{name:"Gold Mesh",hex:"#d4af37",img:""}],desc:"Classic elegance with a modern twist. Fine mesh bracelet."},
+    {id:"gold-classic",name:"Gold Classic",gender:"women",originalPrice:9500,price:6899,discount:27,image:"images/watch-15.jpeg",category:"Classic",stock:7,sold:142,colors:[{name:"Yellow Gold",hex:"#d4af37",img:""},{name:"White Gold",hex:"#e8e8e8",img:""}],desc:"A timeless gold classic. Slim profile with minimalist dial."},
+    {id:"silver-moon",name:"Silver Moon",gender:"women",originalPrice:7900,price:5599,discount:29,image:"images/watch-16.jpeg",category:"Elegant",stock:20,sold:85,colors:[{name:"Moon Silver",hex:"#d4d4d4",img:""},{name:"Starlight",hex:"#e8e0c8",img:""}],desc:"Inspired by moonlight. Delicate and dreamy."},
+    {id:"amber-glow",name:"Amber Glow",gender:"women",originalPrice:9100,price:6499,discount:29,image:"images/watch-18.jpeg",category:"Premium",stock:9,sold:118,colors:[{name:"Amber",hex:"#ffbf00",img:""},{name:"Honey Gold",hex:"#e8a840",img:""}],desc:"Warm amber tones radiate sophistication."},
+    {id:"steel-reserve",name:"Steel Reserve",gender:"women",originalPrice:7400,price:5199,discount:30,image:"images/watch-19.jpeg",category:"Urban",stock:25,sold:47,colors:[{name:"Steel",hex:"#b8b8b8",img:""},{name:"Two-Tone",hex:"#c8a45c",img:""}],desc:"Understated urban chic. Clean lines and brushed steel."},
+    {id:"pearl-white",name:"Pearl White",gender:"women",originalPrice:9900,price:7199,discount:27,image:"images/watch-22.jpeg",category:"Elegant",stock:8,sold:129,colors:[{name:"Pearl White",hex:"#f5f0e8",img:""},{name:"Soft Pink",hex:"#f4c2c2",img:""}],desc:"Pure elegance in pearl white. Ceramic bracelet."}
 ];
+const royalChrono = {id:"royal-chrono",name:"Royal Chronograph",gender:"men",originalPrice:12500,price:8999,discount:28,image:"images/watch-royal-chronograph.jpg",category:"Premium",stock:4,sold:261,colors:[{name:"Black Leather",hex:"#2a2a2a",img:""},{name:"Brown Leather",hex:"#8b4513",img:""},{name:"Steel Bracelet",hex:"#c0c0c0",img:""}],desc:"Our crown jewel. Japanese automatic movement, sapphire crystal glass, and hand-stitched Italian leather. 50m water resistance."};
 
-const royalChrono = {id:"royal-chrono",name:"Royal Chronograph",gender:"men",originalPrice:12500,price:8999,discount:28,image:"images/watch-royal-chronograph.jpg",category:"Premium",stock:4,sold:261,colors:[{name:"Black Leather",hex:"#2a2a2a"},{name:"Brown Leather",hex:"#8b4513"},{name:"Steel Bracelet",hex:"#c0c0c0"}],desc:"Our crown jewel. Japanese automatic movement, sapphire crystal glass, and hand-stitched Italian leather. 50m water resistance."};
+function loadProducts(){
+    try{const d=localStorage.getItem('eluxo_products');if(d){const p=JSON.parse(d);if(Array.isArray(p)&&p.length>0)return p;}}catch(e){}
+    return JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+}
+function saveProducts(){localStorage.setItem('eluxo_products',JSON.stringify(products));}
+let products = loadProducts();
 
 function findProduct(id){return id==='royal-chrono'?royalChrono:products.find(p=>p.id===id);}
 
-// ══════════════════════════════════════
-// CART
-// ══════════════════════════════════════
-let cart=[], currentModalProduct=null, currentModalColor=null;
-let checkoutItems = null; // holds checkout data: {items, total, isCart}
+// ═══════════════ GITHUB SYNC ═══════════════
+function isGitHubConfigured(){return GH_USER&&GH_REPO&&GH_TOKEN;}
+function updateSyncStatus(){
+    const s=document.getElementById('syncStatus'),l=document.getElementById('syncLabel'),t=document.getElementById('apSubtitle');
+    if(isGitHubConfigured()){s.className='sync-status online';l.textContent='Live Sync ON';t.textContent='Changes save directly to GitHub — live for everyone';}
+    else{s.className='sync-status offline';l.textContent='Local Only';t.textContent='Connect GitHub to make changes live for all visitors';}
+    document.getElementById('ghUser').value=GH_USER;document.getElementById('ghRepo').value=GH_REPO;document.getElementById('ghToken').value=GH_TOKEN;
+}
+updateSyncStatus();
+
+async function saveGitHubConfig(){
+    GH_USER=document.getElementById('ghUser').value.trim();
+    GH_REPO=document.getElementById('ghRepo').value.trim();
+    GH_TOKEN=document.getElementById('ghToken').value.trim();
+    localStorage.setItem('eluxo_gh_user',GH_USER);
+    localStorage.setItem('eluxo_gh_repo',GH_REPO);
+    localStorage.setItem('eluxo_gh_token',GH_TOKEN);
+    updateSyncStatus();
+    if(isGitHubConfigured()){showToast('GitHub connected! Changes will be live.');}
+}
+
+async function testGitHub(){
+    if(!isGitHubConfigured()){document.getElementById('ghTestResult').textContent='❌ Fill all fields first';return;}
+    document.getElementById('ghTestResult').textContent='Testing...';
+    try{
+        const r=await fetch('https://api.github.com/repos/'+GH_USER+'/'+GH_REPO,{headers:{Authorization:'token '+GH_TOKEN}});
+        if(r.ok){document.getElementById('ghTestResult').textContent='✅ Connected!';}
+        else{document.getElementById('ghTestResult').textContent='❌ '+(await r.json()).message;}
+    }catch(e){document.getElementById('ghTestResult').textContent='❌ Network error';}
+}
+
+async function pushToGitHub(){
+    if(!isGitHubConfigured())return false;
+    const content=JSON.stringify(products,null,2);
+    const base64=btoa(unescape(encodeURIComponent(content)));
+    try{
+        // Get current file SHA
+        let sha='';
+        try{
+            const gr=await fetch('https://api.github.com/repos/'+GH_USER+'/'+GH_REPO+'/contents/data.json',{headers:{Authorization:'token '+GH_TOKEN}});
+            if(gr.ok){const gd=await gr.json();sha=gd.sha;}
+        }catch(e){}
+        const body={message:'Update watch data',content:base64};
+        if(sha)body.sha=sha;
+        const r=await fetch('https://api.github.com/repos/'+GH_USER+'/'+GH_REPO+'/contents/data.json',{method:'PUT',headers:{Authorization:'token '+GH_TOKEN,'Content-Type':'application/json'},body:JSON.stringify(body)});
+        return r.ok;
+    }catch(e){return false;}
+}
+
+// ═══════════════ ADMIN ═══════════════
+let logoTaps=0,logoTapTimer;
+function setupLogoTap(el){el.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();logoTaps++;if(logoTaps>=3){logoTaps=0;clearTimeout(logoTapTimer);openPassword();return;}clearTimeout(logoTapTimer);logoTapTimer=setTimeout(function(){logoTaps=0},1500);});}
+setupLogoTap(document.getElementById('adminLogo'));
+setupLogoTap(document.querySelector('.hero-logo img'));
+
+function openPassword(){document.getElementById('pwOverlay').classList.add('active');document.getElementById('pwInput').value='';document.getElementById('pwError').style.display='none';setTimeout(function(){document.getElementById('pwInput').focus()},200);}
+function closePassword(){document.getElementById('pwOverlay').classList.remove('active');}
+function checkPassword(){if(document.getElementById('pwInput').value===ADMIN_PASSWORD){closePassword();openAdmin();}else{document.getElementById('pwError').style.display='block';}}
+
+function openAdmin(){updateSyncStatus();renderAdminList();document.getElementById('adminOverlay').classList.add('active');}
+function closeAdmin(){document.getElementById('adminOverlay').classList.remove('active');renderProducts();updateCartUI();}
+
+function generateId(name){return name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'-'+Date.now().toString(36);}
+
+function handleImageUpload(input,targetId){
+    if(!input.files||!input.files[0])return;
+    const reader=new FileReader();
+    reader.onload=function(e){document.getElementById(targetId).value=e.target.result;};
+    reader.readAsDataURL(input.files[0]);
+}
+
+function parseColors(raw){
+    if(!raw.trim())return [{name:'Default',hex:'#c0c0c0',img:''}];
+    return raw.trim().split('\n').map(line=>{
+        const parts=line.split(':').map(s=>s.trim());
+        return {name:parts[0]||'Color',hex:parts[1]||'#c0c0c0',img:parts[2]||''};
+    });
+}
+
+function clearAddForm(){
+    ['apName','apCat','apOrigPrice','apPrice','apStock','apSold','apImage','apColors','apDesc'].forEach(id=>{document.getElementById(id).value=''});
+    document.getElementById('apGender').value='men';document.getElementById('apStock').value='10';document.getElementById('apSold').value='0';document.getElementById('apDiscount').value='28';
+    document.getElementById('apAddMsg').style.display='none';
+    // Remove edit mode marker
+    document.getElementById('addForm').removeAttribute('data-edit-id');
+    document.querySelector('#addForm .ap-form-btns button.btn-primary').textContent='💾 Save Watch';
+}
+
+async function addOrUpdateWatch(){
+    const name=document.getElementById('apName').value.trim();
+    const category=document.getElementById('apCat').value.trim()||'Classic';
+    const gender=document.getElementById('apGender').value;
+    const discount=parseInt(document.getElementById('apDiscount').value)||0;
+    const originalPrice=parseInt(document.getElementById('apOrigPrice').value)||0;
+    const price=parseInt(document.getElementById('apPrice').value)||0;
+    const stock=parseInt(document.getElementById('apStock').value)||0;
+    const sold=parseInt(document.getElementById('apSold').value)||0;
+    const image=document.getElementById('apImage').value.trim();
+    const colors=parseColors(document.getElementById('apColors').value);
+    const desc=document.getElementById('apDesc').value.trim();
+    if(!name||!originalPrice||!price||!image){showMsg('apAddMsg','❌ Name, Prices, and Image are required.','var(--discount)');return;}
+
+    const editId=document.getElementById('addForm').getAttribute('data-edit-id');
+    const watchData={name,category,gender,originalPrice,price,discount:discount||Math.round((1-price/originalPrice)*100),image,stock,sold,colors,desc:desc||'A premium Eluxo timepiece.'};
+
+    if(editId){
+        // Update existing
+        watchData.id=editId;
+        products=products.map(p=>p.id===editId?watchData:p);
+    }else{
+        watchData.id=generateId(name);
+        products.unshift(watchData);
+    }
+    saveProducts();
+
+    // Push to GitHub if configured
+    if(isGitHubConfigured()){
+        const ok=await pushToGitHub();
+        if(ok){showMsg('apAddMsg','✅ Saved & published live!','var(--success)');}
+        else{showMsg('apAddMsg','⚠️ Saved locally. GitHub push failed.','var(--discount)');}
+    }else{
+        showMsg('apAddMsg','✅ Saved! Connect GitHub for live publishing.','var(--success)');
+    }
+
+    renderAdminList();renderProducts();clearAddForm();
+}
+
+function editWatch(id){
+    const p=findProduct(id);if(!p)return;
+    document.getElementById('apName').value=p.name;document.getElementById('apCat').value=p.category;
+    document.getElementById('apGender').value=p.gender;document.getElementById('apDiscount').value=p.discount;
+    document.getElementById('apOrigPrice').value=p.originalPrice;document.getElementById('apPrice').value=p.price;
+    document.getElementById('apStock').value=p.stock;document.getElementById('apSold').value=p.sold;
+    document.getElementById('apImage').value=p.image;
+    document.getElementById('apColors').value=p.colors.map(c=>c.name+' : '+c.hex+(c.img?' : '+c.img:'')).join('\n');
+    document.getElementById('apDesc').value=p.desc;
+    document.getElementById('addForm').setAttribute('data-edit-id',id);
+    document.querySelector('#addForm .ap-form-btns button.btn-primary').textContent='✏️ Update Watch';
+    document.getElementById('adminOverlay').scrollTop=0;
+    showMsg('apAddMsg','✏️ Editing: '+p.name+' — change fields and click Update','var(--accent)');
+}
+
+async function deleteWatch(id){
+    if(!confirm('Delete this watch permanently? This will sync live.'))return;
+    products=products.filter(x=>x.id!==id);
+    saveProducts();
+    if(isGitHubConfigured())await pushToGitHub();
+    renderAdminList();renderProducts();showToast('Watch deleted.');
+}
+
+function renderAdminList(){
+    document.getElementById('apCount').textContent='('+products.length+' watches)';
+    document.getElementById('adminProductList').innerHTML=products.map(p=>
+        '<div class="ap-card"><img src="'+p.image+'" alt=""><div class="ap-info"><strong>'+p.name+'</strong><span class="ap-meta">'+(p.gender==='men'?"Men's":"Women's")+' · '+p.category+' · ৳'+p.price.toLocaleString()+' (-'+p.discount+'%) · Stock:'+p.stock+'</span></div><div class="ap-actions"><button class="ap-edit" onclick="editWatch(\''+p.id+'\')">Edit</button><button class="ap-del" onclick="deleteWatch(\''+p.id+'\')">Del</button></div></div>'
+    ).join('');
+}
+
+function showMsg(id,msg,color){const el=document.getElementById(id);el.textContent=msg;el.style.color=color||'var(--text)';el.style.display='block';setTimeout(function(){el.style.display='none'},5000);}
+
+function exportData(){const blob=new Blob([JSON.stringify(products,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='eluxo-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();showToast('Exported!');}
+function importData(input){if(!input.files||!input.files[0])return;const reader=new FileReader();reader.onload=function(e){try{const d=JSON.parse(e.target.result);if(Array.isArray(d)&&d.length>0){products=d;saveProducts();renderAdminList();renderProducts();showToast(d.length+' watches imported!');}}catch(er){showToast('Invalid file!');}};reader.readAsText(input.files[0]);}
+async function resetAll(){products=JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));saveProducts();if(isGitHubConfigured())await pushToGitHub();renderAdminList();renderProducts();showToast('Reset to defaults.');}
+
+// ═══════════════ CART ═══════════════
+let cart=[],currentModalProduct=null,currentModalColor=null,checkoutItems=null;
 
 function addToCart(pid,color,price,qty=1){
     const ex=cart.find(i=>i.productId===pid&&i.color===color);
-    const p=findProduct(pid); const max=p?p.stock:10;
-    if(ex){ex.qty=Math.min(ex.qty+qty,max);if(ex.qty>=max)showToast('Only '+max+' in stock!')}
-    else{cart.push({productId:pid,color,price,qty:Math.min(qty,max),name:p?p.name:'',image:p?p.image:''})}
-    updateCartUI();showToast('"'+ (p?p.name:'')+'" added to cart!');
+    const p=findProduct(pid);const max=p?p.stock:10;
+    if(ex){ex.qty=Math.min(ex.qty+qty,max);}else{cart.push({productId:pid,color,price,qty:Math.min(qty,max),name:p?p.name:'',image:p?p.image:''});}
+    updateCartUI();showToast('"'+ (p?p.name:'')+'" added!');
 }
 function removeFromCart(i){cart.splice(i,1);updateCartUI()}
-function updateCartQty(i,d){
-    const it=cart[i],p=findProduct(it.productId),max=p?p.stock:10;
-    let n=it.qty+d;if(n<1){removeFromCart(i);return}if(n>max){showToast('Only '+max+' available!');n=max}
-    it.qty=n;updateCartUI()
-}
+function updateCartQty(i,d){const it=cart[i],p=findProduct(it.productId),max=p?p.stock:10;let n=it.qty+d;if(n<1){removeFromCart(i);return}if(n>max)n=max;it.qty=n;updateCartUI();}
 function updateCartUI(){
     const ti=cart.reduce((s,i)=>s+i.qty,0),tp=cart.reduce((s,i)=>s+(i.price*i.qty),0);
     document.getElementById('cartCount').textContent=ti;document.getElementById('mobileCartCount').textContent=ti;
     document.getElementById('cartItemCount').textContent=ti;document.getElementById('cartTotal').textContent=tp.toLocaleString();
     const d=document.getElementById('cartItems');
-    if(!cart.length){d.innerHTML='<div class="cart-empty"><div class="icon">🛒</div><p>Your cart is empty</p><p style="font-size:12px;color:var(--text-light);margin-top:4px">Add your favorites!</p></div>'}
+    if(!cart.length){d.innerHTML='<div class="cart-empty"><div class="icon">🛒</div><p>Your cart is empty</p></div>'}
     else{d.innerHTML=cart.map((it,i)=>'<div class="cart-item"><img src="'+it.image+'" alt="" class="cart-item-img"><div class="cart-item-info"><h4>'+it.name+'</h4><p class="variant">'+it.color+'</p><p class="price">৳'+(it.price*it.qty).toLocaleString()+'</p><div class="cart-item-qty"><button onclick="updateCartQty('+i+',-1)">−</button><span>'+it.qty+'</span><button onclick="updateCartQty('+i+',1)">+</button></div></div><button class="cart-item-remove" onclick="removeFromCart('+i+')">✕</button></div>').join('')}
 }
 function openCart(){document.getElementById('cartOverlay').classList.add('active');document.getElementById('cartSidebar').classList.add('active');document.body.style.overflow='hidden'}
 function closeCart(){document.getElementById('cartOverlay').classList.remove('active');document.getElementById('cartSidebar').classList.remove('active');document.body.style.overflow=''}
 
-// ══════════════════════════════════════
-// CHECKOUT SYSTEM
-// ══════════════════════════════════════
+// ═══════════════ CHECKOUT ═══════════════
 function openCheckout(pid,color,price,qty){
     const p=findProduct(pid);if(!p)return;
-    checkoutItems = {items:[{name:p.name,color:color,qty:qty,price:price,subtotal:price*qty}],total:price*qty,isCart:false};
-    renderCheckout();
-    document.getElementById('checkoutOverlay').classList.add('active');document.body.style.overflow='hidden';
+    checkoutItems={items:[{name:p.name,color,qty,price,subtotal:price*qty}],total:price*qty,isCart:false};
+    renderCheckout();document.getElementById('checkoutOverlay').classList.add('active');document.body.style.overflow='hidden';
 }
-
 function cartGoCheckout(){
-    if(!cart.length){showToast('Cart is empty!');return}
-    const items=cart.map(i=>({name:i.name,color:i.color,qty:i.qty,price:i.price,subtotal:i.price*i.qty}));
-    const total=cart.reduce((s,i)=>s+(i.price*i.qty),0);
-    checkoutItems={items,total,isCart:true};
-    closeCart();
-    renderCheckout();
-    document.getElementById('checkoutOverlay').classList.add('active');document.body.style.overflow='hidden';
+    if(!cart.length){showToast('Cart empty!');return}
+    checkoutItems={items:cart.map(i=>({name:i.name,color:i.color,qty:i.qty,price:i.price,subtotal:i.price*i.qty})),total:cart.reduce((s,i)=>s+(i.price*i.qty),0),isCart:true};
+    closeCart();renderCheckout();document.getElementById('checkoutOverlay').classList.add('active');document.body.style.overflow='hidden';
 }
-
 function modalGoCheckout(){
     if(!currentModalProduct)return;
     const q=parseInt(document.getElementById('modalQty').value)||1;
     const c=currentModalColor?currentModalColor.name:currentModalProduct.colors[0].name;
-    closeModal();
-    openCheckout(currentModalProduct.id,c,currentModalProduct.price,q);
+    closeModal();openCheckout(currentModalProduct.id,c,currentModalProduct.price,q);
 }
-
 function renderCheckout(){
     if(!checkoutItems)return;
-    const items=checkoutItems.items;
-    let html='<strong>Order Summary</strong><br>';
-    items.forEach(i=>{html+='• '+i.name+' ('+i.color+') ×'+i.qty+' — ৳'+i.subtotal.toLocaleString()+'<br>';});
-    html+='<span class="cs-total">Total: ৳'+checkoutItems.total.toLocaleString()+'</span>';
-    document.getElementById('checkoutSummary').innerHTML=html;
+    let h='<strong>Order Summary</strong><br>';
+    checkoutItems.items.forEach(i=>{h+='• '+i.name+' ('+i.color+') ×'+i.qty+' — ৳'+i.subtotal.toLocaleString()+'<br>';});
+    h+='<span class="cs-total">Total: ৳'+checkoutItems.total.toLocaleString()+'</span>';
+    document.getElementById('checkoutSummary').innerHTML=h;
     document.getElementById('coTotal').textContent=checkoutItems.total.toLocaleString();
     document.getElementById('checkoutError').style.display='none';
 }
-
-function closeCheckout(){
-    document.getElementById('checkoutOverlay').classList.remove('active');
-    document.body.style.overflow='';
-    // clear form
-    document.getElementById('coName').value='';
-    document.getElementById('coPhone').value='';
-    document.getElementById('coPhone2').value='';
-    document.getElementById('coAddress').value='';
-    document.getElementById('coNote').value='';
-}
-
+function closeCheckout(){document.getElementById('checkoutOverlay').classList.remove('active');document.body.style.overflow='';['coName','coPhone','coAddress','coNote'].forEach(id=>document.getElementById(id).value='');}
 function submitOrder(){
-    const name=document.getElementById('coName').value.trim();
-    const phone=document.getElementById('coPhone').value.trim();
-    const phone2=document.getElementById('coPhone2').value.trim();
-    const address=document.getElementById('coAddress').value.trim();
-    const note=document.getElementById('coNote').value.trim();
-
-    if(!name||!phone||!address){
-        document.getElementById('checkoutError').style.display='block';
-        return;
-    }
-    document.getElementById('checkoutError').style.display='none';
-
-    if(!checkoutItems)return;
-
-    // Build WhatsApp message
-    let msg = '🕐 *NEW ORDER — ELUXO*%0A%0A';
-    msg += '*Customer Info:*%0A';
-    msg += '👤 Name: '+name+'%0A';
-    msg += '📞 Phone: '+phone+(phone2?'%0A📞 Alt: '+phone2:'')+'%0A';
-    msg += '📍 Address: '+address+'%0A';
-    if(note) msg += '📝 Note: '+note+'%0A';
-    msg += '%0A*Order Details:*%0A';
-    checkoutItems.items.forEach(i=>{
-        msg += '• '+i.name+' ('+i.color+') ×'+i.qty+' — ৳'+i.subtotal.toLocaleString()+'%0A';
-    });
-    msg += '%0A💰 *Total: ৳'+checkoutItems.total.toLocaleString()+'*%0A';
-    msg += '%0A_Please call to confirm._';
-
-    // Send via WhatsApp
-    const waUrl = 'https://api.whatsapp.com/send?phone='+BUSINESS_PHONE+'&text='+msg;
-    window.open(waUrl, '_blank');
-
-    // Show success
+    const name=document.getElementById('coName').value.trim(),phone=document.getElementById('coPhone').value.trim(),address=document.getElementById('coAddress').value.trim(),note=document.getElementById('coNote').value.trim();
+    if(!name||!phone||!address){document.getElementById('checkoutError').style.display='block';return;}
+    document.getElementById('checkoutError').style.display='none';if(!checkoutItems)return;
+    let msg='🕐 *NEW ORDER — ELUXO*%0A%0A*Customer:*%0A👤 '+name+'%0A📞 '+phone+'%0A📍 '+address+'%0A';
+    if(note)msg+='📝 '+note+'%0A';
+    msg+='%0A*Order:*%0A';
+    checkoutItems.items.forEach(i=>{msg+='• '+i.name+' ('+i.color+') ×'+i.qty+' — ৳'+i.subtotal.toLocaleString()+'%0A';});
+    msg+='%0A💰 *Total: ৳'+checkoutItems.total.toLocaleString()+'*%0A%0A_Please call to confirm._';
+    window.open('https://api.whatsapp.com/send?phone='+BUSINESS_PHONE+'&text='+msg,'_blank');
     closeCheckout();
-    document.getElementById('successMsg').textContent = 'Order: '+checkoutItems.items.map(i=>i.name).join(', ')+' | Total: ৳'+checkoutItems.total.toLocaleString();
+    document.getElementById('successMsg').textContent='Order: '+checkoutItems.items.map(i=>i.name).join(', ')+' | Total: ৳'+checkoutItems.total.toLocaleString();
     document.getElementById('successOverlay').classList.add('active');
 }
+function closeSuccess(){document.getElementById('successOverlay').classList.remove('active');document.body.style.overflow='';if(checkoutItems&&checkoutItems.isCart){cart=[];updateCartUI();}checkoutItems=null;}
 
-function closeSuccess(){
-    document.getElementById('successOverlay').classList.remove('active');
-    document.body.style.overflow='';
-    // Clear cart if it was a cart checkout
-    if(checkoutItems && checkoutItems.isCart){
-        cart=[];
-        updateCartUI();
-    }
-    checkoutItems=null;
+// ═══════════════ PRODUCT DETAIL MODAL ═══════════════
+function getColorImage(p,color){
+    if(!color)return p.image;
+    const c=p.colors.find(x=>x.name===color);
+    return (c&&c.img)?c.img:p.image;
 }
 
-// ══════════════════════════════════════
-// PRODUCT DETAIL MODAL
-// ══════════════════════════════════════
 function openDetail(id){
     const p=findProduct(id);if(!p)return;
     currentModalProduct=p;currentModalColor=p.colors[0];
-    document.getElementById('modalImg').src=p.image;
+    updateModalForColor(p,p.colors[0]);
+
+    // Render color thumbnails
+    const thumbs=document.getElementById('modalColorThumbs');
+    if(p.colors.length>1&&p.colors.some(c=>c.img)){
+        thumbs.style.display='flex';
+        thumbs.innerHTML=p.colors.map(c=>'<div class="mct'+(c.name===currentModalColor.name?' active':'')+'" onclick="selectModalColorThumb(\''+c.name.replace(/'/g,"\\'")+'\')"><img src="'+(c.img||p.image)+'" alt="'+c.name+'"></div>').join('');
+    }else{thumbs.style.display='none';}
+
     document.getElementById('modalGender').textContent=p.gender==='men'?"Men's Collection":"Women's Collection";
-    document.getElementById('modalName').textContent=p.name;
-    document.getElementById('modalCat').textContent=p.category;
+    document.getElementById('modalName').textContent=p.name;document.getElementById('modalCat').textContent=p.category;
     document.getElementById('modalDesc').textContent=p.desc;
     document.getElementById('modalOld').textContent='৳'+p.originalPrice.toLocaleString();
     document.getElementById('modalNew').textContent='৳'+p.price.toLocaleString();
     document.getElementById('modalOff').textContent='Save '+p.discount+'%';
-    document.getElementById('modalStock').textContent=p.stock;
-    document.getElementById('modalSold').textContent=p.sold;
-    document.getElementById('modalQty').value=1;
-    document.getElementById('modalBtnPrice').textContent=p.price.toLocaleString();
-    document.getElementById('modalColors').innerHTML=p.colors.map(c=>'<button class="color-option'+(c.name===currentModalColor.name?' selected':'')+'" onclick="selectModalColor(\''+c.name+'\')">'+c.name+'</button>').join('');
-    document.getElementById('modalColorsWrap').style.display=p.colors.length<=1?'none':'block';
+    document.getElementById('modalStock').textContent=p.stock;document.getElementById('modalSold').textContent=p.sold;
+    document.getElementById('modalQty').value=1;document.getElementById('modalBtnPrice').textContent=p.price.toLocaleString();
+    document.getElementById('modalColors').innerHTML=p.colors.map(c=>'<button class="color-option'+(c.name===currentModalColor.name?' selected':'')+'" onclick="selectModalColor(\''+c.name.replace(/'/g,"\\'")+'\')">'+c.name+'</button>').join('');
     document.getElementById('modalOverlay').classList.add('active');document.body.style.overflow='hidden';
 }
+
+function updateModalForColor(p,color){
+    document.getElementById('modalImg').src=getColorImage(p,color.name);
+}
+
+function selectModalColorThumb(cn){
+    const c=currentModalProduct.colors.find(x=>x.name===cn);if(!c)return;
+    selectModalColor(cn);
+    document.querySelectorAll('#modalColorThumbs .mct').forEach(el=>el.classList.toggle('active',el.querySelector('img').alt===cn));
+}
+
+function selectModalColor(cn){
+    currentModalColor=currentModalProduct.colors.find(c=>c.name===cn);
+    document.querySelectorAll('#modalColors .color-option').forEach(b=>b.classList.toggle('selected',b.textContent===cn));
+    updateModalForColor(currentModalProduct,currentModalColor);
+}
+
 function closeModal(){document.getElementById('modalOverlay').classList.remove('active');document.body.style.overflow='';currentModalProduct=null;currentModalColor=null}
-function selectModalColor(cn){currentModalColor=currentModalProduct.colors.find(c=>c.name===cn);document.querySelectorAll('#modalColors .color-option').forEach(b=>b.classList.toggle('selected',b.textContent===cn))}
 function changeModalQty(d){const inp=document.getElementById('modalQty');let v=parseInt(inp.value)+d;const max=currentModalProduct?currentModalProduct.stock:10;if(v<1)v=1;if(v>max)v=max;inp.value=v;updateModalBtnPrice()}
 function validateModalQty(){const inp=document.getElementById('modalQty');let v=parseInt(inp.value);const max=currentModalProduct?currentModalProduct.stock:10;if(isNaN(v)||v<1)v=1;if(v>max)v=max;inp.value=v;updateModalBtnPrice()}
-function updateModalBtnPrice(){const q=parseInt(document.getElementById('modalQty').value)||1;const pr=currentModalProduct?currentModalProduct.price:0;document.getElementById('modalBtnPrice').textContent=(pr*q).toLocaleString()}
+function updateModalBtnPrice(){document.getElementById('modalBtnPrice').textContent=((currentModalProduct?currentModalProduct.price:0)*(parseInt(document.getElementById('modalQty').value)||1)).toLocaleString()}
 function modalAddToCart(){if(!currentModalProduct)return;const q=parseInt(document.getElementById('modalQty').value)||1;const c=currentModalColor?currentModalColor.name:currentModalProduct.colors[0].name;addToCart(currentModalProduct.id,c,currentModalProduct.price,q);closeModal()}
 
-// ══════════════════════════════════════
-// RENDER PRODUCTS
-// ══════════════════════════════════════
-const grid=document.getElementById('productGrid');
+// ═══════════════ RENDER ═══════════════
 function renderProducts(filter='all'){
-    grid.innerHTML='';
+    const grid=document.getElementById('productGrid');grid.innerHTML='';
     const list=filter==='all'?products:products.filter(p=>p.gender===filter);
     list.forEach((p,i)=>{
-        const c=document.createElement('div');
-        c.className='product-card fade-in';
-        c.style.transitionDelay=(i*30)+'ms';
-        c.innerHTML='<div class="img-wrap" onclick="openDetail(\''+p.id+'\')"><img src="'+p.image+'" alt="'+p.name+'" loading="lazy"><span class="discount-badge">-'+p.discount+'%</span><span class="gender-badge">'+(p.gender==='men'?"Men's":"Women's")+'</span><div class="hover-btns"><button class="hover-add" onclick="event.stopPropagation();addToCart(\''+p.id+'\',\''+p.colors[0].name+'\','+p.price+')">Add to Cart</button><button class="hover-buy" onclick="event.stopPropagation();openCheckout(\''+p.id+'\',\''+p.colors[0].name+'\','+p.price+',1)">Buy Now</button></div></div><div class="product-info" onclick="openDetail(\''+p.id+'\')"><p class="category">'+p.category+'</p><h4>'+p.name+'</h4><div class="price-row"><span class="old">৳'+p.originalPrice.toLocaleString()+'</span><span class="new">৳'+p.price.toLocaleString()+'</span><span class="saved">Save ৳'+(p.originalPrice-p.price).toLocaleString()+'</span></div><div class="color-dots">'+p.colors.map(c=>'<span class="color-dot" style="background:'+c.hex+'" title="'+c.name+'"></span>').join('')+'</div></div>';
+        const c=document.createElement('div');c.className='product-card fade-in';c.style.transitionDelay=(i*30)+'ms';
+        c.innerHTML='<div class="img-wrap" onclick="openDetail(\''+p.id+'\')"><img src="'+p.image+'" alt="'+p.name+'" loading="lazy"><span class="discount-badge">-'+p.discount+'%</span><span class="gender-badge">'+(p.gender==='men'?"Men's":"Women's")+'</span><div class="hover-btns"><button class="hover-add" onclick="event.stopPropagation();addToCart(\''+p.id+'\',\''+p.colors[0].name.replace(/'/g,"\\'")+'\','+p.price+')">Add to Cart</button><button class="hover-buy" onclick="event.stopPropagation();openCheckout(\''+p.id+'\',\''+p.colors[0].name.replace(/'/g,"\\'")+'\','+p.price+',1)">Buy Now</button></div></div><div class="product-info" onclick="openDetail(\''+p.id+'\')"><p class="category">'+p.category+'</p><h4>'+p.name+'</h4><div class="price-row"><span class="old">৳'+p.originalPrice.toLocaleString()+'</span><span class="new">৳'+p.price.toLocaleString()+'</span><span class="saved">Save ৳'+(p.originalPrice-p.price).toLocaleString()+'</span></div><div class="color-dots">'+p.colors.map(c=>'<span class="color-dot" style="background:'+c.hex+'" title="'+c.name+'"></span>').join('')+'</div></div>';
         grid.appendChild(c);
     });
     document.querySelectorAll('.product-card.fade-in').forEach(el=>observer.observe(el));
 }
-function filterProducts(filter){
-    document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
-    event.target.classList.add('active');
-    renderProducts(filter);
-}
+function filterProducts(filter){document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active');renderProducts(filter);}
 
-// ══════════════════════════════════════
-// UTILS
-// ══════════════════════════════════════
+// ═══════════════ UTILS ═══════════════
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2400)}
-
 const observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.06,rootMargin:'0px 0px -25px 0px'});
 document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el)});
-
 document.getElementById('mobileToggle').addEventListener('click',function(){document.getElementById('mobileMenu').classList.add('active')});
 document.getElementById('mobileClose').addEventListener('click',function(){document.getElementById('mobileMenu').classList.remove('active')});
 document.querySelectorAll('#mobileMenu a:not([onclick])').forEach(function(a){a.addEventListener('click',function(){document.getElementById('mobileMenu').classList.remove('active')})});
-
 window.addEventListener('scroll',function(){document.getElementById('nav').style.boxShadow=window.scrollY>30?'0 1px 18px rgba(0,0,0,0.05)':'none'},{passive:true});
-
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
 document.getElementById('checkoutOverlay').addEventListener('click',function(e){if(e.target===this)closeCheckout()});
 document.getElementById('successOverlay').addEventListener('click',function(e){if(e.target===this)closeSuccess()});
+document.getElementById('pwOverlay').addEventListener('click',function(e){if(e.target===this)closePassword()});
+document.getElementById('adminOverlay').addEventListener('click',function(e){if(e.target===this)closeAdmin()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();closeCheckout();closeSuccess();closePassword();closeAdmin();closeCart()}});
 
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();closeCheckout();closeSuccess();closeCart()}});
-
-renderProducts();
-updateCartUI();
+renderProducts();updateCartUI();
 </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1a0b1ffe82888f7',t:'MTc4Mzg2NjA5Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1a1369e8f635d31',t:'MTc4Mzg3MTUyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
 </html>
