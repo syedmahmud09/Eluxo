@@ -4,259 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eluxo — Premium Timepieces</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg:#0a0a0a; --surface:#111; --surface2:#1a1a1a; --text:#fff;
-            --text-dim:#999; --text-muted:#666; --accent:#c8a45c;
-            --accent-light:#d4b76e; --accent-dark:#a88848;
-            --border:#222; --border-light:#2a2a2a;
-            --discount:#e74c3c; --success:#4ade80;
-            --card-bg:#141414; --card-hover:#1c1c1c;
-            --tag-bg:rgba(200,164,92,0.1); --tag-text:#c8a45c;
+            --bg: #fafaf8;
+            --text: #1a1a1a;
+            --text-light: #6b6b6b;
+            --accent: #b8945c;
+            --accent-dark: #9a7a44;
+            --accent-light: #d4b76e;
+            --white: #ffffff;
+            --border: #e8e4df;
+            --card-bg: #ffffff;
+            --tag-bg: #f4f0ea;
+            --tag-text: #8b7355;
+            --discount: #c0392b;
+            --discount-light: rgba(192,57,43,0.08);
+            --success: #27ae60;
+            --success-light: rgba(39,174,96,0.1);
+            --overlay: rgba(0,0,0,0.5);
+            --surface-dark: #1a1a1a;
         }
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-        /* ─── Ticker ─── */
-        .ticker{background:var(--accent);color:#0a0a0a;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:7px 0;overflow:hidden;white-space:nowrap}
-        .ticker span{display:inline-block;animation:ticker 22s linear infinite}
-        @keyframes ticker{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
+        /* Nav */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,250,248,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: all 0.3s ease; }
+        .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .nav-logo img { height: 38px; width: auto; }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; position: relative; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.25s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta { background: var(--text) !important; color: var(--white) !important; padding: 9px 22px !important; border-radius: 3px; letter-spacing: 1px !important; transition: all 0.3s ease !important; }
+        .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
+        .nav-cta::after { display: none !important; }
+        .cart-icon-btn { background: none; border: none; color: var(--text); cursor: pointer; position: relative; font-size: 18px; padding: 6px; display: flex; align-items: center; }
+        .cart-count { background: var(--discount); color: #fff; font-size: 10px; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -2px; right: -8px; }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .mobile-toggle span { display: block; width: 22px; height: 1.5px; background: var(--text); margin: 5px 0; transition: 0.3s; }
 
-        /* ─── Nav ─── */
-        .nav{position:fixed;top:33px;left:0;right:0;z-index:1000;background:rgba(10,10,10,0.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
-        .nav-inner{max-width:1340px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px}
-        .nav-logo img{height:38px;width:auto}
-        .nav-links{display:flex;gap:36px;list-style:none;align-items:center}
-        .nav-links a{text-decoration:none;color:var(--text-dim);font-size:11px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;transition:color .3s;position:relative}
-        .nav-links a:hover{color:var(--accent)}
-        .nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s}
-        .nav-links a:hover::after{width:100%}
-        .nav-cta{border:1px solid var(--accent)!important;padding:9px 24px!important;color:var(--accent)!important}
-        .nav-cta:hover{background:var(--accent)!important;color:#0a0a0a!important}
-        .nav-cta::after{display:none!important}
+        /* Mobile Menu */
+        .mobile-menu { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 999; padding: 100px 32px; text-align: center; }
+        .mobile-menu.active { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
+        .mobile-menu a { text-decoration: none; color: var(--text); font-size: 18px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+        .mobile-close { position: absolute; top: 24px; right: 32px; background: none; border: none; font-size: 28px; cursor: pointer; color: var(--text); }
 
-        /* Cart icon */
-        .cart-icon-btn{background:none;border:none;color:var(--text-dim);cursor:pointer;position:relative;font-size:18px;display:flex;align-items:center;gap:6px}
-        .cart-icon-btn:hover{color:var(--accent)}
-        .cart-count{background:var(--accent);color:#0a0a0a;font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:absolute;top:-6px;right:-10px}
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 32px 80px; position: relative; background: linear-gradient(180deg, #fafaf8 0%, #f2efe9 100%); }
+        .hero-content { max-width: 700px; }
+        .hero-eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 20px; }
+        .hero-logo { margin-bottom: 28px; }
+        .hero-logo img { height: 75px; width: auto; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5.5vw, 58px); font-weight: 600; line-height: 1.15; color: var(--text); margin-bottom: 18px; }
+        .hero h1 em { font-style: italic; color: var(--accent); }
+        .hero p { font-size: 16px; color: var(--text-light); max-width: 480px; margin: 0 auto 36px; line-height: 1.7; font-weight: 400; }
+        .hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-        .mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px}
-        .mobile-toggle span{display:block;width:22px;height:1.5px;background:var(--text);margin:5px 0;transition:.3s}
+        .btn { display: inline-flex; align-items: center; gap: 7px; padding: 14px 34px; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: all 0.3s ease; cursor: pointer; border: none; }
+        .btn-primary { background: var(--text); color: var(--white); }
+        .btn-primary:hover { background: var(--accent); }
+        .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--text); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-accent { background: var(--accent); color: #fff; }
+        .btn-accent:hover { background: var(--accent-dark); }
+        .btn-sm { padding: 10px 22px; font-size: 10px; letter-spacing: 1.2px; }
+        .btn-full { width: 100%; justify-content: center; padding: 15px; }
+        .btn-whatsapp { background: #25D366 !important; color: #fff !important; }
+        .btn-whatsapp:hover { background: #1da851 !important; }
+        .btn-messenger { background: #0084FF !important; color: #fff !important; }
+        .btn-messenger:hover { background: #006ed4 !important; }
 
-        /* ─── Mobile Menu ─── */
-        .mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:999;padding:100px 32px;text-align:center}
-        .mobile-menu.active{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px}
-        .mobile-menu a{text-decoration:none;color:var(--text);font-size:18px;font-weight:500;letter-spacing:2px;text-transform:uppercase}
-        .mobile-close{position:absolute;top:24px;right:32px;background:none;border:none;color:var(--text);font-size:30px;cursor:pointer}
+        .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; }
+        .hero-scroll svg { width: 20px; height: 20px; stroke: var(--text-light); }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
 
-        /* ─── Hero ─── */
-        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 40px 80px;position:relative;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(200,164,92,0.06) 0%,transparent 60%),var(--bg)}
-        .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--bg),transparent);pointer-events:none}
-        .hero-content{max-width:720px;position:relative;z-index:2}
-        .hero-logo{margin-bottom:36px}
-        .hero-logo img{height:85px;width:auto;filter:drop-shadow(0 0 30px rgba(200,164,92,0.2))}
-        .hero-eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:22px}
-        .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,6vw,68px);font-weight:400;line-height:1.1;color:var(--text);margin-bottom:20px}
-        .hero h1 em{font-style:italic;color:var(--accent)}
-        .hero p{font-size:16px;color:var(--text-dim);max-width:500px;margin:0 auto 40px;line-height:1.8;font-weight:300}
-        .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+        /* Section */
+        .section { padding: 100px 32px; max-width: 1280px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 600; margin-bottom: 12px; }
+        .section-subtitle { color: var(--text-light); font-size: 15px; max-width: 480px; margin: 0 auto; }
 
-        .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 36px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;transition:all .35s}
-        .btn-primary{background:var(--accent);color:#0a0a0a}
-        .btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,164,92,0.25)}
-        .btn-outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.2)}
-        .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
-        .btn-sm{padding:10px 22px;font-size:10px;letter-spacing:1.5px}
+        /* Category Split */
+        .cat-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 80px; }
+        .cat-card { position: relative; height: 480px; overflow: hidden; cursor: pointer; display: flex; align-items: flex-end; padding: 44px; text-decoration: none; border-radius: 6px; }
+        .cat-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.02) 100%); z-index: 1; transition: opacity 0.5s; }
+        .cat-card:hover::before { opacity: 0.85; }
+        .cat-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .cat-card:hover img { transform: scale(1.06); }
+        .cat-card .cat-label { position: relative; z-index: 2; color: #fff; }
+        .cat-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-light); font-weight: 700; margin-bottom: 8px; }
+        .cat-title { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 600; margin-bottom: 4px; }
+        .cat-subtitle { font-size: 13px; color: #ddd; font-weight: 300; }
+        .cat-arrow { display: inline-flex; margin-top: 14px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-light); font-weight: 600; opacity: 0; transform: translateX(-8px); transition: all 0.4s ease; }
+        .cat-card:hover .cat-arrow { opacity: 1; transform: translateX(0); }
 
-        /* ─── Section ─── */
-        .section{padding:100px 40px;max-width:1340px;margin:0 auto}
-        .section-header{text-align:center;margin-bottom:64px}
-        .section-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px}
-        .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4.5vw,44px);font-weight:400;margin-bottom:12px}
-        .section-subtitle{color:var(--text-dim);font-size:14px;max-width:460px;margin:0 auto;font-weight:300}
+        /* Filter Tabs */
+        .filter-tabs { display: flex; justify-content: center; gap: 6px; margin-bottom: 48px; flex-wrap: wrap; }
+        .filter-tab { background: var(--white); color: var(--text-light); border: 1px solid var(--border); padding: 11px 26px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; border-radius: 3px; }
+        .filter-tab:hover { border-color: var(--accent); color: var(--accent); }
+        .filter-tab.active { background: var(--text); color: #fff; border-color: var(--text); font-weight: 600; }
 
-        /* ─── Category Cards ─── */
-        .cat-split{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:90px}
-        .cat-card{position:relative;height:520px;overflow:hidden;cursor:pointer;display:flex;align-items:flex-end;padding:48px;text-decoration:none}
-        .cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.2) 55%,rgba(0,0,0,0.05) 100%);z-index:1;transition:opacity .5s}
-        .cat-card:hover::before{opacity:.9}
-        .cat-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s}
-        .cat-card:hover img{transform:scale(1.06)}
-        .cat-card .cat-label{position:relative;z-index:2;color:#fff}
-        .cat-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
-        .cat-title{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:400;margin-bottom:4px}
-        .cat-subtitle{font-size:13px;color:#ccc;font-weight:300}
-        .cat-arrow{display:inline-flex;margin-top:14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:600;opacity:0;transform:translateX(-8px);transition:all .4s}
-        .cat-card:hover .cat-arrow{opacity:1;transform:translateX(0)}
+        /* Product Grid */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(275px, 1fr)); gap: 28px; }
+        .product-card { background: var(--card-bg); border-radius: 6px; overflow: hidden; border: 1px solid var(--border); transition: all 0.35s ease; cursor: pointer; position: relative; }
+        .product-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.07); border-color: #d5cec4; }
+        .product-card .img-wrap { position: relative; overflow: hidden; aspect-ratio: 3/4; background: #f5f3ef; }
+        .product-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .product-card:hover .img-wrap img { transform: scale(1.04); }
+        .product-card .discount-badge { position: absolute; top: 10px; left: 10px; background: var(--discount); color: #fff; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 3px; z-index: 2; }
+        .product-card .gender-badge { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); color: var(--accent); font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; z-index: 2; }
+        .product-card .hover-btns { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%) translateY(10px); display: flex; gap: 8px; opacity: 0; transition: all 0.3s ease; }
+        .product-card:hover .hover-btns { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .product-card .hover-btns button { padding: 9px 18px; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-radius: 3px; border: none; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .hover-add { background: #fff; color: var(--text); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .hover-add:hover { background: var(--text); color: #fff; }
+        .hover-buy { background: var(--accent); color: #fff; box-shadow: 0 4px 12px rgba(184,148,92,0.3); }
+        .hover-buy:hover { background: var(--accent-dark); }
 
-        /* ─── Filter Tabs ─── */
-        .filter-tabs{display:flex;justify-content:center;gap:6px;margin-bottom:48px;flex-wrap:wrap}
-        .filter-tab{background:transparent;color:var(--text-dim);border:1px solid var(--border);padding:11px 26px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s}
-        .filter-tab:hover{border-color:var(--accent);color:var(--accent)}
-        .filter-tab.active{background:var(--accent);color:#0a0a0a;border-color:var(--accent);font-weight:600}
+        .product-info { padding: 18px; }
+        .product-info .category { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 4px; }
+        .product-info h4 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+        .product-info .price-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+        .product-info .price-row .old { text-decoration: line-through; color: #aaa; font-size: 13px; }
+        .product-info .price-row .new { font-size: 20px; font-weight: 700; }
+        .product-info .price-row .saved { font-size: 11px; color: var(--discount); font-weight: 600; background: var(--discount-light); padding: 2px 8px; border-radius: 2px; }
+        .color-dots { display: flex; gap: 5px; margin-top: 8px; }
+        .color-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; }
+        .color-dot:hover { border-color: var(--accent); transform: scale(1.2); }
 
-        /* ─── Product Grid ─── */
-        .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
-        .product-card{background:var(--card-bg);border:1px solid var(--border);overflow:hidden;transition:all .4s;cursor:pointer;position:relative}
-        .product-card:hover{border-color:var(--accent);background:var(--card-hover);transform:translateY(-4px)}
-        .product-card .img-wrap{position:relative;overflow:hidden;aspect-ratio:3/4;background:#1a1a1a}
-        .product-card .img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
-        .product-card:hover .img-wrap img{transform:scale(1.05)}
-        .product-card .discount-badge{position:absolute;top:12px;left:12px;background:var(--discount);color:#fff;font-size:10px;font-weight:700;padding:4px 10px;z-index:2}
-        .product-card .gender-badge{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);color:var(--accent);font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;z-index:2}
-        .product-card .stock-bar-wrap{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:0 12px 12px;opacity:0;transition:opacity .35s}
-        .product-card:hover .stock-bar-wrap{opacity:1}
-        .stock-bar-info{display:flex;justify-content:space-between;font-size:9px;color:#ccc;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;font-weight:500}
-        .stock-bar{height:3px;background:#333;border-radius:3px;overflow:hidden}
-        .stock-bar-fill{height:100%;background:var(--success);border-radius:3px;transition:width .6s}
+        /* Featured Banner */
+        .featured-banner { margin-bottom: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center; background: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+        .featured-banner img { width: 100%; height: 500px; object-fit: cover; }
+        .featured-text { padding: 48px; }
+        .featured-text .badge { display: inline-block; background: var(--discount); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 3px; margin-bottom: 16px; }
+        .featured-text h3 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 600; margin-bottom: 12px; }
+        .featured-text p { color: var(--text-light); margin-bottom: 24px; font-size: 15px; line-height: 1.7; }
+        .price-stack { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
+        .price-old { text-decoration: line-through; color: #999; font-size: 18px; }
+        .price-new { font-size: 36px; font-weight: 700; color: var(--text); font-family: 'Playfair Display', serif; }
+        .price-off { font-size: 13px; color: var(--discount); font-weight: 600; }
+        .featured-btns { display: flex; gap: 10px; flex-wrap: wrap; }
 
-        .product-info{padding:20px}
-        .product-info .cat-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-        .product-info .category{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:600}
-        .product-info h4{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:500;margin-bottom:10px}
-        .product-info .price-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-        .product-info .price-row .old{text-decoration:line-through;color:#555;font-size:13px}
-        .product-info .price-row .new{font-size:21px;font-weight:700;font-family:'Playfair Display',serif}
-        .product-info .price-row .saved{font-size:10px;color:var(--discount);font-weight:600;background:rgba(231,76,60,0.12);padding:2px 8px}
+        /* Product Detail Modal */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 32px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal { background: var(--white); border-radius: 8px; max-width: 920px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; display: grid; grid-template-columns: 1fr 1fr; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .modal-close { position: absolute; top: 14px; right: 14px; background: var(--text); color: #fff; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; z-index: 5; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .modal-close:hover { background: var(--discount); }
+        .modal-img { aspect-ratio: 3/4; background: #f5f3ef; display: flex; align-items: center; justify-content: center; }
+        .modal-img img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-info { padding: 36px 32px; display: flex; flex-direction: column; }
+        .modal-gender { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+        .modal-info h2 { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; margin-bottom: 4px; }
+        .modal-cat { font-size: 11px; letter-spacing: 2px; color: var(--text-light); text-transform: uppercase; margin-bottom: 12px; }
+        .modal-desc { color: var(--text-light); font-size: 13px; line-height: 1.8; margin-bottom: 16px; }
+        .modal-price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+        .modal-price .old { text-decoration: line-through; color: #999; font-size: 15px; }
+        .modal-price .new { font-size: 32px; font-weight: 700; font-family: 'Playfair Display', serif; }
+        .modal-price .off { font-size: 12px; color: var(--discount); font-weight: 600; }
+        .modal-stats { display: flex; gap: 20px; margin: 14px 0; padding: 12px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .modal-stat { text-align: center; }
+        .modal-stat .val { font-size: 20px; font-weight: 700; }
+        .modal-stat .lbl { font-size: 9px; text-transform: uppercase; color: var(--text-light); letter-spacing: 1px; }
+        .modal-stat.stock .val { color: var(--success); }
+        .modal-stat.sold .val { color: var(--accent); }
+        .modal-colors { margin: 12px 0; }
+        .modal-colors .color-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; }
+        .modal-colors .color-options { display: flex; gap: 8px; flex-wrap: wrap; }
+        .color-option { padding: 7px 16px; border: 1px solid var(--border); background: var(--white); color: var(--text-light); font-size: 11px; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; border-radius: 3px; }
+        .color-option:hover { border-color: var(--accent); color: var(--accent); }
+        .color-option.selected { border-color: var(--accent); background: var(--accent); color: #fff; font-weight: 600; }
+        .qty-row { display: flex; align-items: center; gap: 14px; margin: 16px 0; }
+        .qty-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); }
+        .qty-selector { display: flex; align-items: center; border: 1px solid var(--border); border-radius: 3px; }
+        .qty-selector button { background: transparent; border: none; color: var(--text); width: 36px; height: 36px; font-size: 15px; cursor: pointer; transition: all 0.2s; }
+        .qty-selector button:hover { background: var(--accent); color: #fff; }
+        .qty-selector input { width: 44px; text-align: center; background: transparent; border: none; border-left: 1px solid var(--border); border-right: 1px solid var(--border); color: var(--text); font-size: 13px; font-weight: 600; outline: none; }
+        .modal-btns { display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 16px; }
+        .modal-btns .btn { justify-content: center; }
 
-        /* Color dots */
-        .color-dots{display:flex;gap:6px;margin-top:10px}
-        .color-dot{width:16px;height:16px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .2s;position:relative}
-        .color-dot:hover{border-color:var(--accent);transform:scale(1.2)}
-        .color-dot.active{border-color:var(--accent);box-shadow:0 0 8px rgba(200,164,92,0.5)}
+        /* Order Modal */
+        .order-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); z-index: 2100; display: flex; align-items: center; justify-content: center; padding: 32px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .order-overlay.active { opacity: 1; pointer-events: all; }
+        .order-modal { background: var(--white); border-radius: 8px; max-width: 440px; width: 100%; padding: 36px 32px; text-align: center; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .order-modal .close-btn { position: absolute; top: 12px; right: 12px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-light); }
+        .order-modal .icon { font-size: 40px; margin-bottom: 12px; }
+        .order-modal h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 6px; }
+        .order-modal .order-summary { background: var(--tag-bg); padding: 14px 16px; border-radius: 6px; margin: 16px 0; text-align: left; font-size: 13px; line-height: 1.8; }
+        .order-modal .order-summary strong { color: var(--accent); }
+        .order-btns { display: flex; flex-direction: column; gap: 10px; }
+        .order-btns .btn { justify-content: center; font-size: 12px; padding: 14px; }
 
-        /* ─── Detail Modal ─── */
-        .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:40px;opacity:0;pointer-events:none;transition:opacity .35s}
-        .modal-overlay.active{opacity:1;pointer-events:all}
-        .modal{background:var(--surface);border:1px solid var(--border);max-width:960px;width:100%;max-height:90vh;overflow-y:auto;position:relative;display:grid;grid-template-columns:1fr 1fr}
-        .modal-close{position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.6);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center}
-        .modal-close:hover{background:var(--discount)}
-        .modal-img{aspect-ratio:3/4;background:#1a1a1a;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-        .modal-img img{width:100%;height:100%;object-fit:cover}
-        .modal-info{padding:40px 36px;display:flex;flex-direction:column;justify-content:center}
-        .modal-info .gender-tag{display:inline-block;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
-        .modal-info h2{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:400;margin-bottom:6px}
-        .modal-info .modal-cat{font-size:11px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px}
-        .modal-info .modal-desc{color:var(--text-dim);font-size:14px;line-height:1.8;margin-bottom:20px;font-weight:300}
-        .modal-info .modal-price{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
-        .modal-price .old{text-decoration:line-through;color:#555;font-size:16px}
-        .modal-price .new{font-size:36px;font-weight:700;font-family:'Playfair Display',serif}
-        .modal-price .off{font-size:12px;color:var(--discount);font-weight:600}
+        /* Cart Sidebar */
+        .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 2200; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .cart-overlay.active { opacity: 1; pointer-events: all; }
+        .cart-sidebar { position: fixed; top: 0; right: 0; bottom: 0; width: 420px; max-width: 100vw; background: var(--white); border-left: 1px solid var(--border); z-index: 2201; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.22,0.61,0.36,1); box-shadow: -4px 0 30px rgba(0,0,0,0.08); }
+        .cart-sidebar.active { transform: translateX(0); }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; padding: 22px 24px; border-bottom: 1px solid var(--border); }
+        .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; }
+        .cart-close { background: none; border: none; color: var(--text); font-size: 22px; cursor: pointer; }
+        .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+        .cart-empty { text-align: center; padding: 60px 20px; color: var(--text-light); }
+        .cart-empty .icon { font-size: 44px; margin-bottom: 12px; }
+        .cart-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+        .cart-item-img { width: 70px; height: 88px; object-fit: cover; background: #f5f3ef; flex-shrink: 0; border-radius: 3px; }
+        .cart-item-info { flex: 1; }
+        .cart-item-info h4 { font-family: 'Playfair Display', serif; font-size: 15px; margin-bottom: 3px; }
+        .cart-item-info .variant { font-size: 11px; color: var(--text-light); margin-bottom: 4px; }
+        .cart-item-info .price { font-weight: 700; font-size: 14px; }
+        .cart-item-qty { display: flex; align-items: center; gap: 0; border: 1px solid var(--border); margin-top: 6px; border-radius: 3px; width: fit-content; }
+        .cart-item-qty button { background: transparent; border: none; color: var(--text); width: 28px; height: 28px; font-size: 13px; cursor: pointer; }
+        .cart-item-qty button:hover { background: var(--accent); color: #fff; }
+        .cart-item-qty span { width: 32px; text-align: center; font-size: 12px; font-weight: 600; }
+        .cart-item-remove { background: none; border: none; color: #ccc; cursor: pointer; font-size: 16px; padding: 4px; }
+        .cart-item-remove:hover { color: var(--discount); }
+        .cart-footer { padding: 18px 24px; border-top: 1px solid var(--border); }
+        .cart-total { display: flex; justify-content: space-between; font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+        .cart-total .total-price { font-family: 'Playfair Display', serif; font-size: 22px; }
+        .cart-footer .btn { width: 100%; justify-content: center; margin-bottom: 8px; }
 
-        /* Stock stats in modal */
-        .modal-stock-stats{display:flex;gap:24px;margin:16px 0}
-        .modal-stock-stat{text-align:center}
-        .modal-stock-stat .val{font-size:22px;font-weight:700;color:var(--text)}
-        .modal-stock-stat .lbl{font-size:10px;text-transform:uppercase;color:var(--text-muted);letter-spacing:1px}
-        .modal-stock-stat.sold .val{color:var(--accent)}
-        .modal-stock-stat.available .val{color:var(--success)}
+        /* CTA banner */
+        .collection-banner { margin-top: 80px; padding: 80px 48px; background: var(--text); color: #fff; text-align: center; border-radius: 8px; position: relative; overflow: hidden; }
+        .collection-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(184,148,92,0.15) 0%, transparent 70%); }
+        .collection-banner > * { position: relative; z-index: 1; }
+        .collection-banner h3 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; margin-bottom: 12px; }
+        .collection-banner p { color: #aaa; font-size: 15px; margin-bottom: 28px; }
+        .btn-light { background: var(--white); color: var(--text); border: none; }
+        .btn-light:hover { background: var(--accent); color: #fff; }
 
-        /* Color selector in modal */
-        .modal-colors{margin:16px 0}
-        .modal-colors .color-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px}
-        .modal-colors .color-options{display:flex;gap:10px;flex-wrap:wrap}
-        .color-option{padding:8px 18px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:11px;letter-spacing:1px;cursor:pointer;transition:all .3s;text-transform:uppercase}
-        .color-option:hover{border-color:var(--accent);color:var(--accent)}
-        .color-option.selected{border-color:var(--accent);background:var(--accent);color:#0a0a0a;font-weight:600}
+        /* Why Us */
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; text-align: center; }
+        .feature-icon { width: 56px; height: 56px; margin: 0 auto 20px; background: var(--tag-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+        .feature h4 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 8px; }
+        .feature p { color: var(--text-light); font-size: 14px; }
 
-        /* Quantity selector */
-        .qty-row{display:flex;align-items:center;gap:16px;margin:20px 0}
-        .qty-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim)}
-        .qty-selector{display:flex;align-items:center;border:1px solid var(--border)}
-        .qty-selector button{background:transparent;border:none;color:var(--text);width:40px;height:40px;font-size:16px;cursor:pointer;transition:all .2s}
-        .qty-selector button:hover{background:var(--accent);color:#0a0a0a}
-        .qty-selector input{width:50px;text-align:center;background:transparent;border:none;border-left:1px solid var(--border);border-right:1px solid var(--border);color:var(--text);font-size:14px;font-weight:600;outline:none;-moz-appearance:textfield}
-        .qty-selector input::-webkit-inner-spin-button{display:none}
+        /* Footer */
+        .footer { background: var(--text); color: #ccc; padding: 64px 32px 32px; }
+        .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+        .footer-brand img { height: 36px; margin-bottom: 16px; filter: brightness(0) invert(1); }
+        .footer-brand p { font-size: 14px; line-height: 1.7; color: #999; }
+        .footer h5 { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #fff; margin-bottom: 20px; }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 10px; }
+        .footer ul li a { color: #999; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer ul li a:hover { color: var(--accent); }
+        .footer-bottom { max-width: 1280px; margin: 48px auto 0; padding-top: 24px; border-top: 1px solid #333; display: flex; justify-content: space-between; font-size: 13px; color: #666; }
 
-        .btn-full{width:100%;justify-content:center;padding:16px}
+        /* Toast */
+        .toast { position: fixed; bottom: 28px; right: 28px; background: var(--text); color: #fff; padding: 14px 24px; border-radius: 6px; font-size: 13px; font-weight: 500; z-index: 2400; transform: translateY(120px); opacity: 0; transition: all 0.35s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .toast.show { transform: translateY(0); opacity: 1; }
 
-        /* ─── Cart Sidebar ─── */
-        .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:2100;opacity:0;pointer-events:none;transition:opacity .35s}
-        .cart-overlay.active{opacity:1;pointer-events:all}
-        .cart-sidebar{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:100vw;background:var(--surface);border-left:1px solid var(--border);z-index:2101;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(0.22,0.61,0.36,1)}
-        .cart-sidebar.active{transform:translateX(0)}
-        .cart-header{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;border-bottom:1px solid var(--border)}
-        .cart-header h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400}
-        .cart-close{background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
-        .cart-items{flex:1;overflow-y:auto;padding:20px 28px}
-        .cart-empty{text-align:center;padding:60px 20px;color:var(--text-muted)}
-        .cart-empty .icon{font-size:48px;margin-bottom:16px}
-        .cart-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);align-items:flex-start}
-        .cart-item-img{width:80px;height:100px;object-fit:cover;background:#1a1a1a;flex-shrink:0}
-        .cart-item-info{flex:1}
-        .cart-item-info h4{font-family:'Cormorant Garamond',serif;font-size:16px;margin-bottom:4px}
-        .cart-item-info .variant{font-size:11px;color:var(--text-muted);margin-bottom:4px}
-        .cart-item-info .price{font-weight:700;font-size:14px}
-        .cart-item-qty{display:flex;align-items:center;gap:0;border:1px solid var(--border);margin-top:8px}
-        .cart-item-qty button{background:transparent;border:none;color:var(--text);width:30px;height:30px;font-size:14px;cursor:pointer}
-        .cart-item-qty button:hover{background:var(--accent);color:#0a0a0a}
-        .cart-item-qty span{width:36px;text-align:center;font-size:12px;font-weight:600}
-        .cart-item-remove{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:18px;padding:4px}
-        .cart-item-remove:hover{color:var(--discount)}
-        .cart-footer{padding:20px 28px;border-top:1px solid var(--border)}
-        .cart-total{display:flex;justify-content:space-between;font-size:18px;font-weight:700;margin-bottom:16px}
-        .cart-total .total-price{font-family:'Playfair Display',serif;font-size:24px}
-        .cart-footer .btn{width:100%;justify-content:center}
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* ─── Why Us ─── */
-        .why-us{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;text-align:center}
-        .feature-icon{width:60px;height:60px;margin:0 auto 20px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;transition:.3s}
-        .feature:hover .feature-icon{border-color:var(--accent);color:var(--accent)}
-        .feature h4{font-family:'Cormorant Garamond',serif;font-size:19px;margin-bottom:8px;font-weight:500}
-        .feature p{color:var(--text-dim);font-size:13px;line-height:1.7;font-weight:300}
-
-        /* ─── CTA ─── */
-        .cta-banner{margin-top:90px;padding:80px 48px;text-align:center;background:radial-gradient(ellipse at center,rgba(200,164,92,0.07) 0%,transparent 60%),var(--surface);border:1px solid var(--border)}
-        .cta-banner h3{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:400;margin-bottom:12px}
-        .cta-banner p{color:var(--text-dim);font-size:14px;margin-bottom:28px;font-weight:300}
-
-        /* ─── Footer ─── */
-        .footer{background:var(--surface);border-top:1px solid var(--border);padding:64px 40px 32px}
-        .footer-inner{max-width:1340px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px}
-        .footer-brand img{height:34px;margin-bottom:16px;filter:brightness(0) invert(1)}
-        .footer-brand p{font-size:13px;line-height:1.8;color:var(--text-muted);font-weight:300}
-        .footer h5{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text);margin-bottom:20px}
-        .footer ul{list-style:none}
-        .footer ul li{margin-bottom:8px}
-        .footer ul li a{color:var(--text-muted);text-decoration:none;font-size:12px;transition:color .2s}
-        .footer ul li a:hover{color:var(--accent)}
-        .footer-bottom{max-width:1340px;margin:48px auto 0;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:11px;color:#444}
-        .footer-social{display:flex;gap:12px;margin-top:18px}
-        .footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #333;border-radius:50%;color:#999;text-decoration:none;font-size:13px;transition:.3s}
-        .footer-social a:hover{border-color:var(--accent);color:var(--accent)}
-
-        /* ─── Toast ─── */
-        .toast{position:fixed;bottom:32px;right:32px;background:var(--surface2);color:#fff;padding:14px 24px;border:1px solid var(--accent);font-size:12px;font-weight:500;z-index:2200;transform:translateY(120px);opacity:0;transition:all .35s}
-        .toast.show{transform:translateY(0);opacity:1}
-
-        /* ─── Animations ─── */
-        .fade-in{opacity:0;transform:translateY(22px);transition:all .7s cubic-bezier(0.22,0.61,0.36,1)}
-        .fade-in.visible{opacity:1;transform:translateY(0)}
-
-        /* ─── Responsive ─── */
-        @media(max-width:1024px){
-            .cat-split{grid-template-columns:1fr}.cat-card{height:380px}
-            .modal{grid-template-columns:1fr}.modal-img{aspect-ratio:1/1}
-            .footer-inner{grid-template-columns:1fr 1fr}
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links { display: none; } .mobile-toggle { display: block; }
+            .cat-split { grid-template-columns: 1fr; } .cat-card { height: 340px; }
+            .featured-banner { grid-template-columns: 1fr; } .featured-banner img { height: 350px; }
+            .modal { grid-template-columns: 1fr; } .modal-img { aspect-ratio: 1/1; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
         }
-        @media(max-width:768px){
-            .nav-links{display:none}.mobile-toggle{display:block}
-            .hero{padding:120px 24px 60px}.section{padding:60px 24px}
-            .product-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
-            .features-grid{grid-template-columns:1fr;gap:36px}
-            .footer-inner{grid-template-columns:1fr;gap:36px}.cta-banner{padding:56px 24px}
-            .modal-overlay{padding:16px}.modal-info{padding:28px 20px}
-            .cart-sidebar{width:100%}
+        @media (max-width: 600px) {
+            .hero { padding: 100px 20px 60px; } .section { padding: 60px 20px; }
+            .product-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+            .footer-inner { grid-template-columns: 1fr; }
+            .featured-text { padding: 28px; }
+            .modal-overlay { padding: 12px; } .modal-info { padding: 24px 18px; }
+            .cart-sidebar { width: 100%; }
+            .order-modal { padding: 28px 20px; }
         }
     </style>
 </head>
 <body>
-
-<!-- Ticker -->
-<div class="ticker"><span>✦ SUMMER SALE — UP TO 31% OFF ✦ FREE SHIPPING ACROSS BANGLADESH ✦ 30-DAY EASY RETURNS ✦ 2-YEAR WARRANTY ✦</span></div>
 
 <!-- Nav -->
 <nav class="nav" id="nav">
@@ -270,10 +297,8 @@
             <li><a href="#featured">Featured</a></li>
             <li><a href="#collection" class="nav-cta">Shop Now</a></li>
         </ul>
-        <div style="display:flex;align-items:center;gap:16px">
-            <button class="cart-icon-btn" onclick="openCart()" aria-label="Cart">
-                🛒 <span class="cart-count" id="cartCount">0</span>
-            </button>
+        <div style="display:flex;align-items:center;gap:14px">
+            <button class="cart-icon-btn" onclick="openCart()" aria-label="Cart">🛒 <span class="cart-count" id="cartCount">0</span></button>
             <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
         </div>
     </div>
@@ -284,21 +309,22 @@
     <button class="mobile-close" id="mobileClose">&times;</button>
     <a href="#home">Home</a><a href="#men-cat">Men's</a><a href="#women-cat">Women's</a>
     <a href="#collection">All Watches</a><a href="#featured">Featured</a>
-    <a href="#" onclick="openCart()">Cart (<span id="mobileCartCount">0</span>)</a>
+    <a href="#" onclick="openCart()" style="margin-top:8px;">Cart (<span id="mobileCartCount">0</span>)</a>
 </div>
 
 <!-- Hero -->
 <section class="hero" id="home">
     <div class="hero-content">
-        <p class="hero-eyebrow">Est. 2026 · Faridpur, Dhaka</p>
+        <p class="hero-eyebrow">Est. 2026 — Faridpur, Dhaka</p>
         <div class="hero-logo"><img src="images/eluxo-logo.png" alt="Eluxo"></div>
-        <h1>Timeless Elegance.<br><em>Redefined.</em></h1>
-        <p>Premium timepieces crafted for those who appreciate the finer things. Every watch tells a story of precision and passion.</p>
+        <h1>Crafted for the<br><em>Discerning Wrist</em></h1>
+        <p>Premium timepieces that blend timeless elegance with modern precision. Each watch is a statement of refined taste.</p>
         <div class="hero-buttons">
             <a href="#men-cat" class="btn btn-primary">Shop Men →</a>
             <a href="#women-cat" class="btn btn-outline">Shop Women →</a>
         </div>
     </div>
+    <div class="hero-scroll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
 </section>
 
 <!-- Category Split -->
@@ -306,50 +332,28 @@
     <div class="cat-split">
         <a href="#men-cat" class="cat-card fade-in" id="men-cat">
             <img src="images/watch-04.jpeg" alt="Men's Collection" loading="lazy">
-            <div class="cat-label">
-                <p class="cat-tag">New Season</p>
-                <h3 class="cat-title">Men's Collection</h3>
-                <p class="cat-subtitle">Bold, refined, and built for the modern gentleman</p>
-                <span class="cat-arrow">Explore Collection →</span>
-            </div>
+            <div class="cat-label"><p class="cat-tag">New Season</p><h3 class="cat-title">Men's Collection</h3><p class="cat-subtitle">Bold, refined, and built for the modern gentleman</p><span class="cat-arrow">Explore →</span></div>
         </a>
         <a href="#women-cat" class="cat-card fade-in" id="women-cat">
             <img src="images/watch-06.jpeg" alt="Women's Collection" loading="lazy">
-            <div class="cat-label">
-                <p class="cat-tag">New Season</p>
-                <h3 class="cat-title">Women's Collection</h3>
-                <p class="cat-subtitle">Graceful designs that celebrate elegance and individuality</p>
-                <span class="cat-arrow">Explore Collection →</span>
-            </div>
+            <div class="cat-label"><p class="cat-tag">New Season</p><h3 class="cat-title">Women's Collection</h3><p class="cat-subtitle">Graceful designs that celebrate elegance and individuality</p><span class="cat-arrow">Explore →</span></div>
         </a>
     </div>
 </section>
 
 <!-- Featured -->
 <section class="section" id="featured" style="padding-top:0">
-    <div class="section-header fade-in">
-        <p class="section-eyebrow">Featured</p>
-        <h2 class="section-title">The Royal Chronograph</h2>
-        <p class="section-subtitle">Our flagship timepiece — a masterpiece of precision and elegance</p>
-    </div>
-    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:0;align-items:center;background:var(--surface);border:1px solid var(--border);overflow:hidden" class="fade-in">
-        <div style="min-height:480px"><img src="images/watch-royal-chronograph.jpg" alt="Royal Chronograph" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
-        <div style="padding:56px 48px">
-            <span style="display:inline-block;background:var(--discount);color:#fff;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;margin-bottom:18px">Limited Offer</span>
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;margin-bottom:14px">Royal Chronograph</h3>
-            <p style="color:var(--text-dim);margin-bottom:24px;font-size:14px;line-height:1.8;font-weight:300">Japanese automatic movement, sapphire crystal glass, hand-stitched Italian leather strap. The perfect companion for every occasion.</p>
-            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:20px">
-                <span style="text-decoration:line-through;color:#555;font-size:17px">৳12,500</span>
-                <span style="font-size:38px;font-weight:700;font-family:'Playfair Display',serif">৳8,999</span>
-                <span style="font-size:12px;color:var(--discount);font-weight:600">Save 28%</span>
+    <div class="featured-banner fade-in">
+        <img src="images/watch-royal-chronograph.jpg" alt="Royal Chronograph">
+        <div class="featured-text">
+            <span class="badge">Limited Offer</span>
+            <h3>Royal Chronograph</h3>
+            <p>Our flagship timepiece. Japanese automatic movement, sapphire crystal glass, and genuine Italian leather strap.</p>
+            <div class="price-stack"><span class="price-old">৳12,500</span><span class="price-new">৳8,999</span><span class="price-off">Save 28%</span></div>
+            <div class="featured-btns">
+                <button class="btn btn-primary" onclick="addToCart('royal-chrono','Black Leather',8999)">Add to Cart</button>
+                <button class="btn btn-accent" onclick="buyNow('royal-chrono','Black Leather',8999)">Buy Now ⚡</button>
             </div>
-            <div style="display:flex;gap:10px;margin-bottom:20px">
-                <div style="background:var(--surface2);border:1px solid var(--border);padding:8px 14px;text-align:center;min-width:50px"><span style="font-size:18px;font-weight:700;display:block" id="fd">03</span><span style="font-size:8px;text-transform:uppercase;color:var(--text-muted)">Days</span></div>
-                <div style="background:var(--surface2);border:1px solid var(--border);padding:8px 14px;text-align:center;min-width:50px"><span style="font-size:18px;font-weight:700;display:block" id="fh">18</span><span style="font-size:8px;text-transform:uppercase;color:var(--text-muted)">Hrs</span></div>
-                <div style="background:var(--surface2);border:1px solid var(--border);padding:8px 14px;text-align:center;min-width:50px"><span style="font-size:18px;font-weight:700;display:block" id="fm">42</span><span style="font-size:8px;text-transform:uppercase;color:var(--text-muted)">Min</span></div>
-                <div style="background:var(--surface2);border:1px solid var(--border);padding:8px 14px;text-align:center;min-width:50px"><span style="font-size:18px;font-weight:700;display:block" id="fs">15</span><span style="font-size:8px;text-transform:uppercase;color:var(--text-muted)">Sec</span></div>
-            </div>
-            <button class="btn btn-primary" onclick="addToCart('royal-chrono','Black Leather',8999)">Add to Cart →</button>
         </div>
     </div>
 </section>
@@ -358,8 +362,8 @@
 <section class="section" id="collection">
     <div class="section-header fade-in">
         <p class="section-eyebrow">Our Collection</p>
-        <h2 class="section-title">Discover Every Timepiece</h2>
-        <p class="section-subtitle">Browse our complete range — filter by category to find your perfect match</p>
+        <h2 class="section-title">Timeless Pieces</h2>
+        <p class="section-subtitle">Every Eluxo watch is meticulously designed. Filter by category to find your perfect match.</p>
     </div>
     <div class="filter-tabs fade-in">
         <button class="filter-tab active" onclick="filterProducts('all')">All Watches</button>
@@ -367,35 +371,30 @@
         <button class="filter-tab" onclick="filterProducts('women')">Women's</button>
     </div>
     <div class="product-grid" id="productGrid"></div>
-    <div class="cta-banner fade-in">
-        <h3>Not Sure Which One?</h3>
-        <p>Every Eluxo comes with free shipping, 30-day returns, and a 2-year warranty.</p>
-        <a href="#" class="btn btn-outline">Contact on WhatsApp</a>
+    <div class="collection-banner fade-in">
+        <h3>Can't Decide?</h3>
+        <p>Every Eluxo comes with a 30-day money-back guarantee and 2-year warranty.</p>
+        <a href="https://wa.me/8801XXXXXXXXX?text=I%20am%20interested%20in%20Eluxo%20watches" target="_blank" class="btn btn-light">Chat on WhatsApp</a>
     </div>
 </section>
 
 <!-- Why Us -->
-<div class="why-us" id="about">
-    <section class="section">
-        <div class="section-header fade-in"><p class="section-eyebrow">Why Eluxo</p><h2 class="section-title">The Eluxo Promise</h2></div>
-        <div class="features-grid">
-            <div class="feature fade-in"><div class="feature-icon">✦</div><h4>Master Craftsmanship</h4><p>Every watch is hand-assembled using premium materials and precision movements sourced globally.</p></div>
-            <div class="feature fade-in"><div class="feature-icon">↺</div><h4>30-Day Trial</h4><p>Wear it, love it, or return it. Full refund within 30 days — no questions asked.</p></div>
-            <div class="feature fade-in"><div class="feature-icon">◈</div><h4>2-Year Warranty</h4><p>Every Eluxo is backed by a comprehensive 2-year warranty covering all manufacturing defects.</p></div>
-        </div>
-    </section>
-</div>
+<section class="section" id="about">
+    <div class="section-header fade-in"><p class="section-eyebrow">Why Eluxo</p><h2 class="section-title">The Eluxo Difference</h2></div>
+    <div class="features-grid">
+        <div class="feature fade-in"><div class="feature-icon">✦</div><h4>Premium Craftsmanship</h4><p>Every watch is hand-assembled with precision movements and the finest materials.</p></div>
+        <div class="feature fade-in"><div class="feature-icon">↺</div><h4>30-Day Returns</h4><p>Not satisfied? Return within 30 days for a full refund. No questions asked.</p></div>
+        <div class="feature fade-in"><div class="feature-icon">🛡</div><h4>2-Year Warranty</h4><p>All Eluxo watches come with a comprehensive 2-year warranty against defects.</p></div>
+    </div>
+</section>
 
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-inner">
-        <div class="footer-brand">
-            <img src="images/eluxo-logo.png" alt="Eluxo"><p>Premium timepieces crafted for those who appreciate the finer things. Based in Faridpur, Dhaka Division, Bangladesh.</p>
-            <div class="footer-social"><a href="#">W</a><a href="#">F</a><a href="#">I</a></div>
-        </div>
+        <div class="footer-brand"><img src="images/eluxo-logo.png" alt="Eluxo"><p>Premium timepieces crafted for those who appreciate the finer things in life. Based in Faridpur, Dhaka Division, Bangladesh.</p></div>
         <div><h5>Shop</h5><ul><li><a href="#men-cat">Men's</a></li><li><a href="#women-cat">Women's</a></li><li><a href="#">New Arrivals</a></li><li><a href="#">Best Sellers</a></li></ul></div>
-        <div><h5>Support</h5><ul><li><a href="#">Contact</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Warranty</a></li></ul></div>
-        <div><h5>Company</h5><ul><li><a href="#">About</a></li><li><a href="#">Story</a></li><li><a href="#">Privacy</a></li></ul></div>
+        <div><h5>Support</h5><ul><li><a href="#">Contact</a></li><li><a href="#">Shipping Info</a></li><li><a href="#">Returns</a></li><li><a href="#">Warranty</a></li></ul></div>
+        <div><h5>Connect</h5><ul><li><a href="#">WhatsApp</a></li><li><a href="#">Facebook</a></li><li><a href="#">Instagram</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>&copy; 2026 Eluxo. All rights reserved.</span><span>Faridpur, Dhaka, Bangladesh</span></div>
 </footer>
@@ -406,28 +405,51 @@
         <button class="modal-close" onclick="closeModal()">✕</button>
         <div class="modal-img"><img id="modalImg" src="" alt=""></div>
         <div class="modal-info">
-            <span class="gender-tag" id="modalGender"></span>
+            <p class="modal-gender" id="modalGender"></p>
             <h2 id="modalName"></h2>
             <p class="modal-cat" id="modalCat"></p>
             <p class="modal-desc" id="modalDesc"></p>
             <div class="modal-price"><span class="old" id="modalOld"></span><span class="new" id="modalNew"></span><span class="off" id="modalOff"></span></div>
-            <div class="modal-stock-stats">
-                <div class="modal-stock-stat available"><span class="val" id="modalStock"></span><span class="lbl">In Stock</span></div>
-                <div class="modal-stock-stat sold"><span class="val" id="modalSold"></span><span class="lbl">Sold</span></div>
+            <div class="modal-stats">
+                <div class="modal-stat stock"><span class="val" id="modalStock"></span><span class="lbl">In Stock</span></div>
+                <div class="modal-stat sold"><span class="val" id="modalSold"></span><span class="lbl">Sold</span></div>
             </div>
             <div class="modal-colors" id="modalColorsWrap">
                 <p class="color-label">Available Colors</p>
                 <div class="color-options" id="modalColors"></div>
             </div>
             <div class="qty-row">
-                <span class="qty-label">Quantity</span>
+                <span class="qty-label">Qty</span>
                 <div class="qty-selector">
                     <button onclick="changeModalQty(-1)">−</button>
                     <input type="number" id="modalQty" value="1" min="1" max="10" onchange="validateModalQty()">
                     <button onclick="changeModalQty(1)">+</button>
                 </div>
             </div>
-            <button class="btn btn-primary btn-full" id="modalAddBtn" onclick="modalAddToCart()">Add to Cart — ৳<span id="modalBtnPrice">0</span></button>
+            <div class="modal-btns">
+                <button class="btn btn-primary btn-full" id="modalAddBtn" onclick="modalAddToCart()">Add to Cart — ৳<span id="modalBtnPrice">0</span></button>
+                <button class="btn btn-accent btn-full" onclick="modalBuyNow()">⚡ Buy Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Modal (Buy Now) -->
+<div class="order-overlay" id="orderOverlay">
+    <div class="order-modal">
+        <button class="close-btn" onclick="closeOrderModal()">✕</button>
+        <div class="icon">📦</div>
+        <h3>Complete Your Order</h3>
+        <p style="color:var(--text-light);font-size:13px;margin-bottom:4px">Order via WhatsApp or Messenger</p>
+        <div class="order-summary" id="orderSummary"></div>
+        <div class="order-btns">
+            <a class="btn btn-whatsapp btn-full" id="whatsappLink" target="_blank" href="#">
+                <span style="font-size:16px">💬</span> Order via WhatsApp
+            </a>
+            <a class="btn btn-messenger btn-full" id="messengerLink" target="_blank" href="#">
+                <span style="font-size:16px">💬</span> Order via Messenger
+            </a>
+            <button class="btn btn-outline btn-full" onclick="closeOrderModal()">Cancel</button>
         </div>
     </div>
 </div>
@@ -435,14 +457,12 @@
 <!-- Cart Sidebar -->
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
 <div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-        <h3>Your Cart (<span id="cartItemCount">0</span>)</h3>
-        <button class="cart-close" onclick="closeCart()">✕</button>
-    </div>
+    <div class="cart-header"><h3>Your Cart (<span id="cartItemCount">0</span>)</h3><button class="cart-close" onclick="closeCart()">✕</button></div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-footer" id="cartFooter">
         <div class="cart-total"><span>Total</span><span class="total-price">৳<span id="cartTotal">0</span></span></div>
-        <button class="btn btn-primary" onclick="checkout()">Checkout →</button>
+        <button class="btn btn-accent" onclick="cartBuyNow()">⚡ Buy All via WhatsApp</button>
+        <button class="btn btn-outline" onclick="closeCart()" style="margin-top:6px">Continue Shopping</button>
     </div>
 </div>
 
@@ -450,107 +470,132 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ─────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// WHATSAPP & MESSENGER CONFIG
+// ─────────────────────────────────────────────
+const BUSINESS_PHONE = '8801XXXXXXXXX';    // ← YOUR WHATSAPP NUMBER HERE (country code + number, no +, no spaces)
+const FB_PAGE_ID = 'YOUR_FACEBOOK_PAGE';     // ← YOUR FB PAGE username or ID
+
+// ─────────────────────────────────────────────
 // PRODUCT DATA
-// ─────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
 const products = [
     // MEN'S
-    { id:"classic-minimal", name:"Classic Minimal", gender:"men", originalPrice:8500, price:5999, discount:29, image:"images/watch-01.jpeg", category:"Classic", stock:23, sold:147, colors:[{name:"Silver Steel",hex:"#c0c0c0"},{name:"Matte Black",hex:"#2a2a2a"},{name:"Navy Blue",hex:"#1a3a5c"}], desc:"A timeless minimalist design with a stainless steel case, clean dial, and genuine leather strap. Perfect for everyday elegance." },
-    { id:"urban-steel", name:"Urban Steel", gender:"men", originalPrice:7800, price:5499, discount:30, image:"images/watch-03.jpeg", category:"Urban", stock:17, sold:89, colors:[{name:"Brushed Steel",hex:"#b8b8b8"},{name:"Gunmetal",hex:"#3a3a3a"}], desc:"Modern urban design with a brushed steel finish. Features a date window and water resistance up to 50 meters." },
-    { id:"golden-era", name:"Golden Era", gender:"men", originalPrice:10500, price:7499, discount:29, image:"images/watch-04.jpeg", category:"Premium", stock:9, sold:203, colors:[{name:"Gold",hex:"#d4af37"},{name:"Rose Gold",hex:"#b76e79"},{name:"Silver",hex:"#c0c0c0"}], desc:"A luxurious gold-accented masterpiece. Features a precision Japanese movement and sapphire-coated crystal." },
-    { id:"midnight-black", name:"Midnight Black", gender:"men", originalPrice:8900, price:6299, discount:29, image:"images/watch-05.jpeg", category:"Modern", stock:14, sold:112, colors:[{name:"Jet Black",hex:"#1a1a1a"},{name:"Carbon Gray",hex:"#4a4a4a"}], desc:"Sleek all-black design for the modern man. Minimalist dial with luminous hands and a comfortable silicone strap." },
-    { id:"vintage-leather", name:"Vintage Leather", gender:"men", originalPrice:7200, price:4999, discount:31, image:"images/watch-07.jpeg", category:"Vintage", stock:19, sold:178, colors:[{name:"Brown Leather",hex:"#8b4513"},{name:"Tan Leather",hex:"#d2a679"},{name:"Black Leather",hex:"#2a2a2a"}], desc:"Inspired by classic aviator watches. Features a distressed genuine leather strap and a bold, easy-to-read dial." },
-    { id:"executive-pro", name:"Executive Pro", gender:"men", originalPrice:12000, price:8599, discount:28, image:"images/watch-09.jpeg", category:"Premium", stock:6, sold:156, colors:[{name:"Silver/Blue",hex:"#4a7ab5"},{name:"Black/Gold",hex:"#1a1a1a"}], desc:"The ultimate executive timepiece. Dual-tone stainless steel with a chronograph function and date complication." },
-    { id:"chrono-sport", name:"Chrono Sport", gender:"men", originalPrice:8200, price:5799, discount:29, image:"images/watch-10.jpeg", category:"Sport", stock:22, sold:95, colors:[{name:"Racing Green",hex:"#1a4a2a"},{name:"Sport Red",hex:"#c0392b"},{name:"Stealth Black",hex:"#1a1a1a"}], desc:"Built for performance. Features a tachymeter bezel, stopwatch function, and durable stainless steel construction." },
-    { id:"brown-aviator", name:"Brown Aviator", gender:"men", originalPrice:7600, price:5299, discount:30, image:"images/watch-12.jpeg", category:"Aviator", stock:15, sold:67, colors:[{name:"Brown",hex:"#8b6914"},{name:"Olive Green",hex:"#556b2f"}], desc:"A rugged aviator-inspired watch with large numerals, a leather strap, and excellent legibility day or night." },
-    { id:"titan-edge", name:"Titan Edge", gender:"men", originalPrice:10200, price:7299, discount:28, image:"images/watch-14.jpeg", category:"Modern", stock:8, sold:134, colors:[{name:"Titanium Gray",hex:"#7a7a7a"},{name:"Dark Silver",hex:"#5a5a5a"}], desc:"Ultra-light titanium construction with a sleek modern dial. Perfect for the man who values both style and comfort." },
-    { id:"obsidian-black", name:"Obsidian Black", gender:"men", originalPrice:8700, price:6099, discount:30, image:"images/watch-17.jpeg", category:"Modern", stock:21, sold:88, colors:[{name:"Obsidian",hex:"#0a0a0a"},{name:"Graphite",hex:"#3a3a3a"}], desc:"Deep obsidian black dial with contrasting silver markers. A bold statement piece for any occasion." },
-    { id:"navy-commander", name:"Navy Commander", gender:"men", originalPrice:8600, price:5999, discount:30, image:"images/watch-20.jpeg", category:"Aviator", stock:11, sold:72, colors:[{name:"Navy Blue",hex:"#1a3a5c"},{name:"Black",hex:"#1a1a1a"}], desc:"Command attention with this navy-themed aviator watch. Robust build with precise quartz movement." },
-    { id:"crimson-bold", name:"Crimson Bold", gender:"men", originalPrice:8300, price:5899, discount:29, image:"images/watch-21.jpeg", category:"Sport", stock:16, sold:54, colors:[{name:"Crimson Red",hex:"#8b0000"},{name:"Burgundy",hex:"#4a0010"}], desc:"Make a bold statement with this crimson-accented sports watch. Dynamic design for the adventurous spirit." },
-    { id:"matte-phantom", name:"Matte Phantom", gender:"men", originalPrice:9400, price:6699, discount:29, image:"images/watch-23.jpeg", category:"Modern", stock:13, sold:101, colors:[{name:"Matte Black",hex:"#1a1a1a"},{name:"Matte Gray",hex:"#4a4a4a"}], desc:"A phantom-like matte finish that exudes mystery and sophistication. Minimal design with maximum impact." },
-
+    { id:"classic-minimal",name:"Classic Minimal",gender:"men",originalPrice:8500,price:5999,discount:29,image:"images/watch-01.jpeg",category:"Classic",stock:23,sold:147,colors:[{name:"Silver Steel",hex:"#c0c0c0"},{name:"Matte Black",hex:"#2a2a2a"},{name:"Navy Blue",hex:"#1a3a5c"}],desc:"A timeless minimalist design with a stainless steel case, clean dial, and genuine leather strap. Perfect for everyday elegance." },
+    { id:"urban-steel",name:"Urban Steel",gender:"men",originalPrice:7800,price:5499,discount:30,image:"images/watch-03.jpeg",category:"Urban",stock:17,sold:89,colors:[{name:"Brushed Steel",hex:"#b8b8b8"},{name:"Gunmetal",hex:"#3a3a3a"}],desc:"Modern urban design with a brushed steel finish. Features a date window and water resistance up to 50 meters." },
+    { id:"golden-era",name:"Golden Era",gender:"men",originalPrice:10500,price:7499,discount:29,image:"images/watch-04.jpeg",category:"Premium",stock:9,sold:203,colors:[{name:"Gold",hex:"#d4af37"},{name:"Rose Gold",hex:"#b76e79"},{name:"Silver",hex:"#c0c0c0"}],desc:"A luxurious gold-accented masterpiece. Features a precision Japanese movement and sapphire-coated crystal." },
+    { id:"midnight-black",name:"Midnight Black",gender:"men",originalPrice:8900,price:6299,discount:29,image:"images/watch-05.jpeg",category:"Modern",stock:14,sold:112,colors:[{name:"Jet Black",hex:"#1a1a1a"},{name:"Carbon Gray",hex:"#4a4a4a"}],desc:"Sleek all-black design for the modern man. Minimalist dial with luminous hands and a comfortable silicone strap." },
+    { id:"vintage-leather",name:"Vintage Leather",gender:"men",originalPrice:7200,price:4999,discount:31,image:"images/watch-07.jpeg",category:"Vintage",stock:19,sold:178,colors:[{name:"Brown Leather",hex:"#8b4513"},{name:"Tan Leather",hex:"#d2a679"},{name:"Black Leather",hex:"#2a2a2a"}],desc:"Inspired by classic aviator watches. Distressed genuine leather strap and a bold, easy-to-read dial." },
+    { id:"executive-pro",name:"Executive Pro",gender:"men",originalPrice:12000,price:8599,discount:28,image:"images/watch-09.jpeg",category:"Premium",stock:6,sold:156,colors:[{name:"Silver/Blue",hex:"#4a7ab5"},{name:"Black/Gold",hex:"#1a1a1a"}],desc:"The ultimate executive timepiece. Dual-tone stainless steel with chronograph and date complication." },
+    { id:"chrono-sport",name:"Chrono Sport",gender:"men",originalPrice:8200,price:5799,discount:29,image:"images/watch-10.jpeg",category:"Sport",stock:22,sold:95,colors:[{name:"Racing Green",hex:"#1a4a2a"},{name:"Sport Red",hex:"#c0392b"},{name:"Stealth Black",hex:"#1a1a1a"}],desc:"Built for performance. Tachymeter bezel, stopwatch function, and durable stainless steel construction." },
+    { id:"brown-aviator",name:"Brown Aviator",gender:"men",originalPrice:7600,price:5299,discount:30,image:"images/watch-12.jpeg",category:"Aviator",stock:15,sold:67,colors:[{name:"Brown",hex:"#8b6914"},{name:"Olive Green",hex:"#556b2f"}],desc:"A rugged aviator-inspired watch with large numerals and a leather strap." },
+    { id:"titan-edge",name:"Titan Edge",gender:"men",originalPrice:10200,price:7299,discount:28,image:"images/watch-14.jpeg",category:"Modern",stock:8,sold:134,colors:[{name:"Titanium Gray",hex:"#7a7a7a"},{name:"Dark Silver",hex:"#5a5a5a"}],desc:"Ultra-light titanium construction with a sleek modern dial for style and comfort." },
+    { id:"obsidian-black",name:"Obsidian Black",gender:"men",originalPrice:8700,price:6099,discount:30,image:"images/watch-17.jpeg",category:"Modern",stock:21,sold:88,colors:[{name:"Obsidian",hex:"#0a0a0a"},{name:"Graphite",hex:"#3a3a3a"}],desc:"Deep obsidian black dial with contrasting silver markers. A bold statement piece." },
+    { id:"navy-commander",name:"Navy Commander",gender:"men",originalPrice:8600,price:5999,discount:30,image:"images/watch-20.jpeg",category:"Aviator",stock:11,sold:72,colors:[{name:"Navy Blue",hex:"#1a3a5c"},{name:"Black",hex:"#1a1a1a"}],desc:"Command attention with this navy-themed aviator watch. Robust build, precise quartz." },
+    { id:"crimson-bold",name:"Crimson Bold",gender:"men",originalPrice:8300,price:5899,discount:29,image:"images/watch-21.jpeg",category:"Sport",stock:16,sold:54,colors:[{name:"Crimson Red",hex:"#8b0000"},{name:"Burgundy",hex:"#4a0010"}],desc:"Make a bold statement with this crimson-accented sports watch for the adventurous." },
+    { id:"matte-phantom",name:"Matte Phantom",gender:"men",originalPrice:9400,price:6699,discount:29,image:"images/watch-23.jpeg",category:"Modern",stock:13,sold:101,colors:[{name:"Matte Black",hex:"#1a1a1a"},{name:"Matte Gray",hex:"#4a4a4a"}],desc:"A phantom-like matte finish exuding mystery and sophistication. Minimal design, maximum impact." },
     // WOMEN'S
-    { id:"silver-heritage", name:"Silver Heritage", gender:"women", originalPrice:9200, price:6799, discount:26, image:"images/watch-02.jpeg", category:"Heritage", stock:12, sold:91, colors:[{name:"Silver",hex:"#c0c0c0"},{name:"Gold",hex:"#d4af37"},{name:"Rose Gold",hex:"#b76e79"}], desc:"Inspired by vintage elegance. Delicate silver-tone bracelet with a mother-of-pearl dial and diamond-cut markers." },
-    { id:"rose-gold-luxe", name:"Rose Gold Luxe", gender:"women", originalPrice:11500, price:8299, discount:28, image:"images/watch-06.jpeg", category:"Premium", stock:5, sold:189, colors:[{name:"Rose Gold",hex:"#b76e79"},{name:"Champagne Gold",hex:"#f0c05a"}], desc:"The epitome of feminine luxury. Stunning rose gold finish with a textured dial and crystal-embellished bezel." },
-    { id:"sapphire-edge", name:"Sapphire Edge", gender:"women", originalPrice:9800, price:6999, discount:29, image:"images/watch-08.jpeg", category:"Modern", stock:10, sold:76, colors:[{name:"Sapphire Blue",hex:"#0f52ba"},{name:"Lavender",hex:"#967bb6"},{name:"Blush Pink",hex:"#de5d83"}], desc:"A striking sapphire-inspired design. Modern elegance with a comfortable mesh bracelet and faceted crystal." },
-    { id:"diamond-cut", name:"Diamond Cut", gender:"women", originalPrice:13500, price:9799, discount:27, image:"images/watch-11.jpeg", category:"Premium", stock:3, sold:215, colors:[{name:"White Gold",hex:"#e8e8e8"},{name:"Yellow Gold",hex:"#d4af37"}], desc:"Our most luxurious women's timepiece. Features diamond-cut indices, a crystal bezel, and a premium bracelet." },
-    { id:"mesh-royale", name:"Mesh Royale", gender:"women", originalPrice:8800, price:6199, discount:30, image:"images/watch-13.jpeg", category:"Classic", stock:18, sold:63, colors:[{name:"Silver Mesh",hex:"#c0c0c0"},{name:"Gold Mesh",hex:"#d4af37"}], desc:"Classic elegance with a modern twist. The fine mesh bracelet drapes beautifully on the wrist for all-day comfort." },
-    { id:"gold-classic", name:"Gold Classic", gender:"women", originalPrice:9500, price:6899, discount:27, image:"images/watch-15.jpeg", category:"Classic", stock:7, sold:142, colors:[{name:"Yellow Gold",hex:"#d4af37"},{name:"White Gold",hex:"#e8e8e8"}], desc:"A timeless gold classic. Slim profile with a minimalist dial — the perfect accessory for any outfit." },
-    { id:"silver-moon", name:"Silver Moon", gender:"women", originalPrice:7900, price:5599, discount:29, image:"images/watch-16.jpeg", category:"Elegant", stock:20, sold:85, colors:[{name:"Moon Silver",hex:"#d4d4d4"},{name:"Starlight",hex:"#e8e0c8"}], desc:"Inspired by moonlight. Delicate and dreamy with a shimmering dial that catches the light beautifully." },
-    { id:"amber-glow", name:"Amber Glow", gender:"women", originalPrice:9100, price:6499, discount:29, image:"images/watch-18.jpeg", category:"Premium", stock:9, sold:118, colors:[{name:"Amber",hex:"#ffbf00"},{name:"Honey Gold",hex:"#e8a840"}], desc:"Warm amber tones radiate sophistication. A standout piece that transitions seamlessly from day to evening." },
-    { id:"steel-reserve", name:"Steel Reserve", gender:"women", originalPrice:7400, price:5199, discount:30, image:"images/watch-19.jpeg", category:"Urban", stock:25, sold:47, colors:[{name:"Steel",hex:"#b8b8b8"},{name:"Two-Tone",hex:"#c8a45c"}], desc:"Understated urban chic. Clean lines and a brushed steel finish make this an everyday essential." },
-    { id:"pearl-white", name:"Pearl White", gender:"women", originalPrice:9900, price:7199, discount:27, image:"images/watch-22.jpeg", category:"Elegant", stock:8, sold:129, colors:[{name:"Pearl White",hex:"#f5f0e8"},{name:"Soft Pink",hex:"#f4c2c2"}], desc:"Pure elegance in pearl white. Features a ceramic bracelet, minimalist dial, and a whisper-thin profile." },
+    { id:"silver-heritage",name:"Silver Heritage",gender:"women",originalPrice:9200,price:6799,discount:26,image:"images/watch-02.jpeg",category:"Heritage",stock:12,sold:91,colors:[{name:"Silver",hex:"#c0c0c0"},{name:"Gold",hex:"#d4af37"},{name:"Rose Gold",hex:"#b76e79"}],desc:"Inspired by vintage elegance. Delicate silver-tone bracelet with mother-of-pearl dial." },
+    { id:"rose-gold-luxe",name:"Rose Gold Luxe",gender:"women",originalPrice:11500,price:8299,discount:28,image:"images/watch-06.jpeg",category:"Premium",stock:5,sold:189,colors:[{name:"Rose Gold",hex:"#b76e79"},{name:"Champagne Gold",hex:"#f0c05a"}],desc:"The epitome of feminine luxury. Stunning rose gold finish with textured dial and crystal bezel." },
+    { id:"sapphire-edge",name:"Sapphire Edge",gender:"women",originalPrice:9800,price:6999,discount:29,image:"images/watch-08.jpeg",category:"Modern",stock:10,sold:76,colors:[{name:"Sapphire Blue",hex:"#0f52ba"},{name:"Lavender",hex:"#967bb6"},{name:"Blush Pink",hex:"#de5d83"}],desc:"A striking sapphire-inspired design. Modern elegance with a comfortable mesh bracelet." },
+    { id:"diamond-cut",name:"Diamond Cut",gender:"women",originalPrice:13500,price:9799,discount:27,image:"images/watch-11.jpeg",category:"Premium",stock:3,sold:215,colors:[{name:"White Gold",hex:"#e8e8e8"},{name:"Yellow Gold",hex:"#d4af37"}],desc:"Our most luxurious women's timepiece. Diamond-cut indices, crystal bezel, premium bracelet." },
+    { id:"mesh-royale",name:"Mesh Royale",gender:"women",originalPrice:8800,price:6199,discount:30,image:"images/watch-13.jpeg",category:"Classic",stock:18,sold:63,colors:[{name:"Silver Mesh",hex:"#c0c0c0"},{name:"Gold Mesh",hex:"#d4af37"}],desc:"Classic elegance with a modern twist. Fine mesh bracelet drapes beautifully on the wrist." },
+    { id:"gold-classic",name:"Gold Classic",gender:"women",originalPrice:9500,price:6899,discount:27,image:"images/watch-15.jpeg",category:"Classic",stock:7,sold:142,colors:[{name:"Yellow Gold",hex:"#d4af37"},{name:"White Gold",hex:"#e8e8e8"}],desc:"A timeless gold classic. Slim profile with a minimalist dial — perfect for any outfit." },
+    { id:"silver-moon",name:"Silver Moon",gender:"women",originalPrice:7900,price:5599,discount:29,image:"images/watch-16.jpeg",category:"Elegant",stock:20,sold:85,colors:[{name:"Moon Silver",hex:"#d4d4d4"},{name:"Starlight",hex:"#e8e0c8"}],desc:"Inspired by moonlight. Delicate and dreamy with a shimmering dial." },
+    { id:"amber-glow",name:"Amber Glow",gender:"women",originalPrice:9100,price:6499,discount:29,image:"images/watch-18.jpeg",category:"Premium",stock:9,sold:118,colors:[{name:"Amber",hex:"#ffbf00"},{name:"Honey Gold",hex:"#e8a840"}],desc:"Warm amber tones radiate sophistication. Transitions seamlessly from day to evening." },
+    { id:"steel-reserve",name:"Steel Reserve",gender:"women",originalPrice:7400,price:5199,discount:30,image:"images/watch-19.jpeg",category:"Urban",stock:25,sold:47,colors:[{name:"Steel",hex:"#b8b8b8"},{name:"Two-Tone",hex:"#c8a45c"}],desc:"Understated urban chic. Clean lines and brushed steel — an everyday essential." },
+    { id:"pearl-white",name:"Pearl White",gender:"women",originalPrice:9900,price:7199,discount:27,image:"images/watch-22.jpeg",category:"Elegant",stock:8,sold:129,colors:[{name:"Pearl White",hex:"#f5f0e8"},{name:"Soft Pink",hex:"#f4c2c2"}],desc:"Pure elegance in pearl white. Ceramic bracelet and whisper-thin profile." },
 ];
 
-// Special: Royal Chronograph
-const royalChrono = { id:"royal-chrono", name:"Royal Chronograph", gender:"men", originalPrice:12500, price:8999, discount:28, image:"images/watch-royal-chronograph.jpg", category:"Premium", stock:4, sold:261, colors:[{name:"Black Leather",hex:"#2a2a2a"},{name:"Brown Leather",hex:"#8b4513"},{name:"Steel Bracelet",hex:"#c0c0c0"}], desc:"Our crown jewel. Japanese automatic movement, sapphire crystal glass, and hand-stitched Italian leather. 50m water resistance." };
+const royalChrono = { id:"royal-chrono",name:"Royal Chronograph",gender:"men",originalPrice:12500,price:8999,discount:28,image:"images/watch-royal-chronograph.jpg",category:"Premium",stock:4,sold:261,colors:[{name:"Black Leather",hex:"#2a2a2a"},{name:"Brown Leather",hex:"#8b4513"},{name:"Steel Bracelet",hex:"#c0c0c0"}],desc:"Our crown jewel. Japanese automatic movement, sapphire crystal glass, and hand-stitched Italian leather. 50m water resistance." };
 
-// ─────────────────────────────────────────────────────────────
-// CART STATE
-// ─────────────────────────────────────────────────────────────
+function findProduct(id){ return id==='royal-chrono' ? royalChrono : products.find(p=>p.id===id); }
+
+// ─────────────────────────────────────────────
+// CART
+// ─────────────────────────────────────────────
 let cart = [];
 let currentModalProduct = null;
 let currentModalColor = null;
 
-// ─────────────────────────────────────────────────────────────
-// RENDER PRODUCTS
-// ─────────────────────────────────────────────────────────────
-const grid = document.getElementById('productGrid');
-
-function renderProducts(filter='all'){
-    grid.innerHTML='';
-    const filtered = filter==='all' ? products : products.filter(p=>p.gender===filter);
-    filtered.forEach((p,i)=>{
-        const card = document.createElement('div');
-        card.className='product-card fade-in';
-        card.style.transitionDelay=`${i*40}ms`;
-        card.setAttribute('data-gender',p.gender);
-        const stockPercent = Math.round((p.stock/(p.stock+p.sold))*100);
-        card.innerHTML=`
-            <div class="img-wrap" onclick="openDetail('${p.id}')">
-                <img src="${p.image}" alt="${p.name}" loading="lazy">
-                <span class="discount-badge">-${p.discount}%</span>
-                <span class="gender-badge">${p.gender==='men'?"Men's":"Women's"}</span>
-                <div class="stock-bar-wrap">
-                    <div class="stock-bar-info"><span>Stock: ${p.stock}</span><span>Sold: ${p.sold}</span></div>
-                    <div class="stock-bar"><div class="stock-bar-fill" style="width:${stockPercent}%"></div></div>
-                </div>
-            </div>
-            <div class="product-info" onclick="openDetail('${p.id}')">
-                <div class="cat-row"><span class="category">${p.category}</span></div>
-                <h4>${p.name}</h4>
-                <div class="price-row">
-                    <span class="old">৳${p.originalPrice.toLocaleString()}</span>
-                    <span class="new">৳${p.price.toLocaleString()}</span>
-                    <span class="saved">Save ৳${(p.originalPrice-p.price).toLocaleString()}</span>
-                </div>
-                <div class="color-dots">${p.colors.map(c=>`<span class="color-dot" style="background:${c.hex}" title="${c.name}"></span>`).join('')}</div>
-            </div>
-        `;
-        grid.appendChild(card);
-    });
-    document.querySelectorAll('.product-card.fade-in').forEach(el=>observer.observe(el));
+function addToCart(productId, color, price, qty=1){
+    const existing = cart.find(i=>i.productId===productId && i.color===color);
+    const product = findProduct(productId);
+    const max = product ? product.stock : 10;
+    if(existing){ existing.qty = Math.min(existing.qty+qty, max); if(existing.qty>=max) showToast(`Only ${max} in stock!`); }
+    else { cart.push({productId,color,price,qty:Math.min(qty,max),name:product?product.name:'',image:product?product.image:''}); }
+    updateCartUI();
+    showToast(`"${product?product.name:''}" added to cart!`);
 }
 
-function filterProducts(filter){
-    document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
-    event.target.classList.add('active');
-    renderProducts(filter);
-    // Scroll to grid
-    document.getElementById('collection').scrollIntoView({behavior:'smooth'});
+function removeFromCart(i){ cart.splice(i,1); updateCartUI(); }
+function updateCartQty(i,d){
+    const item = cart[i]; const p = findProduct(item.productId); const max = p?p.stock:10;
+    let n = item.qty+d; if(n<1){removeFromCart(i);return;} if(n>max){showToast(`Only ${max} available!`);n=max;}
+    item.qty=n; updateCartUI();
 }
 
-// ─────────────────────────────────────────────────────────────
-// PRODUCT DETAIL MODAL
-// ─────────────────────────────────────────────────────────────
-function findProduct(id){
-    if(id==='royal-chrono') return royalChrono;
-    return products.find(p=>p.id===id);
+function updateCartUI(){
+    const totalItems = cart.reduce((s,i)=>s+i.qty,0);
+    const totalPrice = cart.reduce((s,i)=>s+(i.price*i.qty),0);
+    document.getElementById('cartCount').textContent = totalItems;
+    document.getElementById('mobileCartCount').textContent = totalItems;
+    document.getElementById('cartItemCount').textContent = totalItems;
+    document.getElementById('cartTotal').textContent = totalPrice.toLocaleString();
+    const div = document.getElementById('cartItems');
+    if(cart.length===0){ div.innerHTML='<div class="cart-empty"><div class="icon">🛒</div><p>Your cart is empty</p><p style="font-size:12px;color:var(--text-light);margin-top:4px">Add your favorites!</p></div>'; }
+    else { div.innerHTML = cart.map((item,i)=>`
+        <div class="cart-item">
+            <img src="${item.image}" alt="" class="cart-item-img"><div class="cart-item-info">
+            <h4>${item.name}</h4><p class="variant">${item.color}</p><p class="price">৳${(item.price*item.qty).toLocaleString()}</p>
+            <div class="cart-item-qty"><button onclick="updateCartQty(${i},-1)">−</button><span>${item.qty}</span><button onclick="updateCartQty(${i},1)">+</button></div></div>
+            <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button></div>`).join(''); }
 }
 
-function openDetail(id){
-    const p = findProduct(id);
+function openCart(){ document.getElementById('cartOverlay').classList.add('active'); document.getElementById('cartSidebar').classList.add('active'); document.body.style.overflow='hidden'; }
+function closeCart(){ document.getElementById('cartOverlay').classList.remove('active'); document.getElementById('cartSidebar').classList.remove('active'); document.body.style.overflow=''; }
+
+function cartBuyNow(){
+    if(cart.length===0){ showToast('Cart is empty!'); return; }
+    const items = cart.map(i=>`• ${i.name} (${i.color}) x${i.qty} — ৳${(i.price*i.qty).toLocaleString()}`).join('\n');
+    const total = cart.reduce((s,i)=>s+(i.price*i.qty),0);
+    openOrderModal(items, total);
+}
+
+// ─────────────────────────────────────────────
+// BUY NOW — WHATSAPP / MESSENGER
+// ─────────────────────────────────────────────
+function buyNow(productId, color, price, qty=1){
+    const p = findProduct(productId);
     if(!p) return;
+    const summary = `• ${p.name} (${color}) x${qty} — ৳${(price*qty).toLocaleString()}`;
+    openOrderModal(summary, price*qty);
+}
+
+function modalBuyNow(){
+    if(!currentModalProduct) return;
+    const qty = parseInt(document.getElementById('modalQty').value)||1;
+    const color = currentModalColor ? currentModalColor.name : currentModalProduct.colors[0].name;
+    buyNow(currentModalProduct.id, color, currentModalProduct.price, qty);
+    closeModal();
+}
+
+function openOrderModal(summary, total){
+    document.getElementById('orderSummary').innerHTML = `<strong>Order:</strong><br>${summary.replace(/\n/g,'<br>')}<br><strong>Total: ৳${total.toLocaleString()}</strong>`;
+    const msg = encodeURIComponent(`Hello Eluxo! I want to order:\n\n${summary}\n\nTotal: ৳${total.toLocaleString()}\n\nPlease confirm my order.`);
+    document.getElementById('whatsappLink').href = `https://wa.me/${BUSINESS_PHONE}?text=${msg}`;
+    document.getElementById('messengerLink').href = `https://m.me/${FB_PAGE_ID}?text=${msg}`;
+    document.getElementById('orderOverlay').classList.add('active');
+    document.body.style.overflow='hidden';
+}
+
+function closeOrderModal(){ document.getElementById('orderOverlay').classList.remove('active'); document.body.style.overflow=''; }
+
+// ─────────────────────────────────────────────
+// PRODUCT DETAIL MODAL
+// ─────────────────────────────────────────────
+function openDetail(id){
+    const p = findProduct(id); if(!p) return;
     currentModalProduct = p;
     currentModalColor = p.colors[0];
     document.getElementById('modalImg').src = p.image;
@@ -560,233 +605,87 @@ function openDetail(id){
     document.getElementById('modalDesc').textContent = p.desc;
     document.getElementById('modalOld').textContent = '৳'+p.originalPrice.toLocaleString();
     document.getElementById('modalNew').textContent = '৳'+p.price.toLocaleString();
-    document.getElementById('modalOff').textContent = 'Save ' + p.discount + '%';
+    document.getElementById('modalOff').textContent = 'Save '+p.discount+'%';
     document.getElementById('modalStock').textContent = p.stock;
     document.getElementById('modalSold').textContent = p.sold;
     document.getElementById('modalQty').value = 1;
     document.getElementById('modalBtnPrice').textContent = p.price.toLocaleString();
-
-    // Render color options
-    const colorDiv = document.getElementById('modalColors');
-    colorDiv.innerHTML = p.colors.map(c=>
+    document.getElementById('modalColors').innerHTML = p.colors.map(c=>
         `<button class="color-option${c.name===currentModalColor.name?' selected':''}" onclick="selectModalColor('${c.name}')">${c.name}</button>`
     ).join('');
-
-    if(p.colors.length <= 1) document.getElementById('modalColorsWrap').style.display='none';
-    else document.getElementById('modalColorsWrap').style.display='block';
-
+    document.getElementById('modalColorsWrap').style.display = p.colors.length<=1?'none':'block';
     document.getElementById('modalOverlay').classList.add('active');
     document.body.style.overflow='hidden';
 }
 
-function closeModal(){
-    document.getElementById('modalOverlay').classList.remove('active');
-    document.body.style.overflow='';
-    currentModalProduct = null;
-    currentModalColor = null;
-}
+function closeModal(){ document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow=''; currentModalProduct=null;currentModalColor=null; }
+function selectModalColor(cn){ currentModalColor=currentModalProduct.colors.find(c=>c.name===cn); document.querySelectorAll('#modalColors .color-option').forEach(b=>b.classList.toggle('selected',b.textContent===cn)); }
+function changeModalQty(d){ const inp=document.getElementById('modalQty'); let v=parseInt(inp.value)+d; const max=currentModalProduct?currentModalProduct.stock:10; if(v<1)v=1;if(v>max)v=max; inp.value=v; updateModalBtnPrice(); }
+function validateModalQty(){ const inp=document.getElementById('modalQty'); let v=parseInt(inp.value); const max=currentModalProduct?currentModalProduct.stock:10; if(isNaN(v)||v<1)v=1;if(v>max)v=max; inp.value=v; updateModalBtnPrice(); }
+function updateModalBtnPrice(){ const q=parseInt(document.getElementById('modalQty').value)||1; const p=currentModalProduct?currentModalProduct.price:0; document.getElementById('modalBtnPrice').textContent=(p*q).toLocaleString(); }
+function modalAddToCart(){ if(!currentModalProduct)return; const qty=parseInt(document.getElementById('modalQty').value)||1; const col=currentModalColor?currentModalColor.name:currentModalProduct.colors[0].name; addToCart(currentModalProduct.id,col,currentModalProduct.price,qty); closeModal(); }
 
-function selectModalColor(colorName){
-    currentModalColor = currentModalProduct.colors.find(c=>c.name===colorName);
-    document.querySelectorAll('#modalColors .color-option').forEach(b=>{
-        b.classList.toggle('selected', b.textContent===colorName);
-    });
-}
+document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
+document.getElementById('orderOverlay').addEventListener('click',function(e){if(e.target===this)closeOrderModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();closeOrderModal();closeCart();}});
 
-function changeModalQty(delta){
-    const input = document.getElementById('modalQty');
-    let val = parseInt(input.value) + delta;
-    const max = currentModalProduct ? currentModalProduct.stock : 10;
-    if(val < 1) val = 1;
-    if(val > max) val = max;
-    input.value = val;
-    updateModalBtnPrice();
-}
-
-function validateModalQty(){
-    const input = document.getElementById('modalQty');
-    let val = parseInt(input.value);
-    const max = currentModalProduct ? currentModalProduct.stock : 10;
-    if(isNaN(val) || val < 1) val = 1;
-    if(val > max) val = max;
-    input.value = val;
-    updateModalBtnPrice();
-}
-
-function updateModalBtnPrice(){
-    const qty = parseInt(document.getElementById('modalQty').value) || 1;
-    const price = currentModalProduct ? currentModalProduct.price : 0;
-    document.getElementById('modalBtnPrice').textContent = (price * qty).toLocaleString();
-}
-
-function modalAddToCart(){
-    if(!currentModalProduct) return;
-    const qty = parseInt(document.getElementById('modalQty').value) || 1;
-    const color = currentModalColor ? currentModalColor.name : currentModalProduct.colors[0].name;
-    addToCart(currentModalProduct.id, color, currentModalProduct.price, qty);
-    closeModal();
-}
-
-// Close modal on overlay click
-document.getElementById('modalOverlay').addEventListener('click', function(e){
-    if(e.target === this) closeModal();
-});
-
-// ESC to close
-document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){
-        closeModal();
-        closeCart();
-    }
-});
-
-// ─────────────────────────────────────────────────────────────
-// CART SYSTEM
-// ─────────────────────────────────────────────────────────────
-function addToCart(productId, color, price, qty=1){
-    const existing = cart.find(item=>item.productId===productId && item.color===color);
-    const product = findProduct(productId);
-    const maxQty = product ? product.stock : 10;
-
-    if(existing){
-        if(existing.qty + qty > maxQty){
-            showToast(`Only ${maxQty} in stock!`);
-            existing.qty = maxQty;
-        } else {
-            existing.qty += qty;
-        }
-    } else {
-        if(qty > maxQty) qty = maxQty;
-        cart.push({productId, color, price, qty, name:product?product.name:'', image:product?product.image:''});
-    }
-    updateCartUI();
-    showToast(`"${product?product.name:''}" (${color}) added to cart!`);
-}
-
-function removeFromCart(index){
-    cart.splice(index,1);
-    updateCartUI();
-}
-
-function updateCartQty(index, delta){
-    const item = cart[index];
-    const product = findProduct(item.productId);
-    const maxQty = product ? product.stock : 10;
-    let newQty = item.qty + delta;
-    if(newQty < 1) { removeFromCart(index); return; }
-    if(newQty > maxQty){ showToast(`Only ${maxQty} in stock!`); newQty = maxQty; }
-    item.qty = newQty;
-    updateCartUI();
-}
-
-function updateCartUI(){
-    const totalItems = cart.reduce((sum,item)=>sum+item.qty,0);
-    const totalPrice = cart.reduce((sum,item)=>sum+(item.price*item.qty),0);
-
-    document.getElementById('cartCount').textContent = totalItems;
-    document.getElementById('mobileCartCount').textContent = totalItems;
-    document.getElementById('cartItemCount').textContent = totalItems;
-    document.getElementById('cartTotal').textContent = totalPrice.toLocaleString();
-
-    const cartItemsDiv = document.getElementById('cartItems');
-    if(cart.length === 0){
-        cartItemsDiv.innerHTML = `<div class="cart-empty"><div class="icon">🛒</div><p>Your cart is empty</p><p style="font-size:12px;color:var(--text-muted);margin-top:4px">Discover our collection and add your favorites!</p></div>`;
-    } else {
-        cartItemsDiv.innerHTML = cart.map((item,i)=>`
-            <div class="cart-item">
-                <img src="${item.image}" alt="${item.name}" class="cart-item-img">
-                <div class="cart-item-info">
-                    <h4>${item.name}</h4>
-                    <p class="variant">${item.color}</p>
-                    <p class="price">৳${(item.price*item.qty).toLocaleString()}</p>
-                    <div class="cart-item-qty">
-                        <button onclick="updateCartQty(${i},-1)">−</button>
-                        <span>${item.qty}</span>
-                        <button onclick="updateCartQty(${i},1)">+</button>
-                    </div>
+// ─────────────────────────────────────────────
+// RENDER PRODUCTS
+// ─────────────────────────────────────────────
+const grid = document.getElementById('productGrid');
+function renderProducts(filter='all'){
+    grid.innerHTML='';
+    const filtered = filter==='all' ? products : products.filter(p=>p.gender===filter);
+    filtered.forEach((p,i)=>{
+        const card = document.createElement('div');
+        card.className='product-card fade-in';
+        card.style.transitionDelay=`${i*35}ms`;
+        card.innerHTML=`
+            <div class="img-wrap" onclick="openDetail('${p.id}')">
+                <img src="${p.image}" alt="${p.name}" loading="lazy">
+                <span class="discount-badge">-${p.discount}%</span>
+                <span class="gender-badge">${p.gender==='men'?"Men's":"Women's"}</span>
+                <div class="hover-btns">
+                    <button class="hover-add" onclick="event.stopPropagation();addToCart('${p.id}','${p.colors[0].name}',${p.price})">Add to Cart</button>
+                    <button class="hover-buy" onclick="event.stopPropagation();buyNow('${p.id}','${p.colors[0].name}',${p.price})">Buy Now</button>
                 </div>
-                <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>
             </div>
-        `).join('');
-    }
+            <div class="product-info" onclick="openDetail('${p.id}')">
+                <p class="category">${p.category}</p>
+                <h4>${p.name}</h4>
+                <div class="price-row"><span class="old">৳${p.originalPrice.toLocaleString()}</span><span class="new">৳${p.price.toLocaleString()}</span><span class="saved">Save ৳${(p.originalPrice-p.price).toLocaleString()}</span></div>
+                <div class="color-dots">${p.colors.map(c=>`<span class="color-dot" style="background:${c.hex}" title="${c.name}"></span>`).join('')}</div>
+            </div>`;
+        grid.appendChild(card);
+    });
+    document.querySelectorAll('.product-card.fade-in').forEach(el=>observer.observe(el));
 }
 
-function openCart(){
-    document.getElementById('cartOverlay').classList.add('active');
-    document.getElementById('cartSidebar').classList.add('active');
-    document.body.style.overflow='hidden';
+function filterProducts(filter){
+    document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+    event.target.classList.add('active');
+    renderProducts(filter);
 }
 
-function closeCart(){
-    document.getElementById('cartOverlay').classList.remove('active');
-    document.getElementById('cartSidebar').classList.remove('active');
-    document.body.style.overflow='';
-}
+// ─────────────────────────────────────────────
+// TOAST, ANIMATIONS, MOBILE MENU
+// ─────────────────────────────────────────────
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
 
-function checkout(){
-    if(cart.length===0){ showToast('Your cart is empty!'); return; }
-    const total = cart.reduce((sum,item)=>sum+(item.price*item.qty),0);
-    showToast(`Order placed! Total: ৳${total.toLocaleString()}. We'll contact you shortly.`);
-    cart = [];
-    updateCartUI();
-    closeCart();
-}
-
-// ─────────────────────────────────────────────────────────────
-// TOAST
-// ─────────────────────────────────────────────────────────────
-function showToast(msg){
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(()=>toast.classList.remove('show'), 2500);
-}
-
-// ─────────────────────────────────────────────────────────────
-// SCROLL ANIMATIONS
-// ─────────────────────────────────────────────────────────────
-const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
-}, {threshold:0.06, rootMargin:'0px 0px -30px 0px'});
+const observer = new IntersectionObserver(entries=>{ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}); },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 
-// ─────────────────────────────────────────────────────────────
-// MOBILE MENU
-// ─────────────────────────────────────────────────────────────
-const mobileToggle = document.getElementById('mobileToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileClose = document.getElementById('mobileClose');
-mobileToggle.addEventListener('click',()=>mobileMenu.classList.add('active'));
-mobileClose.addEventListener('click',()=>mobileMenu.classList.remove('active'));
-mobileMenu.querySelectorAll('a:not([onclick])').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('active')));
+const mt=document.getElementById('mobileToggle'),mm=document.getElementById('mobileMenu'),mc=document.getElementById('mobileClose');
+mt.addEventListener('click',()=>mm.classList.add('active'));
+mc.addEventListener('click',()=>mm.classList.remove('active'));
+mm.querySelectorAll('a:not([onclick])').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('active')));
 
-// ─────────────────────────────────────────────────────────────
-// COUNTDOWN
-// ─────────────────────────────────────────────────────────────
-(function(){
-    const end = new Date(); end.setDate(end.getDate()+3); end.setHours(23,59,59,0);
-    function tick(){
-        const diff = end - new Date(); if(diff<=0) return;
-        document.getElementById('fd').textContent=String(Math.floor(diff/864e5)).padStart(2,'0');
-        document.getElementById('fh').textContent=String(Math.floor(diff%864e5/36e5)).padStart(2,'0');
-        document.getElementById('fm').textContent=String(Math.floor(diff%36e5/6e4)).padStart(2,'0');
-        document.getElementById('fs').textContent=String(Math.floor(diff%6e4/1e3)).padStart(2,'0');
-    }
-    tick(); setInterval(tick,1000);
-})();
+window.addEventListener('scroll',()=>{ document.getElementById('nav').style.boxShadow = window.scrollY>30?'0 1px 20px rgba(0,0,0,0.06)':'none'; });
 
-// ─────────────────────────────────────────────────────────────
-// NAV SCROLL
-// ─────────────────────────────────────────────────────────────
-window.addEventListener('scroll',()=>{
-    document.getElementById('nav').style.boxShadow = window.scrollY>30 ? '0 2px 30px rgba(0,0,0,0.3)' : 'none';
-});
-
-// ─────────────────────────────────────────────────────────────
 // INIT
-// ─────────────────────────────────────────────────────────────
 renderProducts();
 updateCartUI();
 </script>
-</body>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1a0111f89921c00',t:'MTc4Mzg1OTUwNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
