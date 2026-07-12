@@ -390,7 +390,7 @@
     <div class="collection-banner fade-in">
         <h3>Can't Decide?</h3>
         <p>Every Eluxo comes with a 30-day money-back guarantee and 2-year warranty.</p>
-        <a href="https://wa.me/8801XXXXXXXXX?text=I%20am%20interested%20in%20Eluxo%20watches" target="_blank" rel="noopener" class="btn btn-light">Chat on WhatsApp</a>
+        <a href="https://api.whatsapp.com/send?phone=8801XXXXXXXXX&text=I%20am%20interested%20in%20Eluxo%20watches" target="_blank" rel="noopener" class="btn btn-light">Chat on WhatsApp</a>
     </div>
 </section>
 
@@ -492,7 +492,7 @@
 // ═══════════════════════════════════════════
 // CONFIG — UPDATE THESE!
 // ═══════════════════════════════════════════
-const BUSINESS_PHONE = '8801980514652';  // Your WhatsApp: country code + number, no +
+const BUSINESS_PHONE = '8801XXXXXXXXX';  // Your WhatsApp: country code + number, no +
 const FB_PAGE_ID    = 'YOUR_FB_PAGE';    // Your Facebook Page username/ID
 
 // ═══════════════════════════════════════════
@@ -582,8 +582,10 @@ function modalBuyNow(){
 function openOrderModal(summary,total){
     document.getElementById('orderSummary').innerHTML='<strong>Order Details</strong><br>'+summary.replace(/\n/g,'<br>')+'<span class="total-highlight">Total: ৳'+total.toLocaleString()+'</span>';
     const m='Hello Eluxo!%0AI want to order:%0A%0A'+summary.replace(/\n/g,'%0A')+'%0A%0ATotal: ৳'+total.toLocaleString()+'%0A%0APlease confirm.';
-    document.getElementById('whatsappLink').href='https://wa.me/'+BUSINESS_PHONE+'?text='+m;
-    document.getElementById('messengerLink').href='https://m.me/'+FB_PAGE_ID;
+    // WhatsApp: use api.whatsapp.com which opens the app directly on mobile
+    document.getElementById('whatsappLink').href='https://api.whatsapp.com/send?phone='+BUSINESS_PHONE+'&text='+m;
+    // Messenger: use fb.com/msg/ which deep-links into the Messenger app
+    document.getElementById('messengerLink').href='https://fb.com/msg/'+FB_PAGE_ID;
     document.getElementById('orderOverlay').classList.add('active');document.body.style.overflow='hidden';
 }
 function closeOrderModal(){document.getElementById('orderOverlay').classList.remove('active');document.body.style.overflow=''}
@@ -666,6 +668,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
 renderProducts();
 updateCartUI();
 </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1a08c9d989e5807',t:'MTc4Mzg2NDU2NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
