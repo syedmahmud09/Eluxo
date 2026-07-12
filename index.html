@@ -5,68 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eluxo — Premium Timepieces</title>
     <style>
-        /* ── FONT LOADING (no blocking) ── */
-        @font-face {
-            font-family: 'Playfair';
-            src: local('Playfair Display'), local('PlayfairDisplay');
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'InterVar';
-            src: local('Inter'), local('Inter Display');
-            font-display: swap;
-        }
+        @font-face{font-family:'Playfair';src:local('Playfair Display'),local('PlayfairDisplay');font-display:swap}
+        @font-face{font-family:'InterVar';src:local('Inter'),local('Inter Display');font-display:swap}
 
         :root {
-            --bg: #fafaf8;
-            --text: #1a1a1a;
-            --text-light: #6b6b6b;
-            --accent: #b8945c;
-            --accent-dark: #9a7a44;
-            --accent-light: #d4b76e;
-            --white: #ffffff;
-            --border: #e8e4df;
-            --card-bg: #ffffff;
-            --tag-bg: #f4f0ea;
-            --discount: #c0392b;
-            --success: #27ae60;
-            --surface-dark: #1a1a1a;
+            --bg:#fafaf8;--text:#1a1a1a;--text-light:#6b6b6b;--accent:#b8945c;
+            --accent-dark:#9a7a44;--accent-light:#d4b76e;--white:#fff;
+            --border:#e8e4df;--card-bg:#fff;--tag-bg:#f4f0ea;
+            --discount:#c0392b;--success:#27ae60;--surface-dark:#1a1a1a;
         }
-
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-
-        html{scroll-behavior:smooth; -webkit-tap-highlight-color:transparent}
-        body{
-            font-family:'InterVar','Inter','Segoe UI',system-ui,-apple-system,sans-serif;
-            background:var(--bg);color:var(--text);line-height:1.6;
-            -webkit-font-smoothing:antialiased;
-            -webkit-tap-highlight-color:transparent;
-            user-select:none;
-            overflow-x:hidden
-        }
-        /* Allow text selection only where needed */
-        p, h1, h2, h3, h4, h5, span, a, button{ user-select:text }
-        a, button, .product-card, .cat-card{ user-select:none }
-
-        /* prevent blue highlight on click */
-        img{ -webkit-tap-highlight-color:transparent; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none }
-        a, button, div[onclick], .img-wrap{ -webkit-tap-highlight-color:transparent; outline:none!important }
-        a:focus, button:focus{ outline:none!important }
+        html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+        body{font-family:'InterVar','Inter','Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+        p,h1,h2,h3,h4,h5{user-select:text}a,button,.product-card,.cat-card{user-select:none}
+        img{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+        a,button,div[onclick],.img-wrap{-webkit-tap-highlight-color:transparent;outline:none!important}
+        a:focus,button:focus{outline:none!important}
 
         /* ── Nav ── */
         .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,250,248,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);will-change:box-shadow}
         .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:70px}
-        .nav-logo img{height:36px;width:auto}
-        .nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+        .nav-logo img{height:36px;width:auto}.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
         .nav-links a{text-decoration:none;color:var(--text);font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;transition:color .2s}
-        .nav-links a:hover{color:var(--accent)}
-        .nav-cta{background:var(--text)!important;color:var(--white)!important;padding:8px 20px!important;font-size:11px!important}
-        .nav-cta:hover{background:var(--accent)!important}
+        .nav-links a:hover{color:var(--accent)}.nav-cta{background:var(--text)!important;color:var(--white)!important;padding:8px 20px!important;font-size:11px!important}.nav-cta:hover{background:var(--accent)!important}
         .cart-icon-btn{background:none;border:none;color:var(--text);cursor:pointer;position:relative;font-size:18px;padding:6px;display:flex;align-items:center}
         .cart-count{background:var(--discount);color:#fff;font-size:9px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:absolute;top:-2px;right:-8px}
         .mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px}
         .mobile-toggle span{display:block;width:22px;height:1.5px;background:var(--text);margin:5px 0}
-
         .mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:999;padding:100px 32px;text-align:center}
         .mobile-menu.active{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px}
         .mobile-menu a{text-decoration:none;color:var(--text);font-size:18px;font-weight:500;letter-spacing:1px;text-transform:uppercase}
@@ -74,31 +39,23 @@
 
         /* ── Hero ── */
         .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 32px 80px;position:relative;background:linear-gradient(180deg,#fafaf8 0%,#f2efe9 100%)}
-        .hero-content{max-width:680px}
-        .hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
+        .hero-content{max-width:680px}.hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
         .hero-logo{margin-bottom:26px}.hero-logo img{height:72px;width:auto}
         .hero h1{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:clamp(32px,5vw,54px);font-weight:600;line-height:1.15;color:var(--text);margin-bottom:16px}
         .hero h1 em{font-style:italic;color:var(--accent)}
         .hero p{font-size:15px;color:var(--text-light);max-width:460px;margin:0 auto 34px;line-height:1.7;font-weight:400}
         .hero-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
         .btn{display:inline-flex;align-items:center;gap:7px;padding:13px 32px;font-size:12px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:all .25s;cursor:pointer;border:none;font-family:inherit}
         .btn-primary{background:var(--text);color:var(--white)}.btn-primary:hover{background:var(--accent)}
         .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--text)}.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
         .btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{background:var(--accent-dark)}
-        .btn-sm{padding:9px 20px;font-size:10px;letter-spacing:1px}
-        .btn-full{width:100%;justify-content:center;padding:14px}
-        .btn-whatsapp{background:#25D366!important;color:#fff!important}.btn-whatsapp:hover{background:#1da851!important}
-        .btn-messenger{background:#0084FF!important;color:#fff!important}.btn-messenger:hover{background:#006ed4!important}
+        .btn-sm{padding:9px 20px;font-size:10px;letter-spacing:1px}.btn-full{width:100%;justify-content:center;padding:14px}
 
         /* ── Shiny Buy Now ── */
         .btn-buy{position:relative;overflow:hidden;background:var(--accent);color:#fff;font-weight:700;letter-spacing:1.5px;box-shadow:0 4px 16px rgba(184,148,92,0.35)}
         .btn-buy::before{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent);transform:skewX(-25deg);animation:btnShine 2.5s infinite}
-        .btn-buy::after{content:'';position:absolute;inset:-2px;border-radius:5px;background:linear-gradient(135deg,var(--accent-light),var(--accent),var(--accent-dark),var(--accent-light));background-size:400% 400%;z-index:-1;animation:btnGlow 3s infinite;opacity:0}
         .btn-buy:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(184,148,92,0.5);background:var(--accent-light)}
-        .btn-buy:hover::after{opacity:1}
         @keyframes btnShine{0%{left:-75%}100%{left:125%}}
-        @keyframes btnGlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
         .hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);animation:bounce 2s infinite}
         .hero-scroll svg{width:20px;height:20px;stroke:var(--text-light)}
@@ -115,10 +72,8 @@
         .cat-split{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:70px}
         .cat-card{position:relative;height:460px;overflow:hidden;cursor:pointer;display:flex;align-items:flex-end;padding:42px;text-decoration:none;border-radius:6px}
         .cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.15) 55%,rgba(0,0,0,0.02) 100%);z-index:1;transition:opacity .5s}
-        .cat-card:hover::before{opacity:.88}
-        .cat-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform .7s}
-        .cat-card:hover img{transform:scale(1.06)}
-        .cat-card .cat-label{position:relative;z-index:2;color:#fff}
+        .cat-card:hover::before{opacity:.88}.cat-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform .7s}
+        .cat-card:hover img{transform:scale(1.06)}.cat-card .cat-label{position:relative;z-index:2;color:#fff}
         .cat-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent-light);font-weight:700;margin-bottom:8px}
         .cat-title{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:36px;font-weight:600;margin-bottom:4px}
         .cat-subtitle{font-size:13px;color:#ddd;font-weight:300}
@@ -128,8 +83,7 @@
         /* ── Filter ── */
         .filter-tabs{display:flex;justify-content:center;gap:6px;margin-bottom:44px;flex-wrap:wrap}
         .filter-tab{background:var(--white);color:var(--text-light);border:1px solid var(--border);padding:10px 24px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .25s;border-radius:3px;font-family:inherit}
-        .filter-tab:hover{border-color:var(--accent);color:var(--accent)}
-        .filter-tab.active{background:var(--text);color:#fff;border-color:var(--text);font-weight:600}
+        .filter-tab:hover{border-color:var(--accent);color:var(--accent)}.filter-tab.active{background:var(--text);color:#fff;border-color:var(--text);font-weight:600}
 
         /* ── Product Grid ── */
         .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px}
@@ -145,38 +99,30 @@
         .hover-add,.hover-buy{padding:8px 16px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:none;cursor:pointer;border-radius:3px;white-space:nowrap;font-family:inherit;transition:all .2s}
         .hover-add{background:#fff;color:var(--text);box-shadow:0 2px 10px rgba(0,0,0,0.08)}.hover-add:hover{background:var(--text);color:#fff}
         .hover-buy{background:var(--accent);color:#fff;box-shadow:0 2px 10px rgba(184,148,92,0.3)}.hover-buy:hover{background:var(--accent-dark)}
-
-        .product-info{padding:16px;pointer-events:none}
-        .product-info .category{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:4px}
+        .product-info{padding:16px;pointer-events:none}.product-info .category{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:4px}
         .product-info h4{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:16px;font-weight:600;margin-bottom:6px}
         .product-info .price-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-        .product-info .old{text-decoration:line-through;color:#aaa;font-size:12px}
-        .product-info .new{font-size:18px;font-weight:700}
+        .product-info .old{text-decoration:line-through;color:#aaa;font-size:12px}.product-info .new{font-size:18px;font-weight:700}
         .product-info .saved{font-size:10px;color:var(--discount);font-weight:600;background:rgba(192,57,43,0.07);padding:2px 7px;border-radius:2px}
-        .color-dots{display:flex;gap:4px;margin-top:6px}
-        .color-dot{width:13px;height:13px;border-radius:50%;border:2px solid transparent;transition:all .2s}
+        .color-dots{display:flex;gap:4px;margin-top:6px}.color-dot{width:13px;height:13px;border-radius:50%;border:2px solid transparent;transition:all .2s}
 
         /* ── Featured ── */
         .featured-banner{margin-bottom:70px;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;background:var(--white);border-radius:8px;overflow:hidden;border:1px solid var(--border)}
         .featured-banner img{width:100%;height:480px;object-fit:cover;pointer-events:none}
-        .featured-text{padding:44px 40px}
-        .featured-text .badge{display:inline-block;background:var(--discount);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:3px;margin-bottom:14px}
+        .featured-text{padding:44px 40px}.featured-text .badge{display:inline-block;background:var(--discount);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:3px;margin-bottom:14px}
         .featured-text h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:30px;font-weight:600;margin-bottom:10px}
         .featured-text p{color:var(--text-light);margin-bottom:22px;font-size:14px;line-height:1.7}
         .price-stack{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
-        .price-old{text-decoration:line-through;color:#999;font-size:17px}
-        .price-new{font-size:34px;font-weight:700;font-family:'Playfair','Playfair Display','Georgia',serif}
-        .price-off{font-size:12px;color:var(--discount);font-weight:600}
-        .featured-btns{display:flex;gap:10px;flex-wrap:wrap}
+        .price-old{text-decoration:line-through;color:#999;font-size:17px}.price-new{font-size:34px;font-weight:700;font-family:'Playfair','Playfair Display','Georgia',serif}
+        .price-off{font-size:12px;color:var(--discount);font-weight:600}.featured-btns{display:flex;gap:10px;flex-wrap:wrap}
 
-        /* ── Modal (Product Detail) ── */
+        /* ── Product Detail Modal ── */
         .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;pointer-events:none;transition:opacity .25s}
         .modal-overlay.active{opacity:1;pointer-events:all}
         .modal{background:var(--white);border-radius:8px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;position:relative;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 20px 60px rgba(0,0,0,0.18);transform:translateY(12px);transition:transform .3s}
         .modal-overlay.active .modal{transform:translateY(0)}
         .modal-close{position:absolute;top:12px;right:12px;background:var(--text);color:#fff;border:none;width:30px;height:30px;border-radius:50%;font-size:14px;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;transition:background .2s}
-        .modal-close:hover{background:var(--discount)}
-        .modal-img{aspect-ratio:3/4;background:#f5f3ef;display:flex;align-items:center;justify-content:center}
+        .modal-close:hover{background:var(--discount)}.modal-img{aspect-ratio:3/4;background:#f5f3ef;display:flex;align-items:center;justify-content:center}
         .modal-img img{width:100%;height:100%;object-fit:cover;pointer-events:none}
         .modal-info{padding:32px 28px;display:flex;flex-direction:column}
         .modal-gender{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
@@ -184,8 +130,7 @@
         .modal-cat{font-size:10px;letter-spacing:2px;color:var(--text-light);text-transform:uppercase;margin-bottom:12px}
         .modal-desc{color:var(--text-light);font-size:13px;line-height:1.8;margin-bottom:14px}
         .modal-price{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
-        .modal-price .old{text-decoration:line-through;color:#999;font-size:14px}
-        .modal-price .new{font-size:30px;font-weight:700;font-family:'Playfair','Playfair Display','Georgia',serif}
+        .modal-price .old{text-decoration:line-through;color:#999;font-size:14px}.modal-price .new{font-size:30px;font-weight:700;font-family:'Playfair','Playfair Display','Georgia',serif}
         .modal-price .off{font-size:11px;color:var(--discount);font-weight:600}
         .modal-stats{display:flex;gap:18px;margin:12px 0;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
         .modal-stat{text-align:center}.modal-stat .val{font-size:18px;font-weight:700}.modal-stat .lbl{font-size:9px;text-transform:uppercase;color:var(--text-light);letter-spacing:1px}
@@ -193,8 +138,7 @@
         .modal-colors{margin:10px 0}.modal-colors .color-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:7px}
         .modal-colors .color-options{display:flex;gap:7px;flex-wrap:wrap}
         .color-option{padding:6px 14px;border:1px solid var(--border);background:var(--white);color:var(--text-light);font-size:10px;letter-spacing:1px;cursor:pointer;transition:all .2s;text-transform:uppercase;border-radius:3px;font-family:inherit}
-        .color-option:hover{border-color:var(--accent);color:var(--accent)}
-        .color-option.selected{border-color:var(--accent);background:var(--accent);color:#fff;font-weight:600}
+        .color-option:hover{border-color:var(--accent);color:var(--accent)}.color-option.selected{border-color:var(--accent);background:var(--accent);color:#fff;font-weight:600}
         .qty-row{display:flex;align-items:center;gap:12px;margin:14px 0}
         .qty-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light)}
         .qty-selector{display:flex;align-items:center;border:1px solid var(--border);border-radius:3px}
@@ -203,25 +147,51 @@
         .qty-selector input{width:42px;text-align:center;background:transparent;border:none;border-left:1px solid var(--border);border-right:1px solid var(--border);color:var(--text);font-size:13px;font-weight:600;outline:none;font-family:inherit}
         .modal-btns{display:flex;flex-direction:column;gap:9px;margin-top:auto;padding-top:14px}
 
-        /* ── Order Modal ── */
-        .order-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2100;display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;pointer-events:none;transition:opacity .25s}
-        .order-overlay.active{opacity:1;pointer-events:all}
-        .order-modal{background:var(--white);border-radius:10px;max-width:440px;width:100%;padding:32px 28px;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.18);transform:translateY(10px);transition:transform .3s}
-        .order-overlay.active .order-modal{transform:translateY(0)}
-        .order-modal .close-btn{position:absolute;top:12px;right:12px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-light);width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all .2s}
-        .order-modal .close-btn:hover{background:#f0f0f0;color:var(--discount)}
-        .order-modal .order-icon-wrap{display:flex;justify-content:center;gap:10px;margin-bottom:12px}
-        .order-modal .order-icon-wrap img{width:44px;height:44px;object-fit:contain}
-        .order-modal h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:22px;margin-bottom:4px}
-        .order-modal .order-subtitle{color:var(--text-light);font-size:12px;margin-bottom:16px}
-        .order-summary{background:var(--tag-bg);padding:14px 16px;border-radius:6px;margin-bottom:18px;text-align:left;font-size:12px;line-height:1.8;border:1px solid var(--border)}
-        .order-summary strong{color:var(--accent)}
-        .order-summary .total-highlight{font-size:16px;color:var(--text);font-weight:700;display:block;margin-top:4px;padding-top:6px;border-top:1px solid var(--border)}
-        .order-btns{display:flex;flex-direction:column;gap:9px}
-        .order-btns .btn{font-size:11px;padding:13px;justify-content:center;border-radius:4px}
-        .order-btns .btn img{width:22px;height:22px;object-fit:contain;margin-right:6px}
-        .btn-wa{background:#25D366!important;color:#fff!important;font-weight:600}.btn-wa:hover{background:#1da851!important;transform:translateY(-2px)}
-        .btn-msg{background:#0084FF!important;color:#fff!important;font-weight:600}.btn-msg:hover{background:#006ed4!important;transform:translateY(-2px)}
+        /* ── CHECKOUT FORM ── */
+        .checkout-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2100;display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;pointer-events:none;transition:opacity .25s}
+        .checkout-overlay.active{opacity:1;pointer-events:all}
+        .checkout-modal{background:var(--white);border-radius:10px;max-width:500px;width:100%;max-height:92vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.18);transform:translateY(10px);transition:transform .3s;padding:0}
+        .checkout-overlay.active .checkout-modal{transform:translateY(0)}
+        .checkout-close{position:absolute;top:12px;right:12px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-light);width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all .2s;z-index:3}
+        .checkout-close:hover{background:#f0f0f0;color:var(--discount)}
+
+        /* Checkout Header */
+        .checkout-header{background:var(--text);color:#fff;padding:28px 28px 24px;text-align:center;border-radius:10px 10px 0 0}
+        .checkout-header .ch-icon{font-size:32px;margin-bottom:8px}
+        .checkout-header h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:22px;margin-bottom:4px}
+        .checkout-header p{font-size:12px;color:#ccc}
+
+        /* Order Summary Block */
+        .checkout-summary{margin:16px 24px;padding:14px 16px;background:var(--tag-bg);border-radius:6px;border:1px solid var(--border);font-size:12px;line-height:1.8}
+        .checkout-summary strong{color:var(--accent)}
+        .checkout-summary .cs-total{font-size:15px;font-weight:700;color:var(--text);display:block;margin-top:4px;padding-top:6px;border-top:1px solid var(--border)}
+
+        /* Form */
+        .checkout-form{padding:8px 24px 24px}
+        .form-group{margin-bottom:14px}
+        .form-group label{display:block;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:6px}
+        .form-group label .required{color:var(--discount)}
+        .form-group input,.form-group textarea{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:4px;font-size:13px;font-family:inherit;color:var(--text);background:var(--bg);transition:border-color .2s;outline:none}
+        .form-group input:focus,.form-group textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(184,148,92,0.08)}
+        .form-group textarea{resize:vertical;min-height:70px}
+        .form-group input::placeholder,.form-group textarea::placeholder{color:#c0c0c0}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+        /* Submit */
+        .checkout-submit{padding:0 24px 24px}
+        .checkout-submit .btn{width:100%;justify-content:center;font-size:13px;padding:15px}
+        .checkout-error{color:var(--discount);font-size:11px;text-align:center;margin-bottom:8px;display:none}
+
+        /* Success Modal */
+        .success-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2150;display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;pointer-events:none;transition:opacity .25s}
+        .success-overlay.active{opacity:1;pointer-events:all}
+        .success-modal{background:var(--white);border-radius:10px;max-width:420px;width:100%;padding:36px 28px;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.18);transform:translateY(10px);transition:transform .3s}
+        .success-overlay.active .success-modal{transform:translateY(0)}
+        .success-modal .s-icon{font-size:56px;margin-bottom:12px;animation:popIn .4s ease}
+        .success-modal h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:24px;margin-bottom:8px;color:var(--success)}
+        .success-modal p{font-size:13px;color:var(--text-light);line-height:1.7;margin-bottom:6px}
+        .success-modal .s-highlight{background:var(--tag-bg);padding:10px 14px;border-radius:6px;font-size:12px;color:var(--text);margin:12px 0;display:inline-block}
+        @keyframes popIn{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
 
         /* ── Cart Sidebar ── */
         .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:2200;opacity:0;pointer-events:none;transition:opacity .25s}
@@ -232,17 +202,14 @@
         .cart-header h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:20px;font-weight:600}
         .cart-close{background:none;border:none;color:var(--text);font-size:20px;cursor:pointer;padding:4px}
         .cart-items{flex:1;overflow-y:auto;padding:14px 22px;-webkit-overflow-scrolling:touch}
-        .cart-empty{text-align:center;padding:50px 20px;color:var(--text-light)}
-        .cart-empty .icon{font-size:40px;margin-bottom:10px}
+        .cart-empty{text-align:center;padding:50px 20px;color:var(--text-light)}.cart-empty .icon{font-size:40px;margin-bottom:10px}
         .cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start}
         .cart-item-img{width:64px;height:80px;object-fit:cover;background:#f5f3ef;flex-shrink:0;border-radius:3px;pointer-events:none}
-        .cart-item-info{flex:1}
-        .cart-item-info h4{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:14px;margin-bottom:2px}
-        .cart-item-info .variant{font-size:10px;color:var(--text-light);margin-bottom:3px}
-        .cart-item-info .price{font-weight:700;font-size:13px}
+        .cart-item-info{flex:1}.cart-item-info h4{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:14px;margin-bottom:2px}
+        .cart-item-info .variant{font-size:10px;color:var(--text-light);margin-bottom:3px}.cart-item-info .price{font-weight:700;font-size:13px}
         .cart-item-qty{display:flex;align-items:center;border:1px solid var(--border);margin-top:5px;border-radius:3px;width:fit-content}
-        .cart-item-qty button{background:transparent;border:none;color:var(--text);width:26px;height:26px;font-size:12px;cursor:pointer;font-family:inherit}.cart-item-qty button:hover{background:var(--accent);color:#fff}
-        .cart-item-qty span{width:30px;text-align:center;font-size:11px;font-weight:600}
+        .cart-item-qty button{background:transparent;border:none;color:var(--text);width:26px;height:26px;font-size:12px;cursor:pointer;font-family:inherit}
+        .cart-item-qty button:hover{background:var(--accent);color:#fff}.cart-item-qty span{width:30px;text-align:center;font-size:11px;font-weight:600}
         .cart-item-remove{background:none;border:none;color:#ccc;cursor:pointer;font-size:15px;padding:4px}.cart-item-remove:hover{color:var(--discount)}
         .cart-footer{padding:16px 22px;border-top:1px solid var(--border)}
         .cart-total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;margin-bottom:12px}
@@ -252,16 +219,13 @@
         /* ── CTA ── */
         .collection-banner{margin-top:70px;padding:70px 40px;background:var(--text);color:#fff;text-align:center;border-radius:8px;position:relative;overflow:hidden}
         .collection-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(184,148,92,0.12) 0%,transparent 70%)}
-        .collection-banner>*{position:relative;z-index:1}
-        .collection-banner h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:32px;font-weight:600;margin-bottom:10px}
-        .collection-banner p{color:#aaa;font-size:14px;margin-bottom:24px}
-        .btn-light{background:var(--white);color:var(--text)}.btn-light:hover{background:var(--accent);color:#fff}
+        .collection-banner>*{position:relative;z-index:1}.collection-banner h3{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:32px;font-weight:600;margin-bottom:10px}
+        .collection-banner p{color:#aaa;font-size:14px;margin-bottom:24px}.btn-light{background:var(--white);color:var(--text)}.btn-light:hover{background:var(--accent);color:#fff}
 
         /* ── Why Us ── */
         .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;text-align:center}
         .feature-icon{width:52px;height:52px;margin:0 auto 18px;background:var(--tag-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
-        .feature h4{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:17px;margin-bottom:6px}
-        .feature p{color:var(--text-light);font-size:13px}
+        .feature h4{font-family:'Playfair','Playfair Display','Georgia',serif;font-size:17px;margin-bottom:6px}.feature p{color:var(--text-light);font-size:13px}
 
         /* ── Footer ── */
         .footer{background:var(--text);color:#ccc;padding:56px 32px 28px}
@@ -278,27 +242,21 @@
         .toast.show{transform:translateY(0);opacity:1}
 
         /* ── Animations ── */
-        .fade-in{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
-        .fade-in.visible{opacity:1;transform:translateY(0)}
+        .fade-in{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}.fade-in.visible{opacity:1;transform:translateY(0)}
 
-        /* ── Responsive ── */
         @media(max-width:900px){
-            .nav-links{display:none}.mobile-toggle{display:block}
-            .cat-split{grid-template-columns:1fr}.cat-card{height:320px}
+            .nav-links{display:none}.mobile-toggle{display:block}.cat-split{grid-template-columns:1fr}.cat-card{height:320px}
             .featured-banner{grid-template-columns:1fr}.featured-banner img{height:320px}
             .modal{grid-template-columns:1fr;max-height:95vh}.modal-img{aspect-ratio:1/1;max-height:360px}
-            .features-grid{grid-template-columns:1fr}
-            .footer-inner{grid-template-columns:1fr 1fr}
+            .features-grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr 1fr}
         }
         @media(max-width:600px){
             .hero{padding:100px 20px 60px}.section{padding:55px 18px}
             .product-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
-            .footer-inner{grid-template-columns:1fr}
-            .featured-text{padding:24px 20px}
-            .modal-overlay,.order-overlay{padding:10px}.modal-info{padding:22px 16px}
-            .order-modal{padding:24px 18px}
-            .cart-sidebar{width:100%}
-            .cat-title{font-size:28px}
+            .footer-inner{grid-template-columns:1fr}.featured-text{padding:24px 20px}
+            .modal-overlay,.checkout-overlay,.success-overlay{padding:10px}.modal-info{padding:22px 16px}
+            .checkout-modal{padding:0}.checkout-header{padding:22px 20px 20px}.checkout-form,.checkout-submit,.checkout-summary{margin-left:16px;margin-right:16px;padding-left:0;padding-right:0}
+            .cart-sidebar{width:100%}.cat-title{font-size:28px}
         }
     </style>
 </head>
@@ -320,7 +278,6 @@
     </div>
 </nav>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" id="mobileClose">&times;</button>
     <a href="#home">Home</a><a href="#men-cat">Men's</a><a href="#women-cat">Women's</a>
@@ -362,13 +319,12 @@
     <div class="featured-banner fade-in">
         <img src="images/watch-royal-chronograph.jpg" alt="Royal Chronograph" loading="lazy">
         <div class="featured-text">
-            <span class="badge">Limited Offer</span>
-            <h3>Royal Chronograph</h3>
+            <span class="badge">Limited Offer</span><h3>Royal Chronograph</h3>
             <p>Our flagship timepiece. Japanese automatic movement, sapphire crystal glass, and genuine Italian leather strap.</p>
             <div class="price-stack"><span class="price-old">৳12,500</span><span class="price-new">৳8,999</span><span class="price-off">Save 28%</span></div>
             <div class="featured-btns">
                 <button class="btn btn-primary" onclick="addToCart('royal-chrono','Black Leather',8999)">Add to Cart</button>
-                <button class="btn btn-buy" onclick="buyNow('royal-chrono','Black Leather',8999)">⚡ Buy Now</button>
+                <button class="btn btn-buy" onclick="openCheckout('royal-chrono','Black Leather',8999,1)">⚡ Buy Now</button>
             </div>
         </div>
     </div>
@@ -376,22 +332,14 @@
 
 <!-- All Products -->
 <section class="section" id="collection">
-    <div class="section-header fade-in">
-        <p class="section-eyebrow">Our Collection</p>
-        <h2 class="section-title">Timeless Pieces</h2>
-        <p class="section-subtitle">Every Eluxo watch is meticulously designed. Filter by category to find your perfect match.</p>
-    </div>
+    <div class="section-header fade-in"><p class="section-eyebrow">Our Collection</p><h2 class="section-title">Timeless Pieces</h2><p class="section-subtitle">Every Eluxo watch is meticulously designed. Filter by category to find your perfect match.</p></div>
     <div class="filter-tabs fade-in">
         <button class="filter-tab active" onclick="filterProducts('all')">All Watches</button>
         <button class="filter-tab" onclick="filterProducts('men')">Men's</button>
         <button class="filter-tab" onclick="filterProducts('women')">Women's</button>
     </div>
     <div class="product-grid" id="productGrid"></div>
-    <div class="collection-banner fade-in">
-        <h3>Can't Decide?</h3>
-        <p>Every Eluxo comes with a 30-day money-back guarantee and 2-year warranty.</p>
-        <a href="https://api.whatsapp.com/send?phone=8801XXXXXXXXX&text=I%20am%20interested%20in%20Eluxo%20watches" target="_blank" rel="noopener" class="btn btn-light">Chat on WhatsApp</a>
-    </div>
+    <div class="collection-banner fade-in"><h3>Can't Decide?</h3><p>Every Eluxo comes with a 30-day money-back guarantee and 2-year warranty.</p><a href="https://api.whatsapp.com/send?phone=8801XXXXXXXXX&text=I%20am%20interested%20in%20Eluxo%20watches" target="_blank" rel="noopener" class="btn btn-light">Chat on WhatsApp</a></div>
 </section>
 
 <!-- Why Us -->
@@ -421,55 +369,56 @@
         <button class="modal-close" onclick="closeModal()">✕</button>
         <div class="modal-img"><img id="modalImg" src="" alt=""></div>
         <div class="modal-info">
-            <p class="modal-gender" id="modalGender"></p>
-            <h2 id="modalName"></h2>
-            <p class="modal-cat" id="modalCat"></p>
+            <p class="modal-gender" id="modalGender"></p><h2 id="modalName"></h2><p class="modal-cat" id="modalCat"></p>
             <p class="modal-desc" id="modalDesc"></p>
             <div class="modal-price"><span class="old" id="modalOld"></span><span class="new" id="modalNew"></span><span class="off" id="modalOff"></span></div>
-            <div class="modal-stats">
-                <div class="modal-stat stock"><span class="val" id="modalStock"></span><span class="lbl">In Stock</span></div>
-                <div class="modal-stat sold"><span class="val" id="modalSold"></span><span class="lbl">Sold</span></div>
-            </div>
-            <div class="modal-colors" id="modalColorsWrap">
-                <p class="color-label">Available Colors</p>
-                <div class="color-options" id="modalColors"></div>
-            </div>
-            <div class="qty-row">
-                <span class="qty-label">Qty</span>
-                <div class="qty-selector">
-                    <button onclick="changeModalQty(-1)">−</button>
-                    <input type="number" id="modalQty" value="1" min="1" max="10" onchange="validateModalQty()">
-                    <button onclick="changeModalQty(1)">+</button>
-                </div>
-            </div>
+            <div class="modal-stats"><div class="modal-stat stock"><span class="val" id="modalStock"></span><span class="lbl">In Stock</span></div><div class="modal-stat sold"><span class="val" id="modalSold"></span><span class="lbl">Sold</span></div></div>
+            <div class="modal-colors" id="modalColorsWrap"><p class="color-label">Available Colors</p><div class="color-options" id="modalColors"></div></div>
+            <div class="qty-row"><span class="qty-label">Qty</span><div class="qty-selector"><button onclick="changeModalQty(-1)">−</button><input type="number" id="modalQty" value="1" min="1" max="10" onchange="validateModalQty()"><button onclick="changeModalQty(1)">+</button></div></div>
             <div class="modal-btns">
                 <button class="btn btn-primary btn-full" id="modalAddBtn" onclick="modalAddToCart()">Add to Cart — ৳<span id="modalBtnPrice">0</span></button>
-                <button class="btn btn-buy btn-full" onclick="modalBuyNow()">⚡ Buy Now</button>
+                <button class="btn btn-buy btn-full" onclick="modalGoCheckout()">⚡ Buy Now</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Order Modal (Buy Now) -->
-<div class="order-overlay" id="orderOverlay">
-    <div class="order-modal">
-        <button class="close-btn" onclick="closeOrderModal()">✕</button>
-        <div class="order-icon-wrap">
-            <img src="images/icons8-whatsapp.gif" alt="WhatsApp" width="44" height="44">
-            <img src="images/icons8-facebook-messenger.gif" alt="Messenger" width="44" height="44">
+<!-- ├── CHECKOUT FORM ── -->
+<div class="checkout-overlay" id="checkoutOverlay">
+    <div class="checkout-modal">
+        <button class="checkout-close" onclick="closeCheckout()">✕</button>
+        <div class="checkout-header">
+            <div class="ch-icon">📦</div>
+            <h3>Complete Your Order</h3>
+            <p>Fill in your details &mdash; we'll call to confirm</p>
         </div>
-        <h3>Complete Your Order</h3>
-        <p class="order-subtitle">Choose your preferred platform to place the order</p>
-        <div class="order-summary" id="orderSummary"></div>
-        <div class="order-btns">
-            <a class="btn btn-wa" id="whatsappLink" target="_blank" rel="noopener">
-                <img src="images/icons8-whatsapp.gif" alt="" width="22" height="22"> Order via WhatsApp
-            </a>
-            <a class="btn btn-msg" id="messengerLink" target="_blank" rel="noopener">
-                <img src="images/icons8-facebook-messenger.gif" alt="" width="22" height="22"> Order via Messenger
-            </a>
-            <button class="btn btn-outline btn-full" onclick="closeOrderModal()" style="margin-top:2px">Cancel</button>
+        <div class="checkout-summary" id="checkoutSummary"></div>
+        <div class="checkout-form">
+            <div class="form-group"><label>Full Name <span class="required">*</span></label><input type="text" id="coName" placeholder="Enter your full name" required></div>
+            <div class="form-row">
+                <div class="form-group"><label>Phone Number <span class="required">*</span></label><input type="tel" id="coPhone" placeholder="01XXXXXXXXX" required></div>
+                <div class="form-group"><label>Alternative Phone</label><input type="tel" id="coPhone2" placeholder="Optional"></div>
+            </div>
+            <div class="form-group"><label>Delivery Address <span class="required">*</span></label><textarea id="coAddress" placeholder="House, Road, Area, City" required></textarea></div>
+            <div class="form-group"><label>Any Note?</label><input type="text" id="coNote" placeholder="e.g. gift wrap, special request"></div>
         </div>
+        <div class="checkout-submit">
+            <div class="checkout-error" id="checkoutError">Please fill in all required fields.</div>
+            <button class="btn btn-buy" onclick="submitOrder()">📱 Place Order &mdash; ৳<span id="coTotal">0</span></button>
+            <p style="text-align:center;font-size:10px;color:var(--text-light);margin-top:10px">Your info is safe. We'll call you to confirm within 30 minutes.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ├── SUCCESS MODAL ── -->
+<div class="success-overlay" id="successOverlay">
+    <div class="success-modal">
+        <div class="s-icon">✅</div>
+        <h3>Order Placed!</h3>
+        <p>আপনার অর্ডারটি সফলভাবে পাঠানো হয়েছে।</p>
+        <p style="font-size:12px">আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।</p>
+        <div class="s-highlight" id="successMsg"></div>
+        <button class="btn btn-primary btn-full" onclick="closeSuccess()" style="margin-top:14px">Continue Shopping</button>
     </div>
 </div>
 
@@ -480,7 +429,7 @@
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-footer" id="cartFooter">
         <div class="cart-total"><span>Total</span><span class="total-price">৳<span id="cartTotal">0</span></span></div>
-        <button class="btn btn-buy" onclick="cartBuyNow()">⚡ Buy All via WhatsApp</button>
+        <button class="btn btn-buy" onclick="cartGoCheckout()">⚡ Proceed to Checkout</button>
         <button class="btn btn-outline btn-full" onclick="closeCart()">Continue Shopping</button>
     </div>
 </div>
@@ -489,17 +438,16 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════
-// CONFIG — UPDATE THESE!
-// ═══════════════════════════════════════════
-const BUSINESS_PHONE = '8801980514652';  // Your WhatsApp: country code + number, no +
-const FB_PAGE_ID    = 'YOUR_FB_PAGE';    // Your Facebook Page username/ID
+// ══════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════
+const BUSINESS_PHONE = '8801980514652';  // ← YOUR WHATSAPP NUMBER
+const FB_PAGE_ID    = 'YOUR_FB_PAGE';    // ← YOUR FB PAGE
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════
 // PRODUCT DATA
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════
 const products = [
-    // ── MEN'S ──
     {id:"classic-minimal",name:"Classic Minimal",gender:"men",originalPrice:8500,price:5999,discount:29,image:"images/watch-01.jpeg",category:"Classic",stock:23,sold:147,colors:[{name:"Silver Steel",hex:"#c0c0c0"},{name:"Matte Black",hex:"#2a2a2a"},{name:"Navy Blue",hex:"#1a3a5c"}],desc:"A timeless minimalist design with a stainless steel case, clean dial, and genuine leather strap. Perfect for everyday elegance."},
     {id:"urban-steel",name:"Urban Steel",gender:"men",originalPrice:7800,price:5499,discount:30,image:"images/watch-03.jpeg",category:"Urban",stock:17,sold:89,colors:[{name:"Brushed Steel",hex:"#b8b8b8"},{name:"Gunmetal",hex:"#3a3a3a"}],desc:"Modern urban design with a brushed steel finish. Features a date window and water resistance up to 50 meters."},
     {id:"golden-era",name:"Golden Era",gender:"men",originalPrice:10500,price:7499,discount:29,image:"images/watch-04.jpeg",category:"Premium",stock:9,sold:203,colors:[{name:"Gold",hex:"#d4af37"},{name:"Rose Gold",hex:"#b76e79"},{name:"Silver",hex:"#c0c0c0"}],desc:"A luxurious gold-accented masterpiece. Features a precision Japanese movement and sapphire-coated crystal."},
@@ -513,7 +461,6 @@ const products = [
     {id:"navy-commander",name:"Navy Commander",gender:"men",originalPrice:8600,price:5999,discount:30,image:"images/watch-20.jpeg",category:"Aviator",stock:11,sold:72,colors:[{name:"Navy Blue",hex:"#1a3a5c"},{name:"Black",hex:"#1a1a1a"}],desc:"Command attention with this navy-themed aviator watch. Robust build, precise quartz."},
     {id:"crimson-bold",name:"Crimson Bold",gender:"men",originalPrice:8300,price:5899,discount:29,image:"images/watch-21.jpeg",category:"Sport",stock:16,sold:54,colors:[{name:"Crimson Red",hex:"#8b0000"},{name:"Burgundy",hex:"#4a0010"}],desc:"Make a bold statement with this crimson-accented sports watch for the adventurous."},
     {id:"matte-phantom",name:"Matte Phantom",gender:"men",originalPrice:9400,price:6699,discount:29,image:"images/watch-23.jpeg",category:"Modern",stock:13,sold:101,colors:[{name:"Matte Black",hex:"#1a1a1a"},{name:"Matte Gray",hex:"#4a4a4a"}],desc:"A phantom-like matte finish exuding mystery and sophistication. Minimal design, maximum impact."},
-    // ── WOMEN'S ──
     {id:"silver-heritage",name:"Silver Heritage",gender:"women",originalPrice:9200,price:6799,discount:26,image:"images/watch-02.jpeg",category:"Heritage",stock:12,sold:91,colors:[{name:"Silver",hex:"#c0c0c0"},{name:"Gold",hex:"#d4af37"},{name:"Rose Gold",hex:"#b76e79"}],desc:"Inspired by vintage elegance. Delicate silver-tone bracelet with mother-of-pearl dial."},
     {id:"rose-gold-luxe",name:"Rose Gold Luxe",gender:"women",originalPrice:11500,price:8299,discount:28,image:"images/watch-06.jpeg",category:"Premium",stock:5,sold:189,colors:[{name:"Rose Gold",hex:"#b76e79"},{name:"Champagne Gold",hex:"#f0c05a"}],desc:"The epitome of feminine luxury. Stunning rose gold finish with textured dial and crystal bezel."},
     {id:"sapphire-edge",name:"Sapphire Edge",gender:"women",originalPrice:9800,price:6999,discount:29,image:"images/watch-08.jpeg",category:"Modern",stock:10,sold:76,colors:[{name:"Sapphire Blue",hex:"#0f52ba"},{name:"Lavender",hex:"#967bb6"},{name:"Blush Pink",hex:"#de5d83"}],desc:"A striking sapphire-inspired design. Modern elegance with a comfortable mesh bracelet."},
@@ -530,10 +477,11 @@ const royalChrono = {id:"royal-chrono",name:"Royal Chronograph",gender:"men",ori
 
 function findProduct(id){return id==='royal-chrono'?royalChrono:products.find(p=>p.id===id);}
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════
 // CART
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════
 let cart=[], currentModalProduct=null, currentModalColor=null;
+let checkoutItems = null; // holds checkout data: {items, total, isCart}
 
 function addToCart(pid,color,price,qty=1){
     const ex=cart.find(i=>i.productId===pid&&i.color===color);
@@ -558,41 +506,110 @@ function updateCartUI(){
 }
 function openCart(){document.getElementById('cartOverlay').classList.add('active');document.getElementById('cartSidebar').classList.add('active');document.body.style.overflow='hidden'}
 function closeCart(){document.getElementById('cartOverlay').classList.remove('active');document.getElementById('cartSidebar').classList.remove('active');document.body.style.overflow=''}
-function cartBuyNow(){
-    if(!cart.length){showToast('Cart is empty!');return}
-    const items=cart.map(i=>'• '+i.name+' ('+i.color+') x'+i.qty+' — ৳'+(i.price*i.qty).toLocaleString()).join('\n');
-    const total=cart.reduce((s,i)=>s+(i.price*i.qty),0);
-    openOrderModal(items,total);
+
+// ══════════════════════════════════════
+// CHECKOUT SYSTEM
+// ══════════════════════════════════════
+function openCheckout(pid,color,price,qty){
+    const p=findProduct(pid);if(!p)return;
+    checkoutItems = {items:[{name:p.name,color:color,qty:qty,price:price,subtotal:price*qty}],total:price*qty,isCart:false};
+    renderCheckout();
+    document.getElementById('checkoutOverlay').classList.add('active');document.body.style.overflow='hidden';
 }
 
-// ═══════════════════════════════════════════
-// BUY NOW → WHATSAPP / MESSENGER
-// ═══════════════════════════════════════════
-function buyNow(pid,color,price,qty=1){
-    const p=findProduct(pid);if(!p)return;
-    openOrderModal('• '+p.name+' ('+color+') x'+qty+' — ৳'+(price*qty).toLocaleString(),price*qty);
+function cartGoCheckout(){
+    if(!cart.length){showToast('Cart is empty!');return}
+    const items=cart.map(i=>({name:i.name,color:i.color,qty:i.qty,price:i.price,subtotal:i.price*i.qty}));
+    const total=cart.reduce((s,i)=>s+(i.price*i.qty),0);
+    checkoutItems={items,total,isCart:true};
+    closeCart();
+    renderCheckout();
+    document.getElementById('checkoutOverlay').classList.add('active');document.body.style.overflow='hidden';
 }
-function modalBuyNow(){
+
+function modalGoCheckout(){
     if(!currentModalProduct)return;
     const q=parseInt(document.getElementById('modalQty').value)||1;
     const c=currentModalColor?currentModalColor.name:currentModalProduct.colors[0].name;
-    buyNow(currentModalProduct.id,c,currentModalProduct.price,q);
     closeModal();
+    openCheckout(currentModalProduct.id,c,currentModalProduct.price,q);
 }
-function openOrderModal(summary,total){
-    document.getElementById('orderSummary').innerHTML='<strong>Order Details</strong><br>'+summary.replace(/\n/g,'<br>')+'<span class="total-highlight">Total: ৳'+total.toLocaleString()+'</span>';
-    const m='Hello Eluxo!%0AI want to order:%0A%0A'+summary.replace(/\n/g,'%0A')+'%0A%0ATotal: ৳'+total.toLocaleString()+'%0A%0APlease confirm.';
-    // WhatsApp: use api.whatsapp.com which opens the app directly on mobile
-    document.getElementById('whatsappLink').href='https://api.whatsapp.com/send?phone='+BUSINESS_PHONE+'&text='+m;
-    // Messenger: use fb.com/msg/ which deep-links into the Messenger app
-    document.getElementById('messengerLink').href='https://fb.com/msg/'+FB_PAGE_ID;
-    document.getElementById('orderOverlay').classList.add('active');document.body.style.overflow='hidden';
-}
-function closeOrderModal(){document.getElementById('orderOverlay').classList.remove('active');document.body.style.overflow=''}
 
-// ═══════════════════════════════════════════
+function renderCheckout(){
+    if(!checkoutItems)return;
+    const items=checkoutItems.items;
+    let html='<strong>Order Summary</strong><br>';
+    items.forEach(i=>{html+='• '+i.name+' ('+i.color+') ×'+i.qty+' — ৳'+i.subtotal.toLocaleString()+'<br>';});
+    html+='<span class="cs-total">Total: ৳'+checkoutItems.total.toLocaleString()+'</span>';
+    document.getElementById('checkoutSummary').innerHTML=html;
+    document.getElementById('coTotal').textContent=checkoutItems.total.toLocaleString();
+    document.getElementById('checkoutError').style.display='none';
+}
+
+function closeCheckout(){
+    document.getElementById('checkoutOverlay').classList.remove('active');
+    document.body.style.overflow='';
+    // clear form
+    document.getElementById('coName').value='';
+    document.getElementById('coPhone').value='';
+    document.getElementById('coPhone2').value='';
+    document.getElementById('coAddress').value='';
+    document.getElementById('coNote').value='';
+}
+
+function submitOrder(){
+    const name=document.getElementById('coName').value.trim();
+    const phone=document.getElementById('coPhone').value.trim();
+    const phone2=document.getElementById('coPhone2').value.trim();
+    const address=document.getElementById('coAddress').value.trim();
+    const note=document.getElementById('coNote').value.trim();
+
+    if(!name||!phone||!address){
+        document.getElementById('checkoutError').style.display='block';
+        return;
+    }
+    document.getElementById('checkoutError').style.display='none';
+
+    if(!checkoutItems)return;
+
+    // Build WhatsApp message
+    let msg = '🕐 *NEW ORDER — ELUXO*%0A%0A';
+    msg += '*Customer Info:*%0A';
+    msg += '👤 Name: '+name+'%0A';
+    msg += '📞 Phone: '+phone+(phone2?'%0A📞 Alt: '+phone2:'')+'%0A';
+    msg += '📍 Address: '+address+'%0A';
+    if(note) msg += '📝 Note: '+note+'%0A';
+    msg += '%0A*Order Details:*%0A';
+    checkoutItems.items.forEach(i=>{
+        msg += '• '+i.name+' ('+i.color+') ×'+i.qty+' — ৳'+i.subtotal.toLocaleString()+'%0A';
+    });
+    msg += '%0A💰 *Total: ৳'+checkoutItems.total.toLocaleString()+'*%0A';
+    msg += '%0A_Please call to confirm._';
+
+    // Send via WhatsApp
+    const waUrl = 'https://api.whatsapp.com/send?phone='+BUSINESS_PHONE+'&text='+msg;
+    window.open(waUrl, '_blank');
+
+    // Show success
+    closeCheckout();
+    document.getElementById('successMsg').textContent = 'Order: '+checkoutItems.items.map(i=>i.name).join(', ')+' | Total: ৳'+checkoutItems.total.toLocaleString();
+    document.getElementById('successOverlay').classList.add('active');
+}
+
+function closeSuccess(){
+    document.getElementById('successOverlay').classList.remove('active');
+    document.body.style.overflow='';
+    // Clear cart if it was a cart checkout
+    if(checkoutItems && checkoutItems.isCart){
+        cart=[];
+        updateCartUI();
+    }
+    checkoutItems=null;
+}
+
+// ══════════════════════════════════════
 // PRODUCT DETAIL MODAL
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════
 function openDetail(id){
     const p=findProduct(id);if(!p)return;
     currentModalProduct=p;currentModalColor=p.colors[0];
@@ -619,9 +636,9 @@ function validateModalQty(){const inp=document.getElementById('modalQty');let v=
 function updateModalBtnPrice(){const q=parseInt(document.getElementById('modalQty').value)||1;const pr=currentModalProduct?currentModalProduct.price:0;document.getElementById('modalBtnPrice').textContent=(pr*q).toLocaleString()}
 function modalAddToCart(){if(!currentModalProduct)return;const q=parseInt(document.getElementById('modalQty').value)||1;const c=currentModalColor?currentModalColor.name:currentModalProduct.colors[0].name;addToCart(currentModalProduct.id,c,currentModalProduct.price,q);closeModal()}
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════
 // RENDER PRODUCTS
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════
 const grid=document.getElementById('productGrid');
 function renderProducts(filter='all'){
     grid.innerHTML='';
@@ -630,7 +647,7 @@ function renderProducts(filter='all'){
         const c=document.createElement('div');
         c.className='product-card fade-in';
         c.style.transitionDelay=(i*30)+'ms';
-        c.innerHTML='<div class="img-wrap" onclick="openDetail(\''+p.id+'\')"><img src="'+p.image+'" alt="'+p.name+'" loading="lazy"><span class="discount-badge">-'+p.discount+'%</span><span class="gender-badge">'+(p.gender==='men'?"Men's":"Women's")+'</span><div class="hover-btns"><button class="hover-add" onclick="event.stopPropagation();addToCart(\''+p.id+'\',\''+p.colors[0].name+'\','+p.price+')">Add to Cart</button><button class="hover-buy" onclick="event.stopPropagation();buyNow(\''+p.id+'\',\''+p.colors[0].name+'\','+p.price+')">Buy Now</button></div></div><div class="product-info" onclick="openDetail(\''+p.id+'\')"><p class="category">'+p.category+'</p><h4>'+p.name+'</h4><div class="price-row"><span class="old">৳'+p.originalPrice.toLocaleString()+'</span><span class="new">৳'+p.price.toLocaleString()+'</span><span class="saved">Save ৳'+(p.originalPrice-p.price).toLocaleString()+'</span></div><div class="color-dots">'+p.colors.map(c=>'<span class="color-dot" style="background:'+c.hex+'" title="'+c.name+'"></span>').join('')+'</div></div>';
+        c.innerHTML='<div class="img-wrap" onclick="openDetail(\''+p.id+'\')"><img src="'+p.image+'" alt="'+p.name+'" loading="lazy"><span class="discount-badge">-'+p.discount+'%</span><span class="gender-badge">'+(p.gender==='men'?"Men's":"Women's")+'</span><div class="hover-btns"><button class="hover-add" onclick="event.stopPropagation();addToCart(\''+p.id+'\',\''+p.colors[0].name+'\','+p.price+')">Add to Cart</button><button class="hover-buy" onclick="event.stopPropagation();openCheckout(\''+p.id+'\',\''+p.colors[0].name+'\','+p.price+',1)">Buy Now</button></div></div><div class="product-info" onclick="openDetail(\''+p.id+'\')"><p class="category">'+p.category+'</p><h4>'+p.name+'</h4><div class="price-row"><span class="old">৳'+p.originalPrice.toLocaleString()+'</span><span class="new">৳'+p.price.toLocaleString()+'</span><span class="saved">Save ৳'+(p.originalPrice-p.price).toLocaleString()+'</span></div><div class="color-dots">'+p.colors.map(c=>'<span class="color-dot" style="background:'+c.hex+'" title="'+c.name+'"></span>').join('')+'</div></div>';
         grid.appendChild(c);
     });
     document.querySelectorAll('.product-card.fade-in').forEach(el=>observer.observe(el));
@@ -641,33 +658,29 @@ function filterProducts(filter){
     renderProducts(filter);
 }
 
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════
 // UTILS
-// ═══════════════════════════════════════════
+// ══════════════════════════════════════
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2400)}
 
 const observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.06,rootMargin:'0px 0px -25px 0px'});
 document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el)});
 
-// Mobile menu
 document.getElementById('mobileToggle').addEventListener('click',function(){document.getElementById('mobileMenu').classList.add('active')});
 document.getElementById('mobileClose').addEventListener('click',function(){document.getElementById('mobileMenu').classList.remove('active')});
 document.querySelectorAll('#mobileMenu a:not([onclick])').forEach(function(a){a.addEventListener('click',function(){document.getElementById('mobileMenu').classList.remove('active')})});
 
-// Nav shadow
 window.addEventListener('scroll',function(){document.getElementById('nav').style.boxShadow=window.scrollY>30?'0 1px 18px rgba(0,0,0,0.05)':'none'},{passive:true});
 
-// Overlay click-to-close
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
-document.getElementById('orderOverlay').addEventListener('click',function(e){if(e.target===this)closeOrderModal()});
+document.getElementById('checkoutOverlay').addEventListener('click',function(e){if(e.target===this)closeCheckout()});
+document.getElementById('successOverlay').addEventListener('click',function(e){if(e.target===this)closeSuccess()});
 
-// ESC key
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();closeOrderModal();closeCart()}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();closeCheckout();closeSuccess();closeCart()}});
 
-// INIT
 renderProducts();
 updateCartUI();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1a08c9d989e5807',t:'MTc4Mzg2NDU2NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-</body>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1a0b1ffe82888f7',t:'MTc4Mzg2NjA5Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
